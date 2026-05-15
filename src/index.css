@@ -1,0 +1,869 @@
+
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: #050505;
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.app {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 340px 1fr;
+}
+
+.sidebar {
+  padding: 28px;
+  background: #0b0b0b;
+  border-right: 1px solid #222;
+  overflow-y: auto;
+  max-height: 100vh;
+}
+
+.sidebar h1 {
+  margin: 0;
+  font-size: 30px;
+}
+
+.sidebar p {
+  color: #c9a14a;
+  margin-bottom: 24px;
+}
+
+.uploadBox {
+  height: 220px;
+  border: 2px dashed #8f6b25;
+  border-radius: 18px;
+  background: #151515;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  cursor: pointer;
+  margin-bottom: 18px;
+}
+
+.uploadBox img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.uploadBox input {
+  display: none;
+}
+
+.uploadBox span {
+  color: #aaa;
+  font-weight: 700;
+}
+
+input {
+  width: 100%;
+  padding: 16px;
+  margin-bottom: 12px;
+  background: #141414;
+  border: 1px solid #333;
+  color: white;
+  border-radius: 12px;
+  font-weight: 800;
+}
+
+.styleGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin: 16px 0;
+}
+
+.style,
+.product {
+  padding: 14px;
+  border-radius: 14px;
+  border: 1px solid #333;
+  background: #151515;
+  color: white;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+.style.active,
+.product.active {
+  border-color: #ffb83d;
+  background: linear-gradient(135deg, #3a2100, #ff7a00);
+}
+
+.productGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.generateBtn,
+.aiBtn {
+  width: 100%;
+  border-radius: 16px;
+  padding: 18px;
+  font-weight: 1000;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.generateBtn {
+  border: none;
+  background: linear-gradient(135deg, #ff7a00, #ff3c00);
+  color: white;
+}
+
+.aiBtn {
+  margin-top: 10px;
+  border: 1px solid #ffb83d;
+  background: transparent;
+  color: #ffb83d;
+}
+
+.aiBtn:hover {
+  background: rgba(255, 184, 61, 0.08);
+}
+
+/* OPTIONS TEXTE */
+
+.textOptions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.customTextInput {
+  width: 100%;
+  padding: 14px 16px;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 170, 0, 0.35);
+  background: #151515;
+  color: white;
+  font-size: 15px;
+  font-weight: 700;
+  outline: none;
+}
+
+.colorPicker {
+  width: 100%;
+  height: 50px;
+  border-radius: 12px;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+.optionLabel {
+  color: #ddd;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+/* PREVIEW */
+
+.preview {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+}
+
+.emptyPreview {
+  width: min(520px, 90vw);
+  aspect-ratio: 2 / 3;
+  border: 2px dashed #333;
+  border-radius: 28px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #aaa;
+  text-align: center;
+}
+
+.singleAIResult {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  width: min(560px, 90vw);
+}
+
+.singleAIResult img {
+  width: 75%;
+  height: auto;
+  object-fit: contain;
+}
+
+/* MOCKUPS */
+
+.productPreview {
+  position: relative;
+  width: min(720px, 92vw);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mockupBase {
+  width: 100%;
+  display: block;
+}
+
+.mockupDesign {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: visible;
+  background: transparent;
+}
+
+.mockupDesign .poster {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 2 / 3;
+  background: transparent;
+  box-shadow: none;
+  overflow: visible;
+}
+
+/* =========================
+   ZONES MOCKUP PAR PRODUIT
+========================= */
+
+.productPreview.poster .mockupDesign { width: 48%; height: 72%; top: 14%; left: 29%; }
+.productPreview.mug .mockupDesign { width: 38%; height: 52%; top: 31%; left: 44%; }
+
+.productPreview.thomme .mockupDesign,
+.productPreview.thommeblanc .mockupDesign,
+.productPreview.tfemme .mockupDesign,
+.productPreview.tfemmeblanc .mockupDesign,
+.productPreview.tfemmerose .mockupDesign {
+  width: 26%;
+  height: 42%;
+  top: 15%;
+  left: 37%;
+}
+
+.productPreview.casquette .mockupDesign { width: 22%; height: 22%; top: 28%; left: 39%; }
+.productPreview.totebag .mockupDesign { width: 38%; height: 48%; top: 24%; left: 31%; }
+
+.mockupDesign,
+.mockupDesign .poster,
+.productPreview .poster {
+  overflow: visible;
+}
+
+/* =========================
+   BASE IMAGE CERCLE
+========================= */
+
+.finalAIImage,
+.dogCutout {
+  position: absolute;
+  width: var(--img-w);
+  height: var(--img-h);
+  top: var(--img-top);
+  left: var(--img-left, 50%);
+  transform: translateX(-50%);
+  object-fit: cover;
+  border-radius: 50%;
+  background: white;
+  border: 3px solid var(--circleColor, #c79b2c);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+  z-index: 20;
+}
+
+/* =========================
+   BASE PAR PRODUIT - ORDI
+========================= */
+
+.productPreview.poster { --img-w: 270px; --img-h: 270px; --img-top: 80px; }
+.productPreview.mug { --img-w: 260px; --img-h: 260px; --img-top: 21px; }
+
+.productPreview.thomme { --img-w: 130px; --img-h: 130px; --img-top: 40px; }
+.productPreview.thommeblanc { --img-w: 130px; --img-h: 130px; --img-top: 40px; }
+.productPreview.tfemme { --img-w: 130px; --img-h: 130px; --img-top: 40px; }
+.productPreview.tfemmeblanc { --img-w: 130px; --img-h: 130px; --img-top: 40px; }
+.productPreview.tfemmerose { --img-w: 130px; --img-h: 130px; --img-top: 40px; }
+
+.productPreview.casquette { --img-w: 120px; --img-h: 120px; --img-top: -150px; }
+.productPreview.totebag { --img-w: 180px; --img-h: 180px; --img-top: 200px; }
+
+/* =========================
+   AJUSTEMENTS PAR STYLE - ORDI
+   Tu changes ici si un style est mal placé
+========================= */
+
+.productPreview.poster .poster.original { --img-w: 300px; --img-h: 300px; --img-top: 120px; }
+.productPreview.poster .poster.royal { --img-w: 300px; --img-h: 300px; --img-top: 120px; }
+.productPreview.poster .poster.museum { --img-w: 300px; --img-h: 300px; --img-top: 120px; }
+.productPreview.poster .poster.minimal { --img-w: 300px; --img-h: 300px; --img-top: 120px; }
+.productPreview.poster .poster.astronaut { --img-w: 300px; --img-h: 300px; --img-top: 120px; }
+.productPreview.poster .poster.gangster { --img-w: 300px; --img-h: 300px; --img-top: 120px; }
+.productPreview.poster .poster.anime { --img-w: 300px; --img-h: 300px; --img-top: 120px; }
+.productPreview.poster .poster.viking { --img-w: 300px; --img-h: 300px; --img-top: 120px; }
+.productPreview.poster .poster.biker { --img-w: 300px; --img-h: 300px; --img-top: 120px; }
+.productPreview.poster .poster.superhero { --img-w: 300px; --img-h: 300px; --img-top: 120px; }
+.productPreview.poster .poster.cartoon { --img-w: 300px; --img-h: 300px; --img-top: 120px; }
+.productPreview.poster .poster.rockstar { --img-w: 300px; --img-h: 300px; --img-top: 120px; }
+
+.productPreview.mug .poster.original { --img-w: 300px; --img-h: 300px; --img-top: 35px; }
+.productPreview.mug .poster.royal { --img-w: 300px; --img-h: 300px; --img-top: 35px; }
+.productPreview.mug .poster.museum { --img-w: 300px; --img-h: 300px; --img-top: 35px; }
+.productPreview.mug .poster.minimal { --img-w: 300px; --img-h: 300px; --img-top: 35px; }
+.productPreview.mug .poster.astronaut { --img-w: 300px; --img-h: 300px; --img-top: 35px; }
+.productPreview.mug .poster.gangster { --img-w: 300px; --img-h: 300px; --img-top: 35px; }
+.productPreview.mug .poster.anime { --img-w: 300px; --img-h: 300px; --img-top: 35px; }
+.productPreview.mug .poster.viking { --img-w: 300px; --img-h: 300px; --img-top: 35px; }
+.productPreview.mug .poster.biker { --img-w: 300px; --img-h: 300px; --img-top: 35px; }
+.productPreview.mug .poster.superhero { --img-w: 300px; --img-h: 300px; --img-top: 35px; }
+.productPreview.mug .poster.cartoon { --img-w: 300px; --img-h: 300px; --img-top: 35px; }
+.productPreview.mug .poster.rockstar { --img-w: 300px; --img-h: 300px; --img-top: 35px; }
+
+.productPreview.casquette .poster.original { --img-w: 150px; --img-h: 150px; --img-top: -20px; }
+.productPreview.casquette .poster.royal { --img-w: 150px; --img-h: 150px; --img-top: -20px; }
+.productPreview.casquette .poster.museum { --img-w: 150px; --img-h: 150px; --img-top: -20px; }
+.productPreview.casquette .poster.minimal { --img-w: 150px; --img-h: 150px; --img-top: -20px; }
+.productPreview.casquette .poster.astronaut { --img-w: 150px; --img-h: 150px; --img-top: -20px; }
+.productPreview.casquette .poster.gangster { --img-w: 150px; --img-h: 150px; --img-top: -20px; }
+.productPreview.casquette .poster.anime { --img-w: 150px; --img-h: 150px; --img-top: -20px; }
+.productPreview.casquette .poster.viking { --img-w: 150px; --img-h: 150px; --img-top: -20px; }
+.productPreview.casquette .poster.biker { --img-w: 150px; --img-h: 150px; --img-top: -20px; }
+.productPreview.casquette .poster.superhero { --img-w: 150px; --img-h: 150px; --img-top: -20px; }
+.productPreview.casquette .poster.cartoon { --img-w: 150px; --img-h: 150px; --img-top: -20px; }
+.productPreview.casquette .poster.rockstar { --img-w: 150px; --img-h: 150px; --img-top: -20px; }
+
+.productPreview.totebag .poster.original { --img-w: 200px; --img-h: 200px; --img-top: 260px; }
+.productPreview.totebag .poster.royal { --img-w: 200px; --img-h: 200px; --img-top: 260px; }
+.productPreview.totebag .poster.museum { --img-w: 200px; --img-h: 200px; --img-top: 260px; }
+.productPreview.totebag .poster.minimal { --img-w: 200px; --img-h: 200px; --img-top: 260px; }
+.productPreview.totebag .poster.astronaut { --img-w: 200px; --img-h: 200px; --img-top: 260px; }
+.productPreview.totebag .poster.gangster { --img-w: 200px; --img-h: 200px; --img-top: 260px; }
+.productPreview.totebag .poster.anime { --img-w: 200px; --img-h: 200px; --img-top: 260px; }
+.productPreview.totebag .poster.viking { --img-w: 200px; --img-h: 200px; --img-top: 260px; }
+.productPreview.totebag .poster.biker { --img-w: 200px; --img-h: 200px; --img-top: 260px; }
+.productPreview.totebag .poster.superhero { --img-w: 200px; --img-h: 200px; --img-top: 260px; }
+.productPreview.totebag .poster.cartoon { --img-w: 200px; --img-h: 200px; --img-top: 260px; }
+.productPreview.totebag .poster.rockstar { --img-w: 200px; --img-h: 200px; --img-top: 260px; }
+
+/* Les tee-shirts utilisent la base produit.
+   Pour un style précis, ajoute par exemple :
+   .productPreview.tfemmerose .poster.royal { --img-w: 140px; --img-h: 140px; --img-top: 35px; }
+*/
+
+/* =========================
+   TEXTE AFFICHE / MUG
+========================= */
+
+.productPreview.poster .posterText.top { margin-top: 32px; font-size: 66px; margin-left: 120px; }
+.productPreview.poster .posterText.bottom { margin-top: 320px; font-size: 42px; margin-left: 130px; }
+
+.productPreview.mug .posterText.top { margin-top: -50px; font-size: 66px; margin-left: 80px; }
+.productPreview.mug .posterText.bottom { margin-top: 320px; font-size: 46px; margin-left: 100px; }
+
+.productPreview.thomme .posterText,
+.productPreview.thommeblanc .posterText,
+.productPreview.tfemme .posterText,
+.productPreview.tfemmeblanc .posterText,
+.productPreview.tfemmerose .posterText,
+.productPreview.casquette .posterText,
+.productPreview.totebag .posterText {
+  display: none;
+}
+
+/* =========================
+   COMMANDE
+========================= */
+
+.orderBox {
+  position: fixed;
+  right: 32px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 280px;
+  padding: 22px;
+  border-radius: 20px;
+  background: #111 !important;
+  border: 1px solid rgba(255, 184, 61, 0.45);
+  text-align: center;
+  z-index: 9999;
+  box-shadow: 0 20px 80px rgba(0,0,0,0.75);
+}
+
+.orderBox h3 { margin: 0 0 10px; color: #ffb83d; }
+.orderBox p { margin: 6px 0; color: #ddd; }
+
+.orderBtn,
+.payBtn {
+  margin-top: 14px;
+  width: 100%;
+  border: none;
+  border-radius: 14px;
+  padding: 16px;
+  background: linear-gradient(135deg, #ffb83d, #ff7a00);
+  color: #111;
+  font-weight: 1000;
+  cursor: pointer;
+}
+
+.modalOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.75);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 99999;
+  padding: 20px;
+}
+
+.orderModal {
+  width: min(460px, 92vw);
+  background: #111;
+  border: 1px solid #333;
+  border-radius: 24px;
+  padding: 28px;
+  box-shadow: 0 40px 120px rgba(0,0,0,0.7);
+}
+
+.orderModal h2 {
+  margin-top: 0;
+  color: #ffb83d;
+  text-align: center;
+}
+
+.summary {
+  margin-top: 20px;
+  padding: 14px;
+  border-radius: 14px;
+  background: rgba(255,255,255,0.05);
+}
+
+.closeBtn {
+  width: 100%;
+  margin-top: 10px;
+  border: none;
+  border-radius: 14px;
+  padding: 14px;
+  background: #222;
+  color: white;
+  cursor: pointer;
+}
+
+/* =========================
+   TABLETTE
+========================= */
+
+@media (max-width: 1024px) {
+  .app { display: block; }
+
+  .sidebar {
+    height: auto;
+    max-height: none;
+    border-right: none;
+    border-bottom: 1px solid #222;
+  }
+
+  .preview {
+    padding: 24px;
+    min-height: auto;
+    flex-direction: column;
+  }
+
+  .productPreview {
+    width: 100%;
+    max-width: 520px;
+  }
+
+  .orderBox {
+    position: static;
+    transform: none;
+    width: 100%;
+    max-width: 420px;
+    margin: 24px auto 0;
+  }
+
+  .productPreview.casquette { --img-w: 90px; --img-h: 90px; --img-top: -100px; }
+  .productPreview.totebag { --img-w: 140px; --img-h: 140px; --img-top: 150px; }
+}
+
+/* =========================================================
+   TABLETTE — tous produits / tous styles
+========================================================= */
+
+@media (max-width: 1024px) {
+  .productPreview.poster .poster.original,
+  .productPreview.poster .poster.royal,
+  .productPreview.poster .poster.museum,
+  .productPreview.poster .poster.minimal,
+  .productPreview.poster .poster.astronaut,
+  .productPreview.poster .poster.gangster,
+  .productPreview.poster .poster.anime,
+  .productPreview.poster .poster.viking,
+  .productPreview.poster .poster.biker,
+  .productPreview.poster .poster.superhero,
+  .productPreview.poster .poster.cartoon,
+  .productPreview.poster .poster.rockstar {
+    --img-w: 230px;
+    --img-h: 230px;
+    --img-top: 70px;
+  }
+
+  .productPreview.mug .poster.original,
+  .productPreview.mug .poster.royal,
+  .productPreview.mug .poster.museum,
+  .productPreview.mug .poster.minimal,
+  .productPreview.mug .poster.astronaut,
+  .productPreview.mug .poster.gangster,
+  .productPreview.mug .poster.anime,
+  .productPreview.mug .poster.viking,
+  .productPreview.mug .poster.biker,
+  .productPreview.mug .poster.superhero,
+  .productPreview.mug .poster.cartoon,
+  .productPreview.mug .poster.rockstar {
+    --img-w: 200px;
+    --img-h: 200px;
+    --img-top: 20px;
+  }
+
+  .productPreview.thomme .poster.original,
+  .productPreview.thomme .poster.royal,
+  .productPreview.thomme .poster.museum,
+  .productPreview.thomme .poster.minimal,
+  .productPreview.thomme .poster.astronaut,
+  .productPreview.thomme .poster.gangster,
+  .productPreview.thomme .poster.anime,
+  .productPreview.thomme .poster.viking,
+  .productPreview.thomme .poster.biker,
+  .productPreview.thomme .poster.superhero,
+  .productPreview.thomme .poster.cartoon,
+  .productPreview.thomme .poster.rockstar,
+  .productPreview.thommeblanc .poster.original,
+  .productPreview.thommeblanc .poster.royal,
+  .productPreview.thommeblanc .poster.museum,
+  .productPreview.thommeblanc .poster.minimal,
+  .productPreview.thommeblanc .poster.astronaut,
+  .productPreview.thommeblanc .poster.gangster,
+  .productPreview.thommeblanc .poster.anime,
+  .productPreview.thommeblanc .poster.viking,
+  .productPreview.thommeblanc .poster.biker,
+  .productPreview.thommeblanc .poster.superhero,
+  .productPreview.thommeblanc .poster.cartoon,
+  .productPreview.thommeblanc .poster.rockstar {
+    --img-w: 115px;
+    --img-h: 115px;
+    --img-top: 38px;
+  }
+
+  .productPreview.tfemme .poster.original,
+  .productPreview.tfemme .poster.royal,
+  .productPreview.tfemme .poster.museum,
+  .productPreview.tfemme .poster.minimal,
+  .productPreview.tfemme .poster.astronaut,
+  .productPreview.tfemme .poster.gangster,
+  .productPreview.tfemme .poster.anime,
+  .productPreview.tfemme .poster.viking,
+  .productPreview.tfemme .poster.biker,
+  .productPreview.tfemme .poster.superhero,
+  .productPreview.tfemme .poster.cartoon,
+  .productPreview.tfemme .poster.rockstar,
+  .productPreview.tfemmeblanc .poster.original,
+  .productPreview.tfemmeblanc .poster.royal,
+  .productPreview.tfemmeblanc .poster.museum,
+  .productPreview.tfemmeblanc .poster.minimal,
+  .productPreview.tfemmeblanc .poster.astronaut,
+  .productPreview.tfemmeblanc .poster.gangster,
+  .productPreview.tfemmeblanc .poster.anime,
+  .productPreview.tfemmeblanc .poster.viking,
+  .productPreview.tfemmeblanc .poster.biker,
+  .productPreview.tfemmeblanc .poster.superhero,
+  .productPreview.tfemmeblanc .poster.cartoon,
+  .productPreview.tfemmeblanc .poster.rockstar,
+  .productPreview.tfemmerose .poster.original,
+  .productPreview.tfemmerose .poster.royal,
+  .productPreview.tfemmerose .poster.museum,
+  .productPreview.tfemmerose .poster.minimal,
+  .productPreview.tfemmerose .poster.astronaut,
+  .productPreview.tfemmerose .poster.gangster,
+  .productPreview.tfemmerose .poster.anime,
+  .productPreview.tfemmerose .poster.viking,
+  .productPreview.tfemmerose .poster.biker,
+  .productPreview.tfemmerose .poster.superhero,
+  .productPreview.tfemmerose .poster.cartoon,
+  .productPreview.tfemmerose .poster.rockstar {
+    --img-w: 115px;
+    --img-h: 115px;
+    --img-top: 38px;
+  }
+
+  .productPreview.casquette .poster.original,
+  .productPreview.casquette .poster.royal,
+  .productPreview.casquette .poster.museum,
+  .productPreview.casquette .poster.minimal,
+  .productPreview.casquette .poster.astronaut,
+  .productPreview.casquette .poster.gangster,
+  .productPreview.casquette .poster.anime,
+  .productPreview.casquette .poster.viking,
+  .productPreview.casquette .poster.biker,
+  .productPreview.casquette .poster.superhero,
+  .productPreview.casquette .poster.cartoon,
+  .productPreview.casquette .poster.rockstar {
+    --img-w: 110px;
+    --img-h: 110px;
+    --img-top: 0px;
+  }
+
+  .productPreview.totebag .poster.original,
+  .productPreview.totebag .poster.royal,
+  .productPreview.totebag .poster.museum,
+  .productPreview.totebag .poster.minimal,
+  .productPreview.totebag .poster.astronaut,
+  .productPreview.totebag .poster.gangster,
+  .productPreview.totebag .poster.anime,
+  .productPreview.totebag .poster.viking,
+  .productPreview.totebag .poster.biker,
+  .productPreview.totebag .poster.superhero,
+  .productPreview.totebag .poster.cartoon,
+  .productPreview.totebag .poster.rockstar {
+    --img-w: 140px;
+    --img-h: 140px;
+    --img-top: 170px;
+  }
+}
+
+
+/* =========================================================
+   MOBILE — tous produits / tous styles
+========================================================= */
+
+@media (max-width: 600px) {
+  .productPreview.poster .poster.original,
+  .productPreview.poster .poster.royal,
+  .productPreview.poster .poster.museum,
+  .productPreview.poster .poster.minimal,
+  .productPreview.poster .poster.astronaut,
+  .productPreview.poster .poster.gangster,
+  .productPreview.poster .poster.anime,
+  .productPreview.poster .poster.viking,
+  .productPreview.poster .poster.biker,
+  .productPreview.poster .poster.superhero,
+  .productPreview.poster .poster.cartoon,
+  .productPreview.poster .poster.rockstar {
+    --img-w: 130px;
+    --img-h: 130px;
+    --img-top: 55px;
+  }
+
+  .productPreview.mug .poster.original,
+  .productPreview.mug .poster.royal,
+  .productPreview.mug .poster.museum,
+  .productPreview.mug .poster.minimal,
+  .productPreview.mug .poster.astronaut,
+  .productPreview.mug .poster.gangster,
+  .productPreview.mug .poster.anime,
+  .productPreview.mug .poster.viking,
+  .productPreview.mug .poster.biker,
+  .productPreview.mug .poster.superhero,
+  .productPreview.mug .poster.cartoon,
+  .productPreview.mug .poster.rockstar {
+    --img-w: 150px;
+    --img-h: 150px;
+    --img-top: 10px;
+  }
+
+  .productPreview.thomme .poster.original,
+  .productPreview.thomme .poster.royal,
+  .productPreview.thomme .poster.museum,
+  .productPreview.thomme .poster.minimal,
+  .productPreview.thomme .poster.astronaut,
+  .productPreview.thomme .poster.gangster,
+  .productPreview.thomme .poster.anime,
+  .productPreview.thomme .poster.viking,
+  .productPreview.thomme .poster.biker,
+  .productPreview.thomme .poster.superhero,
+  .productPreview.thomme .poster.cartoon,
+  .productPreview.thomme .poster.rockstar,
+  .productPreview.thommeblanc .poster.original,
+  .productPreview.thommeblanc .poster.royal,
+  .productPreview.thommeblanc .poster.museum,
+  .productPreview.thommeblanc .poster.minimal,
+  .productPreview.thommeblanc .poster.astronaut,
+  .productPreview.thommeblanc .poster.gangster,
+  .productPreview.thommeblanc .poster.anime,
+  .productPreview.thommeblanc .poster.viking,
+  .productPreview.thommeblanc .poster.biker,
+  .productPreview.thommeblanc .poster.superhero,
+  .productPreview.thommeblanc .poster.cartoon,
+  .productPreview.thommeblanc .poster.rockstar {
+    --img-w: 70px;
+    --img-h: 70px;
+    --img-top: 30px;
+  }
+
+  .productPreview.tfemme .poster.original,
+  .productPreview.tfemme .poster.royal,
+  .productPreview.tfemme .poster.museum,
+  .productPreview.tfemme .poster.minimal,
+  .productPreview.tfemme .poster.astronaut,
+  .productPreview.tfemme .poster.gangster,
+  .productPreview.tfemme .poster.anime,
+  .productPreview.tfemme .poster.viking,
+  .productPreview.tfemme .poster.biker,
+  .productPreview.tfemme .poster.superhero,
+  .productPreview.tfemme .poster.cartoon,
+  .productPreview.tfemme .poster.rockstar,
+  .productPreview.tfemmeblanc .poster.original,
+  .productPreview.tfemmeblanc .poster.royal,
+  .productPreview.tfemmeblanc .poster.museum,
+  .productPreview.tfemmeblanc .poster.minimal,
+  .productPreview.tfemmeblanc .poster.astronaut,
+  .productPreview.tfemmeblanc .poster.gangster,
+  .productPreview.tfemmeblanc .poster.anime,
+  .productPreview.tfemmeblanc .poster.viking,
+  .productPreview.tfemmeblanc .poster.biker,
+  .productPreview.tfemmeblanc .poster.superhero,
+  .productPreview.tfemmeblanc .poster.cartoon,
+  .productPreview.tfemmeblanc .poster.rockstar,
+  .productPreview.tfemmerose .poster.original,
+  .productPreview.tfemmerose .poster.royal,
+  .productPreview.tfemmerose .poster.museum,
+  .productPreview.tfemmerose .poster.minimal,
+  .productPreview.tfemmerose .poster.astronaut,
+  .productPreview.tfemmerose .poster.gangster,
+  .productPreview.tfemmerose .poster.anime,
+  .productPreview.tfemmerose .poster.viking,
+  .productPreview.tfemmerose .poster.biker,
+  .productPreview.tfemmerose .poster.superhero,
+  .productPreview.tfemmerose .poster.cartoon,
+  .productPreview.tfemmerose .poster.rockstar {
+    --img-w: 70px;
+    --img-h: 70px;
+    --img-top: 30px;
+  }
+
+  .productPreview.casquette .poster.original,
+  .productPreview.casquette .poster.royal,
+  .productPreview.casquette .poster.museum,
+  .productPreview.casquette .poster.minimal,
+  .productPreview.casquette .poster.astronaut,
+  .productPreview.casquette .poster.gangster,
+  .productPreview.casquette .poster.anime,
+  .productPreview.casquette .poster.viking,
+  .productPreview.casquette .poster.biker,
+  .productPreview.casquette .poster.superhero,
+  .productPreview.casquette .poster.cartoon,
+  .productPreview.casquette .poster.rockstar {
+    --img-w: 95px;
+    --img-h: 95px;
+    --img-top: -20px;
+  }
+
+  .productPreview.totebag .poster.original,
+  .productPreview.totebag .poster.royal,
+  .productPreview.totebag .poster.museum,
+  .productPreview.totebag .poster.minimal,
+  .productPreview.totebag .poster.astronaut,
+  .productPreview.totebag .poster.gangster,
+  .productPreview.totebag .poster.anime,
+  .productPreview.totebag .poster.viking,
+  .productPreview.totebag .poster.biker,
+  .productPreview.totebag .poster.superhero,
+  .productPreview.totebag .poster.cartoon,
+  .productPreview.totebag .poster.rockstar {
+    --img-w: 95px;
+    --img-h: 95px;
+    --img-top: 100px;
+  }
+}
+
+/* =========================================================
+   TABLETTE — TEXTE
+========================================================= */
+
+@media (max-width: 1024px) {
+
+  /* AFFICHE */
+
+  .productPreview.poster .posterText.top {
+    top: 10px;
+    font-size: 44px;
+  }
+
+  .productPreview.poster .posterText.bottom {
+    top: 300px;
+    font-size: 22px;
+  }
+
+  /* MUG */
+
+  .productPreview.mug .posterText.top {
+    top: -30px;
+    font-size: 34px;
+  }
+
+  .productPreview.mug .posterText.bottom {
+    top: 210px;
+    font-size: 18px;
+  }
+}
+
+
+/* =========================================================
+   MOBILE — TEXTE
+========================================================= */
+
+@media (max-width: 600px) {
+
+  /* AFFICHE */
+
+  .productPreview.poster .posterText.top {
+    margin-top: 10px;
+    font-size: 30px;
+    letter-spacing: 1px;
+    margin-left:45px;
+  }
+
+  .productPreview.poster .posterText.bottom {
+    margin-top: 150px;
+    font-size: 16px;
+    letter-spacing: 1px;
+    margin-left:40px;
+  }
+
+  /* MUG */
+
+  .productPreview.mug .posterText.top {
+    margin-top: -20px;
+    font-size: 24px;
+    letter-spacing: 1px;
+    margin-left: 35px;
+  }
+
+  .productPreview.mug .posterText.bottom {
+    margin-top: 160px;
+    font-size: 14px;
+    letter-spacing: 1px;
+    margin-left: 25px;
+  }
+}
+
+.posterText {
+  font-family: "Cinzel Decorative", "Georgia", serif;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-shadow: 0 3px 8px rgba(0,0,0,0.25);
+}
