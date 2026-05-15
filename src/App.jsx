@@ -7,7 +7,7 @@ const styles = [
   { id: "museum", name: "🖼️ Musée / Renaissance" },
   { id: "minimal", name: "✨ Minimal luxe" },
   { id: "astronaut", name: "🚀 Astronaute" },
-  { id: "gangster", name: "🕶️ Gangster" },
+  { id: "gangster", name: "🕶️ angster" },
   { id: "anime", name: "🌸 Anime japonais" },
   { id: "viking", name: "🪓 Viking" },
   { id: "biker", name: "🏍️ Biker" },
@@ -181,9 +181,7 @@ setAiLoading(false);
         <div className="uploadBox">
   {image ? <img src={image} alt="upload" /> : <span>Importer une photo</span>}
 </div>
-<p style={{ color: "orange", fontSize: "12px" }}>
-  Version test upload iPad
-</p>
+
 <input
   className="realFileInput"
   type="file"
