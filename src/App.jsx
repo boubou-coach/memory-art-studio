@@ -178,14 +178,16 @@ setAiLoading(false);
         <h1>👑 Memory Art Studio </h1>
         <p>Transformez vos photos en créations uniques</p>
 
-        <label className="uploadBox">
-          {image ? <img src={image} alt="upload" /> : <span>Importer une photo</span>}
-          <input
+        <div className="uploadBox">
+  {image ? <img src={image} alt="upload" /> : <span>Importer une photo</span>}
+</div>
+
+<input
+  className="realFileInput"
   type="file"
   accept="image/*"
   onChange={handleImage}
 />
-        </label>
 
        
 
