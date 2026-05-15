@@ -47,12 +47,6 @@ const [backgroundImage, setBackgroundImage] = useState(null);
 
 const handleImage = async (e) => {
   console.log("handleImage lancé");
-alert("image sélectionnée");
-  const file = e.target.files[0];
-  console.log(file);
-alert(file?.name || "pas de fichier");
-  console.log("Fichier choisi :", file.type, file.size);
-  if (!file) return;
 
   try {
     const reader = new FileReader();
@@ -88,21 +82,7 @@ alert(file?.name || "pas de fichier");
     alert("Erreur upload image");
   }
 };
-  const file = e.target.files[0];
-  if (!file) return;
-
-  try {
-    const blob = await removeBackground(file);
-
-    const url = URL.createObjectURL(blob);
-
-    setImage(url);
-setAiImage(null);
-setGenerated(false);
-  } catch (err) {
-    console.error(err);
-  }
-};
+ 
 
 const testAI = async () => {
   if (!image) {
@@ -111,10 +91,10 @@ const testAI = async () => {
   }
 
   if (selectedStyle === "original") {
-  setAiImage(image);
-  setGenerated(false);
-  return;
-}
+    setAiImage(image);
+    setGenerated(false);
+    return;
+  }
 
   setAiLoading(true);
 
@@ -140,29 +120,15 @@ const testAI = async () => {
 
       const data = await response.json();
 
-      console.log("Réponse IA :", data);
+      if (!data.output) {
+        alert("Erreur IA : aucun visuel généré.");
+        setAiLoading(false);
+        return;
+      }
 
-if (!data.output) {
-  alert("Erreur IA : aucun visuel généré. Regarde le terminal server.js.");
-  setAiLoading(false);
-  return;
-}
-
-const result = Array.isArray(data.output) ? data.output[0] : data.output;
-
-console.log("Image IA :", result);
-
-const aiResponse = await fetch(result);
-const aiBlob = await aiResponse.blob();
-
-const transparentBlob = await removeBackground(aiBlob);
-const transparentUrl = URL.createObjectURL(transparentBlob);
-
-console.log("PNG transparent :", transparentUrl);
-
-setAiImage(transparentUrl);
-setGenerated(false);
-setAiLoading(false);
+      setAiImage(data.output);
+      setGenerated(false);
+      setAiLoading(false);
     };
 
     reader.readAsDataURL(blob);
@@ -172,6 +138,7 @@ setAiLoading(false);
     setAiLoading(false);
   }
 };
+
   return (
     <div className="app">
       <aside className="sidebar">
@@ -350,6 +317,7 @@ setAiLoading(false);
   </div>
 </div>
 )}
+
 {generated && !showOrderForm && (
   <div className="orderBox">
     <h3>Commander cette création</h3>
@@ -440,5 +408,5 @@ setAiLoading(false);
 )}
       </main>
     </div>
-  );
+    );
 }
