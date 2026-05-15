@@ -1,7 +1,6 @@
-import { removeBackground } from "@imgly/background-removal";
 import React, { useState } from "react";
 import "./index.css";
-
+const API_URL = import.meta.env.VITE_API_URL;
 const styles = [
   { id: "original", name: "📸 Portrait classique" },
   { id: "royal", name: "👑 Royal" },
@@ -35,7 +34,6 @@ const products = [
 export default function App() {
   const [image, setImage] = useState(null);
   const [aiImage, setAiImage] = useState(null);
-const API_URL = import.meta.env.VITE_API_URL;
   const [selectedStyle, setSelectedStyle] = useState("original");
   const [customText, setCustomText] = useState("")
   const [bottomText, setBottomText] = useState("")
@@ -47,7 +45,44 @@ const [circleColor, setCircleColor] = useState("#c79b2c")
   const [showOrderForm, setShowOrderForm] = useState(false);
 const [backgroundImage, setBackgroundImage] = useState(null);
 
-  const handleImage = async (e) => {
+const handleImage = async (e) => {
+  const file = e.target.files[0];
+  if (!file) return;
+
+  try {
+    const reader = new FileReader();
+
+    reader.onloadend = async () => {
+      const base64Image = reader.result;
+
+      const response = await fetch(`${API_URL}/api/remove-background`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          image: base64Image,
+        }),
+      });
+
+      const data = await response.json();
+
+      if (!data.output) {
+        alert("Erreur détourage image");
+        return;
+      }
+
+      setImage(data.output);
+      setAiImage(null);
+      setGenerated(false);
+    };
+
+    reader.readAsDataURL(file);
+  } catch (err) {
+    console.error(err);
+    alert("Erreur upload image");
+  }
+};
   const file = e.target.files[0];
   if (!file) return;
 

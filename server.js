@@ -3,6 +3,7 @@ import cors from "cors";
 import dotenv from "dotenv";
 import Replicate from "replicate";
 import Stripe from "stripe";
+import { removeBackground } from "@imgly/background-removal-node";
 
 dotenv.config();
 
@@ -470,6 +471,32 @@ app.post("/api/create-checkout-session", async (req, res) => {
 
 app.get("/test-stripe", (req, res) => {
   res.send("Stripe OK");
+});
+
+app.post("/api/remove-background", async (req, res) => {
+  try {
+    const { image } = req.body;
+
+    if (!image) {
+      return res.status(400).json({ error: "Image manquante" });
+    }
+
+    const response = await fetch(image);
+    const imageBlob = await response.blob();
+
+    const outputBlob = await removeBackground(imageBlob);
+
+    const arrayBuffer = await outputBlob.arrayBuffer();
+    const buffer = Buffer.from(arrayBuffer);
+
+    const base64 = buffer.toString("base64");
+    const transparentImage = `data:image/png;base64,${base64}`;
+
+    res.json({ output: transparentImage });
+  } catch (error) {
+    console.error("Erreur remove background serveur :", error);
+    res.status(500).json({ error: "Erreur détourage serveur" });
+  }
 });
 
 app.listen(3001, "0.0.0.0", () => {
