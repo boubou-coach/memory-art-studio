@@ -49,6 +49,8 @@ const handleImage = async (e) => {
   console.log("handleImage lancé");
 alert("image sélectionnée");
   const file = e.target.files[0];
+  console.log(file);
+alert(file?.name || "pas de fichier");
   console.log("Fichier choisi :", file.type, file.size);
   if (!file) return;
 
@@ -180,7 +182,11 @@ setAiLoading(false);
           {image ? <img src={image} alt="upload" /> : <span>Importer une photo</span>}
           <input
   type="file"
-  accept="image/png,image/jpeg,image/jpg"
+  accept="image/*"
+  capture={false}
+  onClick={(e) => {
+    e.target.value = null;
+  }}
   onChange={handleImage}
 />
         </label>
