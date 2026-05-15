@@ -181,7 +181,9 @@ setAiLoading(false);
         <div className="uploadBox">
   {image ? <img src={image} alt="upload" /> : <span>Importer une photo</span>}
 </div>
-
+<p style={{ color: "orange", fontSize: "12px" }}>
+  Version test upload iPad
+</p>
 <input
   className="realFileInput"
   type="file"
