@@ -1,3 +1,4 @@
+import { removeBackground } from "@imgly/background-removal";
 import React, { useState } from "react";
 import "./index.css";
 const API_URL = import.meta.env.VITE_API_URL;
@@ -46,43 +47,7 @@ const [circleColor, setCircleColor] = useState("#c79b2c")
 const [backgroundImage, setBackgroundImage] = useState(null);
 
 const handleImage = async (e) => {
-  const file = e.target.files[0];
-  if (!file) return;
-
-  try {
-    const reader = new FileReader();
-
-    reader.onloadend = async () => {
-      const base64Image = reader.result;
-
-      const response = await fetch(`${API_URL}/api/remove-background`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ image: base64Image }),
-      });
-
-      const data = await response.json();
-
-      console.log("Réponse détourage :", data);
-
-      if (!response.ok || !data.output) {
-        alert("Erreur détourage : " + (data.error || "serveur"));
-        return;
-      }
-
-      setImage(data.output);
-      setAiImage(null);
-      setGenerated(false);
-    };
-
-    reader.readAsDataURL(file);
-  } catch (err) {
-    console.error("Erreur upload complète :", err);
-    alert("Erreur upload image : " + err.message);
-  }
-};
+  
   console.log("handleImage lancé");
 
   try {
@@ -182,9 +147,10 @@ const testAI = async () => {
         <h1>👑 Memory Art Studio </h1>
         <p>Transformez vos photos en créations uniques</p>
 
-        <div className="uploadBox">
+        <label className="uploadBox">
   {image ? <img src={image} alt="upload" /> : <span>Importer une photo</span>}
-</div>
+  <input type="file" accept="image/*" onChange={handleImage} />
+</label>
 
 <input
   className="realFileInput"
