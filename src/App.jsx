@@ -46,6 +46,8 @@ const [circleColor, setCircleColor] = useState("#c79b2c")
 const [backgroundImage, setBackgroundImage] = useState(null);
 
 const handleImage = async (e) => {
+  console.log("handleImage lancé");
+alert("image sélectionnée");
   const file = e.target.files[0];
   console.log("Fichier choisi :", file.type, file.size);
   if (!file) return;
