@@ -47,6 +47,7 @@ const [backgroundImage, setBackgroundImage] = useState(null);
 
 const handleImage = async (e) => {
   const file = e.target.files[0];
+  console.log("Fichier choisi :", file.type, file.size);
   if (!file) return;
 
   try {
@@ -175,7 +176,11 @@ setAiLoading(false);
 
         <label className="uploadBox">
           {image ? <img src={image} alt="upload" /> : <span>Importer une photo</span>}
-          <input type="file" accept="image/*" onChange={handleImage} />
+          <input
+  type="file"
+  accept="image/png,image/jpeg,image/jpg"
+  onChange={handleImage}
+/>
         </label>
 
        
