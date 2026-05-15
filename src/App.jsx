@@ -183,10 +183,6 @@ setAiLoading(false);
           <input
   type="file"
   accept="image/*"
-  capture={false}
-  onClick={(e) => {
-    e.target.value = null;
-  }}
   onChange={handleImage}
 />
         </label>
