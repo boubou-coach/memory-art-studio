@@ -84,6 +84,20 @@ No mockup.
 This is a strict identity-preserving image edit.
 Do not redesign the face.
 Only change outfit, style and atmosphere.
+
+This is an image-to-image identity preservation transformation.
+
+Keep the EXACT same person.
+Do NOT reinterpret the face.
+Do NOT change age.
+Do NOT beautify.
+Do NOT generate a new person.
+Keep exact facial proportions.
+Keep exact eyes.
+Keep exact nose.
+Keep exact mouth.
+Keep exact jawline.
+Keep exact hairstyle.
 `;
   } else if (category === "animal") {
     prompt = `
@@ -204,6 +218,20 @@ IMPORTANT:
 This is a strict identity-preserving image edit.
 Do not redesign the face.
 Only change outfit, style and atmosphere.
+
+This is an image-to-image identity preservation transformation.
+
+Keep the EXACT same person.
+Do NOT reinterpret the face.
+Do NOT change age.
+Do NOT beautify.
+Do NOT generate a new person.
+Keep exact facial proportions.
+Keep exact eyes.
+Keep exact nose.
+Keep exact mouth.
+Keep exact jawline.
+Keep exact hairstyle.
 `;
 }
 
@@ -331,6 +359,20 @@ No mockup.
 This is a strict identity-preserving image edit.
 Do not redesign the face.
 Only change outfit, style and atmosphere.
+
+This is an image-to-image identity preservation transformation.
+
+Keep the EXACT same person.
+Do NOT reinterpret the face.
+Do NOT change age.
+Do NOT beautify.
+Do NOT generate a new person.
+Keep exact facial proportions.
+Keep exact eyes.
+Keep exact nose.
+Keep exact mouth.
+Keep exact jawline.
+Keep exact hairstyle.
 `;
   }
 
@@ -453,6 +495,20 @@ No mockup.
 This is a strict identity-preserving image edit.
 Do not redesign the face.
 Only change outfit, style and atmosphere.
+
+This is an image-to-image identity preservation transformation.
+
+Keep the EXACT same person.
+Do NOT reinterpret the face.
+Do NOT change age.
+Do NOT beautify.
+Do NOT generate a new person.
+Keep exact facial proportions.
+Keep exact eyes.
+Keep exact nose.
+Keep exact mouth.
+Keep exact jawline.
+Keep exact hairstyle.
 `;
 
   }
@@ -559,6 +615,20 @@ No mockup.
 This is a strict identity-preserving image edit.
 Do not redesign the face.
 Only change outfit, style and atmosphere.
+
+This is an image-to-image identity preservation transformation.
+
+Keep the EXACT same person.
+Do NOT reinterpret the face.
+Do NOT change age.
+Do NOT beautify.
+Do NOT generate a new person.
+Keep exact facial proportions.
+Keep exact eyes.
+Keep exact nose.
+Keep exact mouth.
+Keep exact jawline.
+Keep exact hairstyle.
 `;
 
   }
@@ -698,6 +768,20 @@ No mockup.
 This is a strict identity-preserving image edit.
 Do not redesign the face.
 Only change outfit, style and atmosphere.
+
+This is an image-to-image identity preservation transformation.
+
+Keep the EXACT same person.
+Do NOT reinterpret the face.
+Do NOT change age.
+Do NOT beautify.
+Do NOT generate a new person.
+Keep exact facial proportions.
+Keep exact eyes.
+Keep exact nose.
+Keep exact mouth.
+Keep exact jawline.
+Keep exact hairstyle.
 `;
 
   }
@@ -847,6 +931,20 @@ Only edit clothing, background and atmosphere.
 This is a strict identity-preserving image edit.
 Do not redesign the face.
 Only change outfit, style and atmosphere.
+
+This is an image-to-image identity preservation transformation.
+
+Keep the EXACT same person.
+Do NOT reinterpret the face.
+Do NOT change age.
+Do NOT beautify.
+Do NOT generate a new person.
+Keep exact facial proportions.
+Keep exact eyes.
+Keep exact nose.
+Keep exact mouth.
+Keep exact jawline.
+Keep exact hairstyle.
 `;
 
   }
@@ -961,6 +1059,20 @@ No mockup.
 This is a strict identity-preserving image edit.
 Do not redesign the face.
 Only change outfit, style and atmosphere.
+
+This is an image-to-image identity preservation transformation.
+
+Keep the EXACT same person.
+Do NOT reinterpret the face.
+Do NOT change age.
+Do NOT beautify.
+Do NOT generate a new person.
+Keep exact facial proportions.
+Keep exact eyes.
+Keep exact nose.
+Keep exact mouth.
+Keep exact jawline.
+Keep exact hairstyle.
 `;
 
   }
@@ -1068,6 +1180,20 @@ No mockup.
 This is a strict identity-preserving image edit.
 Do not redesign the face.
 Only change outfit, style and atmosphere.
+
+This is an image-to-image identity preservation transformation.
+
+Keep the EXACT same person.
+Do NOT reinterpret the face.
+Do NOT change age.
+Do NOT beautify.
+Do NOT generate a new person.
+Keep exact facial proportions.
+Keep exact eyes.
+Keep exact nose.
+Keep exact mouth.
+Keep exact jawline.
+Keep exact hairstyle.
 `;
 
   }
@@ -1188,6 +1314,20 @@ No mockup.
 This is a strict identity-preserving image edit.
 Do not redesign the face.
 Only change outfit, style and atmosphere.
+
+This is an image-to-image identity preservation transformation.
+
+Keep the EXACT same person.
+Do NOT reinterpret the face.
+Do NOT change age.
+Do NOT beautify.
+Do NOT generate a new person.
+Keep exact facial proportions.
+Keep exact eyes.
+Keep exact nose.
+Keep exact mouth.
+Keep exact jawline.
+Keep exact hairstyle.
 `;
 
   }
@@ -1301,6 +1441,20 @@ Cute Pixar cartoon style.
 This is a strict identity-preserving image edit.
 Do not redesign the face.
 Only change outfit, style and atmosphere.
+
+This is an image-to-image identity preservation transformation.
+
+Keep the EXACT same person.
+Do NOT reinterpret the face.
+Do NOT change age.
+Do NOT beautify.
+Do NOT generate a new person.
+Keep exact facial proportions.
+Keep exact eyes.
+Keep exact nose.
+Keep exact mouth.
+Keep exact jawline.
+Keep exact hairstyle.
 `;
 
 }
