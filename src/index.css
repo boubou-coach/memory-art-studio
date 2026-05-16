@@ -288,6 +288,7 @@ input {
   left: var(--img-left, 50%);
   transform: translateX(-50%);
   object-fit: cover;
+  object-position: center 35%;
   border-radius: 50%;
   background: white;
   border: 3px solid var(--circleColor, #c79b2c);
@@ -399,16 +400,18 @@ input {
 
 .orderBox {
   position: fixed;
-  right: 32px;
+  right: 30px;
+  bottom : 30px;
   top: 50%;
   transform: translateY(-50%);
   width: 280px;
+  max-width : 320px;
   padding: 22px;
   border-radius: 20px;
   background: #111 !important;
   border: 1px solid rgba(255, 184, 61, 0.45);
   text-align: center;
-  z-index: 9999;
+  z-index: 50;
   box-shadow: 0 20px 80px rgba(0,0,0,0.75);
 }
 
