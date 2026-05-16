@@ -79,9 +79,9 @@ const handleImage = async (e) => {
     };
 
     reader.readAsDataURL(file);
-  } catch (err) {
+    } catch (err) {
     console.error(err);
-    alert("Erreur upload image");
+    alert("Erreur upload image : " + err.message);
   }
 };
  
