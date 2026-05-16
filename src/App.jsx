@@ -54,7 +54,21 @@ export default function App() {
   const [backgroundImage, setBackgroundImage] = useState(null);
   const [selectedCategory, setSelectedCategory] = useState("frenchie");
   const [uploadLoading, setUploadLoading] = useState(false);
+  const [deferredPrompt, setDeferredPrompt] = useState(null);
 const [loadingMessage, setLoadingMessage] = useState("Analyse de votre photo...");
+
+useEffect(() => {
+  const handler = (e) => {
+    e.preventDefault();
+    setDeferredPrompt(e);
+  };
+
+  window.addEventListener("beforeinstallprompt", handler);
+
+  return () => {
+    window.removeEventListener("beforeinstallprompt", handler);
+  };
+}, []);
 
 const handleImage = async (e) => {
   const file = e.target.files[0];
@@ -206,8 +220,23 @@ setTimeout(() => {
         <p>Transformez vos photos en créations uniques</p>
         <button
   className="installBtn"
-  onClick={() => {
-    alert("Sur mobile : ouvrez le menu du navigateur puis choisissez 'Ajouter à l’écran d’accueil'.");
+  onClick={async () => {
+    if (!deferredPrompt) {
+      alert(
+        "Sur iPhone/iPad : utilisez 'Ajouter à l’écran d’accueil' dans Safari."
+      );
+      return;
+    }
+
+    deferredPrompt.prompt();
+
+    const { outcome } = await deferredPrompt.userChoice;
+
+    if (outcome === "accepted") {
+      console.log("PWA installée");
+    }
+
+    setDeferredPrompt(null);
   }}
 >
   📲 Installer l’application
