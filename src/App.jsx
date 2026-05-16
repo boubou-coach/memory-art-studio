@@ -158,13 +158,15 @@ const testAI = async () => {
       const data = await response.json();
 
       if (!data.output) {
-        alert("Erreur IA : aucun visuel généré.");
-        setAiLoading(false);
-        return;
-      }
+  alert("Erreur IA : aucun visuel généré.");
+  setAiLoading(false);
+  setLoading(false);
+  return;
+}
 
       setAiImage(data.output);
       setGenerated(false);
+      setLoading(false);
       setAiLoading(false);
     };
 
