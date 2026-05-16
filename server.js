@@ -1380,8 +1380,8 @@ let guidanceScale = 1;
 let strengthValue = 0.04;
 
 if (category === "frenchie") {
-  guidanceScale = 0.7;
-  strengthValue = 0.02;
+  guidanceScale = 1;
+  strengthValue = 0.4;
 }
 
 if (category === "human") {
