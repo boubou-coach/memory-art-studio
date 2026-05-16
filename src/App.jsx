@@ -169,7 +169,7 @@ const testAI = async () => {
       setLoading(false);
       setAiLoading(false);
     };
-
+ 
     reader.readAsDataURL(blob);
   } catch (error) {
     console.error(error);
