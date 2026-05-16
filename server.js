@@ -244,7 +244,6 @@ No cigar in the mouth.
 No human hands.
 No human body.
 Only dog paws if visible.
-The dog must look like a real French bulldog mafia boss.
 `;
 }
 
