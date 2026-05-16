@@ -48,18 +48,33 @@ const [backgroundImage, setBackgroundImage] = useState(null);
 
 const handleImage = async (e) => {
   const file = e.target.files[0];
-
   if (!file) return;
 
-  try {
-    const blob = await removeBackground(file);
+  const isIPad =
+    /iPad|Macintosh/.test(navigator.userAgent) &&
+    navigator.maxTouchPoints &&
+    navigator.maxTouchPoints > 1;
 
+  try {
+    if (isIPad) {
+      const reader = new FileReader();
+
+      reader.onloadend = () => {
+        setImage(reader.result);
+        setAiImage(null);
+        setGenerated(false);
+      };
+
+      reader.readAsDataURL(file);
+      return;
+    }
+
+    const blob = await removeBackground(file);
     const url = URL.createObjectURL(blob);
 
     setImage(url);
     setAiImage(null);
     setGenerated(false);
-
   } catch (err) {
     console.error(err);
     alert("Erreur upload image : " + err.message);
