@@ -47,44 +47,24 @@ const [circleColor, setCircleColor] = useState("#c79b2c")
 const [backgroundImage, setBackgroundImage] = useState(null);
 
 const handleImage = async (e) => {
-  
-  console.log("handleImage lancé");
+  const file = e.target.files[0];
+
+  if (!file) return;
 
   try {
-    const reader = new FileReader();
+    const blob = await removeBackground(file);
 
-    reader.onloadend = async () => {
-      const base64Image = reader.result;
+    const url = URL.createObjectURL(blob);
 
-      const response = await fetch(`${API_URL}/api/remove-background`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          image: base64Image,
-        }),
-      });
+    setImage(url);
+    setAiImage(null);
+    setGenerated(false);
 
-      const data = await response.json();
-
-      if (!data.output) {
-        alert("Erreur détourage image");
-        return;
-      }
-
-      setImage(data.output);
-      setAiImage(null);
-      setGenerated(false);
-    };
-
-    reader.readAsDataURL(file);
-    } catch (err) {
+  } catch (err) {
     console.error(err);
     alert("Erreur upload image : " + err.message);
   }
 };
- 
 
 const testAI = async () => {
   if (!image) {
