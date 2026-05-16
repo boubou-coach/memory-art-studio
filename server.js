@@ -1385,8 +1385,8 @@ if (category === "frenchie") {
 }
 
 if (category === "human") {
-  guidanceScale = 2;
-  strengthValue = 0.10;
+  guidanceScale = 0.8;
+  strengthValue = 0.02;
 }
 
 if (category === "animal") {
