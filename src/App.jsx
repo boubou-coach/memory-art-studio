@@ -204,6 +204,14 @@ setTimeout(() => {
       <aside className="sidebar">
         <h1>👑 Memory Art Studio </h1>
         <p>Transformez vos photos en créations uniques</p>
+        <button
+  className="installBtn"
+  onClick={() => {
+    alert("Sur mobile : ouvrez le menu du navigateur puis choisissez 'Ajouter à l’écran d’accueil'.");
+  }}
+>
+  📲 Installer l’application
+</button>
 
         <label className="uploadBox">
   {image ? <img src={image} alt="upload" /> : <span>Importer une photo</span>}
