@@ -45,18 +45,21 @@ export default function App() {
   const [selectedStyle, setSelectedStyle] = useState("original");
   const [customText, setCustomText] = useState("")
   const [bottomText, setBottomText] = useState("")
-const [textColor, setTextColor] = useState("#111111")
-const [circleColor, setCircleColor] = useState("#c79b2c")
+  const [textColor, setTextColor] = useState("#111111")
+  const [circleColor, setCircleColor] = useState("#c79b2c")
   const [selectedProduct, setSelectedProduct] = useState("poster");
   const [generated, setGenerated] = useState(false);
   const [aiLoading, setAiLoading] = useState(false);
   const [showOrderForm, setShowOrderForm] = useState(false);
-const [backgroundImage, setBackgroundImage] = useState(null);
-const [selectedCategory, setSelectedCategory] = useState("frenchie");
+  const [backgroundImage, setBackgroundImage] = useState(null);
+  const [selectedCategory, setSelectedCategory] = useState("frenchie");
+  const [uploadLoading, setUploadLoading] = useState(false);
+const [loadingMessage, setLoadingMessage] = useState("Analyse de votre photo...");
 
 const handleImage = async (e) => {
   const file = e.target.files[0];
   if (!file) return;
+  setUploadLoading(true);
 
   const isIPad =
     /iPad|Macintosh/.test(navigator.userAgent) &&
@@ -64,6 +67,8 @@ const handleImage = async (e) => {
     navigator.maxTouchPoints > 1;
 
   try {
+        setUploadLoading(false);
+
     if (isIPad) {
       const reader = new FileReader();
 
@@ -85,10 +90,12 @@ const handleImage = async (e) => {
     setGenerated(false);
   } catch (err) {
     console.error(err);
+        setUploadLoading(false);
+
     alert("Erreur upload image : " + err.message);
   }
 };
-const resizeImage = (base64, maxSize = 1200, quality = 0.9) => {
+const resizeImage = (base64, maxSize = 900, quality = 0.8) => {
   return new Promise((resolve) => {
     const img = new Image();
 
@@ -121,6 +128,19 @@ const resizeImage = (base64, maxSize = 1200, quality = 0.9) => {
 };
 const testAI = async () => {
   setLoading(true);
+  setLoadingMessage("Analyse de votre photo...");
+
+setTimeout(() => {
+  setLoadingMessage("Création du style IA...");
+}, 3000);
+
+setTimeout(() => {
+  setLoadingMessage("Ajout des détails premium...");
+}, 7000);
+
+setTimeout(() => {
+  setLoadingMessage("Finalisation du rendu...");
+}, 12000);
   if (!image) {
     alert("Ajoute d'abord une photo");
     return;
@@ -456,15 +476,21 @@ const testAI = async () => {
   </div>
 )}
 
-{loading && (
+{(loading || uploadLoading) && (
   <div className="loadingOverlay">
     <div className="loadingBox">
       <div className="spinner"></div>
 
-      <h2>Création de votre visuel IA...</h2>
+      <h2>
+        {uploadLoading
+          ? "Préparation de votre photo..."
+          : "Création de votre visuel IA..."}
+      </h2>
 
       <p>
-        Cela peut prendre quelques secondes selon le style choisi
+        {uploadLoading
+          ? "Détourage et optimisation de l’image en cours..."
+          : loadingMessage}
       </p>
     </div>
   </div>
