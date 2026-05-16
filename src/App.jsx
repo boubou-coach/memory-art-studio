@@ -32,6 +32,12 @@ const products = [
   { id: "totebag", name: "Tote bag" },
 ];
 
+const categories = [
+  { id: "frenchie", name: "🐶 Bouledogue français" },
+  { id: "animal", name: "🐾 Animal" },
+  { id: "human", name: "👤 Humain" },
+];
+
 export default function App() {
   const [image, setImage] = useState(null);
   const [aiImage, setAiImage] = useState(null);
@@ -45,6 +51,7 @@ const [circleColor, setCircleColor] = useState("#c79b2c")
   const [aiLoading, setAiLoading] = useState(false);
   const [showOrderForm, setShowOrderForm] = useState(false);
 const [backgroundImage, setBackgroundImage] = useState(null);
+const [selectedCategory, setSelectedCategory] = useState("frenchie");
 
 const handleImage = async (e) => {
   const file = e.target.files[0];
@@ -148,7 +155,17 @@ const testAI = async () => {
 </label>
 
 
-       
+       <div className="categoryGrid">
+  {categories.map((category) => (
+    <button
+      key={category.id}
+      className={selectedCategory === category.id ? "category active" : "category"}
+      onClick={() => setSelectedCategory(category.id)}
+    >
+      {category.name}
+    </button>
+  ))}
+</div>
 
         <div className="styleGrid">
           {styles.map((style) => (
@@ -370,8 +387,9 @@ const testAI = async () => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-  product: products.find((p) => p.id === selectedProduct)?.name,
-  style: styles.find((s) => s.id === selectedStyle)?.name,
+  image: base64Image,
+  style: selectedStyle,
+  category: selectedCategory,
 }),
     });
 

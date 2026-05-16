@@ -19,7 +19,7 @@ const replicate = new Replicate({
 
 app.post("/api/generate", async (req, res) => {
   try {
-    const { image, style } = req.body;
+    const { image, style, category } = req.body;
     console.log("STYLE REÇU :", style);
 
     if (!image) {
