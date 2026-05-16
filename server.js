@@ -1376,12 +1376,12 @@ No text. No frame. No mockup.
 `;
 }
 
-    let guidanceScale = 1.5;
-let strengthValue = 0.07;
+let guidanceScale = 1;
+let strengthValue = 0.04;
 
 if (category === "frenchie") {
-  guidanceScale = 1.2;
-  strengthValue = 0.05;
+  guidanceScale = 0.7;
+  strengthValue = 0.02;
 }
 
 if (category === "human") {
