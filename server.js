@@ -1390,8 +1390,8 @@ if (category === "human") {
 }
 
 if (category === "animal") {
-  guidanceScale = 1.4;
-  strengthValue = 0.06;
+  guidanceScale = 1;
+  strengthValue = 0.4;
 }
 
 const output = await replicate.run(
