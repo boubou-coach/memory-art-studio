@@ -871,3 +871,16 @@ input {
   letter-spacing: 2px;
   text-shadow: 0 3px 8px rgba(0,0,0,0.25);
 }
+
+
+
+.realFileInput {
+  display: block;
+  width: 100%;
+  margin-bottom: 18px;
+  padding: 14px;
+  border-radius: 12px;
+  background: #151515;
+  color: white;
+  border: 1px solid #8f6b25;
+}
