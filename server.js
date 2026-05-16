@@ -20,7 +20,7 @@ const replicate = new Replicate({
 app.post("/api/generate", async (req, res) => {
   try {
     const { image, style, category } = req.body;
-    console.log("STYLE REÇU :", style);
+    console.log("CATEGORY REÇUE :", category);
 
     if (!image) {
       return res.status(400).json({ error: "Image manquante" });
@@ -29,350 +29,1252 @@ app.post("/api/generate", async (req, res) => {
     let prompt = "";
 
     const identityRules = `
-CRITICAL RULES:
-The uploaded subject must remain the same subject.
+CRITICAL IDENTITY RULES:
+Use the uploaded image as the main reference.
 
-If it is a dog:
-- keep it as a dog
-- keep the exact breed
-- if it is a French bulldog, it MUST remain a French bulldog
-- short muzzle
-- wide square head
-- compact body
-- bat ears
-- same fur colors and markings
-- same eye color
-- same expression as much as possible
+The generated image must represent the SAME subject from the uploaded photo.
+Do NOT invent a new person.
+Do NOT change gender.
+Do NOT change age.
+Do NOT change facial identity.
+Do NOT replace the face with another face.
 
-NEVER transform the dog into a cat.
-NEVER transform the dog into a human.
-NEVER add human hands.
-NEVER add human fingers.
-NEVER add human arms.
-If paws are visible, they must be dog paws only.
+Preserve:
+- face shape
+- eyes
+- nose
+- mouth
+- smile/expression
+- hairstyle
+- hair color
+- skin tone
+- general proportions
 
-Create a clean isolated subject.
-No rectangular background.
-No scene background.
-No white background.
-No black background.
-No frame.
-No text.
-No mockup.
-Transparent PNG background.
+The result must look like a stylized version of the uploaded subject, not a different person.
 `;
 
 if (style === "royal") {
-  prompt = `
+  if (category === "human") {
+    prompt = `
 ${identityRules}
-Transform the uploaded subject into a majestic royal portrait.
 
-Keep EXACTLY the same identity from the uploaded photo.
-For a person: same face, eyes, nose, mouth, hair and expression.
-For an animal: same breed, muzzle, eyes, ears, fur colors and expression.
+Transform this HUMAN portrait into a majestic royal portrait.
 
-Do not create another subject.
-Do not modify identity.
+IMPORTANT:
+- keep the SAME person
+- preserve the exact face identity
+- preserve face shape, eyes, nose, mouth, hairstyle and expression
+- do NOT create an animal
+- do NOT create dog ears
+- do NOT create a french bulldog
 
 Add:
-detailed royal crown,
-luxurious red and black royal cape,
-gold jewelry,
-royal throne,
-dramatic cinematic palace lighting,
-baroque decorations,
-luxury royal atmosphere.
+- elegant royal crown
+- luxurious royal cape
+- gold jewelry
+- cinematic palace lighting
+- baroque luxury atmosphere
 
-Ultra realistic.
-Premium cinematic portrait.
-Centered composition.
+Premium cinematic royal portrait.
+Centered upper-body composition.
 Transparent PNG background.
-No text. No frame. No mockup.
-The royal outfit must fit the dog body.
-If paws are visible, they must be dog paws, not human hands.
-Keep the full bust visible, including cape and outfit.
-- centered portrait composition
-- upper body only
-- no transparent fabric
-- solid velvet royal cape
-- clean silhouette
-- no smoke
-- no blur around body
-No fading edges.
-No transparent clothing.
-Fully opaque subject.
+No text.
+No frame.
+No mockup.
 `;
+  } else if (category === "animal") {
+    prompt = `
+${identityRules}
+
+Transform this ANIMAL into a majestic royal portrait.
+
+IMPORTANT:
+- keep the SAME animal species
+- preserve the exact breed/species
+- preserve ears, muzzle, fur colors, markings and expression
+- do NOT transform into a french bulldog unless it already is one
+- do NOT create a human face
+- do NOT add human hands
+
+Add:
+- elegant royal crown adapted to the animal
+- luxurious royal cape adapted to the animal body
+- gold jewelry
+- cinematic palace lighting
+- baroque luxury atmosphere
+
+Premium cinematic royal animal portrait.
+Centered upper-body composition.
+Transparent PNG background.
+No text.
+No frame.
+No mockup.
+IMPORTANT ANIMAL RULES:
+- keep the REAL animal face
+- keep the REAL animal anatomy
+- keep paws as paws
+- NEVER transform paws into human hands
+- NEVER transform the animal into a human
+- keep authentic fur
+- keep authentic muzzle
+- keep authentic ears
+- keep authentic body proportions
+- the animal must stay a real animal
+
+FORBIDDEN:
+- human face
+- human skin
+- human anatomy
+- human nose
+- human mouth
+- human hands
+- humanoid body
+`;
+  } else {
+    prompt = `
+${identityRules}
+
+Transform this FRENCH BULLDOG into a majestic royal portrait.
+
+IMPORTANT:
+- keep the dog as a French bulldog
+- preserve short muzzle
+- preserve wide square head
+- preserve bat ears
+- preserve compact body
+- preserve fur colors, markings and expression
+- do NOT transform into another breed
+- do NOT add human hands
+- dog paws only if visible
+
+Add:
+- detailed royal crown
+- luxurious red and black royal cape
+- gold jewelry
+- royal throne atmosphere
+- dramatic cinematic palace lighting
+- baroque decorations
+
+Ultra realistic premium royal French bulldog portrait.
+Centered upper-body composition.
+Transparent PNG background.
+No text.
+No frame.
+No mockup.
+`;
+  }
 }
 
 else if (style === "rockstar") {
+
+  if (category === "human") {
+
+    if (style === "rockstar") {
   prompt = `
 ${identityRules}
 
-Transform the uploaded French bulldog into a rockstar dog.
+Transform this REAL animal into a rockstar version.
 
-Add:
-- black leather jacket
-- black sunglasses
-- silver chain necklace
-- microphone on a microphone stand in front of the dog
-- rock concert lighting
+IMPORTANT ANIMAL RULES:
+- keep the REAL animal face
+- keep the REAL animal anatomy
+- keep paws as paws
+- NEVER transform paws into human hands
+- NEVER transform the animal into a human
 
-Composition:
-- upper body portrait
-- centered subject
-- only head, chest and dog paws visible
+The animal is a rockstar performer.
 
-Important:
-The dog must remain a French bulldog.
-Dog anatomy only.
-No human hands.
-No human fingers.
-No human arms.
-No hand holding microphone.
-No blue bubble.
-No colored circle.
-No random floating object.
-No background artifact.
-Fully opaque subject.
-Transparent PNG background.
-- no floating objects
-- no pink artifacts
-- realistic dog paws only
+- stage lighting
+- microphone nearby
+- rockstar accessories
+
+IMPORTANT:
+- paws must stay paws
 - no human hands
-- no objects behind the ears
+- no human fingers
+- animal remains realistic
 `;
 }
 
-else if (style === "museum") {
-  prompt = `
-${identityRules}
-Transform the uploaded subject into a renaissance museum masterpiece.
+  }
 
-Keep EXACTLY the same identity from the uploaded photo.
-Do not create another subject.
+  else if (category === "animal") {
+
+    prompt = `
+${identityRules}
+
+Transform this ANIMAL into a cinematic rockstar version.
+
+IMPORTANT:
+- keep the SAME animal species
+- preserve exact breed/species
+- preserve fur colors and expression
+- do NOT transform into a french bulldog unless it already is one
+- do NOT create a human face
+- no human hands
 
 Add:
-renaissance noble clothing,
-old royal museum collar,
-oil painting texture,
-majestic pose,
-historical renaissance atmosphere,
-museum masterpiece style,
-dramatic renaissance lighting,
-classical artistic details.
+- leather rockstar outfit adapted to the animal
+- stylish sunglasses if natural
+- microphone stand
+- dramatic concert lighting
+- energetic rock concert atmosphere
 
-Look like a real museum painting masterpiece.
-Ultra detailed.
+Premium rockstar animal portrait.
 Transparent PNG background.
-No text. No frame. No mockup.
+No text.
+No frame.
+No mockup.
+IMPORTANT ANIMAL RULES:
+- keep the REAL animal face
+- keep the REAL animal anatomy
+- keep paws as paws
+- NEVER transform paws into human hands
+- NEVER transform the animal into a human
+- keep authentic fur
+- keep authentic muzzle
+- keep authentic ears
+- keep authentic body proportions
+- the animal must stay a real animal
+
+FORBIDDEN:
+- human face
+- human skin
+- human anatomy
+- human nose
+- human mouth
+- human hands
+- humanoid body
 `;
+
+  }
+
+  else {
+
+    prompt = `
+${identityRules}
+
+Transform this FRENCH BULLDOG into a cinematic rockstar French bulldog.
+
+IMPORTANT:
+- keep the dog as a French bulldog
+- preserve short muzzle
+- preserve bat ears
+- preserve compact face
+- preserve fur colors and expression
+- do NOT transform into another breed
+- no human hands
+- only dog paws if visible
+
+Add:
+- black leather rockstar jacket adapted to dog anatomy
+- stylish sunglasses
+- microphone stand
+- dramatic concert lighting
+- energetic rock concert atmosphere
+
+Premium rockstar French bulldog portrait.
+Transparent PNG background.
+No text.
+No frame.
+No mockup.
+`;
+
+  }
+}
+
+if (style === "museum") {
+  if (category === "human") {
+    prompt = `
+${identityRules}
+
+Transform this HUMAN portrait into a renaissance museum painting.
+This is an image-to-image transformation, not a new character creation.
+
+IMPORTANT:
+- keep the SAME person
+- preserve exact face identity
+- preserve hairstyle, eyes, mouth and expression
+- do NOT create an animal
+- do NOT create dog ears
+- do NOT create a french bulldog
+
+Add:
+- renaissance clothing
+- oil painting texture
+- museum masterpiece atmosphere
+- dramatic renaissance lighting
+- elegant painted background
+
+Classical renaissance portrait.
+Museum-quality artwork.
+Transparent PNG background.
+No text.
+No frame.
+No mockup.
+`;
+  }
+
+  else if (category === "animal") {
+    prompt = `
+${identityRules}
+
+Transform this ANIMAL into a renaissance museum painting.
+
+IMPORTANT:
+- keep the SAME animal species
+- preserve the real breed/species
+- preserve fur colors and markings
+- do NOT transform into a french bulldog unless it already is one
+- do NOT create a human face
+
+Add:
+- renaissance noble clothing adapted to the animal
+- oil painting texture
+- museum masterpiece atmosphere
+- dramatic renaissance lighting
+- elegant painted background
+
+Classical renaissance animal portrait.
+Museum-quality artwork.
+Transparent PNG background.
+No text.
+No frame.
+No mockup.
+IMPORTANT ANIMAL RULES:
+- keep the REAL animal face
+- keep the REAL animal anatomy
+- keep paws as paws
+- NEVER transform paws into human hands
+- NEVER transform the animal into a human
+- keep authentic fur
+- keep authentic muzzle
+- keep authentic ears
+- keep authentic body proportions
+- the animal must stay a real animal
+
+FORBIDDEN:
+- human face
+- human skin
+- human anatomy
+- human nose
+- human mouth
+- human hands
+- humanoid body
+`;
+  }
+
+  else {
+    prompt = `
+${identityRules}
+
+Transform this FRENCH BULLDOG into a renaissance museum masterpiece.
+
+IMPORTANT:
+- keep the dog as a French bulldog
+- preserve short muzzle
+- preserve bat ears
+- preserve compact face
+- preserve fur colors and expression
+- do NOT transform into another breed
+
+Add:
+- renaissance royal clothing
+- oil painting texture
+- noble aristocratic atmosphere
+- dramatic renaissance lighting
+- classical museum painting style
+
+Museum-quality French bulldog artwork.
+Transparent PNG background.
+No text.
+No frame.
+No mockup.
+`;
+  }
 }
 
 else if (style === "minimal") {
-  prompt = `
-${identityRules}
-Transform the uploaded subject into a luxury minimal fashion icon.
 
-Keep EXACTLY the same identity from the uploaded photo.
-Do not modify identity.
+  if (category === "human") {
+
+    prompt = `
+${identityRules}
+
+Transform this HUMAN portrait into a luxury minimal fashion portrait.
+This is an image-to-image transformation, not a new character creation.
+
+IMPORTANT:
+- keep the SAME person
+- preserve exact face identity
+- preserve hairstyle, eyes and expression
+- do NOT create an animal
+- do NOT create dog ears
+- do NOT create a french bulldog
 
 Add:
-luxury designer sunglasses,
-thick gold necklace,
-premium luxury clothes,
-editorial fashion lighting,
-minimal luxury atmosphere,
-high-end fashion magazine style,
-beige, black and gold tones.
+- luxury designer outfit
+- elegant gold jewelry
+- premium sunglasses if natural
+- editorial fashion lighting
+- beige, black and gold luxury palette
+- modern luxury atmosphere
 
-Ultra realistic luxury portrait.
+High-end fashion magazine style.
+Minimal luxury aesthetic.
 Transparent PNG background.
-No text. No frame. No mockup.
+No text.
+No frame.
+No mockup.
 `;
+
+  }
+
+  else if (category === "animal") {
+  prompt = `
+${identityRules}
+
+Luxury minimalist pet portrait.
+
+IMPORTANT ANIMAL RULES:
+- keep the exact animal
+- keep real animal anatomy
+- keep paws as paws
+- never transform paws into human hands
+- no human transformation
+- no humanoid body
+- no human face
+- realistic luxury pet photography
+
+Add:
+- elegant neutral background
+- luxury lighting
+- premium editorial photography style
+- beige, black and gold tones
+
+Transparent PNG background.
+No text.
+No frame.
+No mockup.
+`;
+}
+
+  
+
+  else {
+
+    prompt = `
+${identityRules}
+
+Transform this FRENCH BULLDOG into a luxury minimal fashion icon.
+
+IMPORTANT:
+- keep the dog as a French bulldog
+- preserve short muzzle
+- preserve bat ears
+- preserve compact face
+- preserve fur colors and expression
+- do NOT transform into another breed
+
+Add:
+- luxury designer sunglasses
+- thick gold necklace
+- premium luxury outfit adapted to dog anatomy
+- editorial fashion lighting
+- beige, black and gold tones
+- minimal luxury atmosphere
+
+High-end luxury French bulldog portrait.
+Transparent PNG background.
+No text.
+No frame.
+No mockup.
+`;
+
+  }
 }
 
 else if (style === "astronaut") {
-  prompt = `
+
+  if (category === "human") {
+
+    prompt = `
 ${identityRules}
 
-Transform the uploaded dog into a futuristic astronaut version.
+Transform this HUMAN into a futuristic astronaut portrait.
+This is an image-to-image transformation, not a new character creation.
 
 IMPORTANT:
-The original dog breed must stay unchanged.
-Do not transform the dog into another breed.
-
-The ear shape must remain EXACTLY the same as in the uploaded photo.
-If the dog has floppy ears, keep floppy ears.
-If the dog has upright ears, keep upright ears.
-
-Forbidden:
-- changing ear shape
-- changing breed
-- adding french bulldog ears to non-french bulldogs
-- adding floppy ears to upright-ear dogs
+- keep the SAME person
+- preserve exact face identity
+- preserve hairstyle, eyes and expression
+- do NOT create an animal
+- do NOT create dog ears
+- do NOT create a french bulldog
 
 Add:
-- large transparent astronaut helmet
-- ears fully visible INSIDE the helmet
-- no holes for ears
-- futuristic sci-fi dog suit
-- cinematic blue lighting
-- realistic reflections on glass
+- futuristic astronaut suit
+- realistic transparent astronaut helmet
+- cinematic sci-fi lighting
+- realistic reflections on helmet glass
+- space exploration atmosphere
 
-No human body.
-No human hands.
+Premium cinematic astronaut portrait.
+Transparent PNG background.
+No text.
+No frame.
+No mockup.
 `;
+
+  }
+
+  else if (category === "animal") {
+
+    prompt = `
+${identityRules}
+
+Transform this ANIMAL into a futuristic astronaut version.
+
+IMPORTANT:
+- keep the SAME animal species
+- preserve exact breed/species
+- preserve ear shape exactly
+- preserve fur colors and expression
+- do NOT transform into a french bulldog unless it already is one
+- do NOT create a human face
+- no human hands
+
+Add:
+- futuristic astronaut suit adapted to the animal
+- realistic transparent astronaut helmet
+- ears visible inside helmet
+- cinematic sci-fi lighting
+- realistic glass reflections
+
+Premium astronaut animal portrait.
+Transparent PNG background.
+No text.
+No frame.
+No mockup.
+IMPORTANT ANIMAL RULES:
+- keep the REAL animal face
+- keep the REAL animal anatomy
+- keep paws as paws
+- NEVER transform paws into human hands
+- NEVER transform the animal into a human
+- keep authentic fur
+- keep authentic muzzle
+- keep authentic ears
+- keep authentic body proportions
+- the animal must stay a real animal
+
+FORBIDDEN:
+- human face
+- human skin
+- human anatomy
+- human nose
+- human mouth
+- human hands
+- humanoid body
+`;
+
+  }
+
+  else {
+
+    prompt = `
+${identityRules}
+
+Transform this FRENCH BULLDOG into a futuristic astronaut French bulldog.
+
+IMPORTANT:
+- keep the dog as a French bulldog
+- preserve short muzzle
+- preserve bat ears
+- preserve compact face
+- preserve fur colors and expression
+- do NOT transform into another breed
+- no human hands
+
+Add:
+- futuristic astronaut suit adapted to dog anatomy
+- realistic transparent astronaut helmet
+- bat ears visible inside helmet
+- cinematic sci-fi lighting
+- realistic reflections on helmet glass
+
+Premium astronaut French bulldog portrait.
+Transparent PNG background.
+No text.
+No frame.
+No mockup.
+`;
+
+  }
 }
 
 else if (style === "gangster") {
-  prompt = `
+
+  if (category === "human") {
+
+    prompt = `
 ${identityRules}
 
-Transform the uploaded French bulldog into a dark cinematic mafia boss dog.
+THIS IS A PHOTO EDIT OF THE UPLOADED HUMAN.
+Do NOT create a new person.
+
+Keep the uploaded person clearly recognizable:
+- same gender
+- same age
+- same face shape
+- same eyes
+- same nose
+- same mouth
+- same smile/expression
+- same hairstyle
+- same hair color
+- same skin tone
+
+FORBIDDEN:
+- changing the person
+- changing gender
+- adding a beard if the original person has none
+- creating a male mafia boss
+- replacing the face
+- changing facial structure
+
+Only edit:
+- add an elegant black mafia-style outfit
+- add a black fedora if it fits naturally
+- add subtle noir cinematic lighting
+- add luxury dark atmosphere
+
+The final image must look like the uploaded person dressed in a classy gangster / mafia costume.
+Photorealistic portrait.
+Transparent PNG background.
+No text.
+No frame.
+No mockup.
+`;
+
+  }
+
+  else if (category === "animal") {
+
+    prompt = `
+${identityRules}
+
+Transform this ANIMAL into a cinematic mafia boss version.
+
+IMPORTANT:
+- keep the SAME animal species
+- preserve exact breed/species
+- preserve fur colors and expression
+- do NOT transform into a french bulldog unless it already is one
+- do NOT create a human face
+- no human hands
+
+Add:
+- black gangster hat adapted to the animal
+- elegant mafia outfit adapted to the animal anatomy
+- gold chain necklace
+- dramatic noir lighting
+- luxury mafia atmosphere
+
+Premium gangster animal portrait.
+Transparent PNG background.
+No text.
+No frame.
+No mockup.
+IMPORTANT ANIMAL RULES:
+- keep the REAL animal face
+- keep the REAL animal anatomy
+- keep paws as paws
+- NEVER transform paws into human hands
+- NEVER transform the animal into a human
+- keep authentic fur
+- keep authentic muzzle
+- keep authentic ears
+- keep authentic body proportions
+- the animal must stay a real animal
+
+FORBIDDEN:
+- human face
+- human skin
+- human anatomy
+- human nose
+- human mouth
+- human hands
+- humanoid body
+`;
+
+  }
+
+  else {
+
+    prompt = `
+${identityRules}
+
+Transform this FRENCH BULLDOG into a cinematic mafia boss French bulldog.
+
+IMPORTANT:
+- keep the dog as a French bulldog
+- preserve short muzzle
+- preserve bat ears
+- preserve compact face
+- preserve fur colors and expression
+- do NOT transform into another breed
+- no human hands
+- only dog paws if visible
 
 Add:
 - black gangster fedora
-- black mafia suit adapted to dog body
-- gold chain around the neck
-- serious boss expression
+- elegant black mafia suit adapted to dog anatomy
+- gold chain necklace
 - dramatic noir lighting
-- luxury gangster movie vibe
+- luxury mafia movie atmosphere
 
-Important:
-No cigar in the mouth.
-No human hands.
-No human body.
-Only dog paws if visible.
-The dog must look like a real French bulldog mafia boss.
+Premium gangster French bulldog portrait.
+Transparent PNG background.
+No text.
+No frame.
+No mockup.
 `;
-}
 
-else if (style === "anime") {
-  prompt = `
-${identityRules}
-
-Transform the uploaded French bulldog into a premium Japanese anime French bulldog.
-
-Important:
-It must NOT look like a cat.
-It must keep French bulldog features:
-short muzzle, wide head, bat ears, compact face, same fur markings.
-
-Add:
-- expressive anime dog eyes
-- soft Japanese anime rendering
-- cherry blossom inspired accessories
-- cute premium anime movie style
-
-No cat face.
-No long cat muzzle.
-No feline features.
-`;
+  }
 }
 
 else if (style === "viking") {
+
+  if (category === "human") {
+
+ prompt = `
+${identityRules}
+
+THIS IS A PHOTO EDIT.
+NOT A NEW CHARACTER.
+
+The uploaded image is a REAL HUMAN.
+You must preserve the identity exactly.
+
+STRICT RULES:
+- preserve the exact face
+- preserve the exact person
+- preserve facial proportions
+- preserve the exact eyes
+- preserve the exact nose
+- preserve the exact mouth
+- preserve the exact smile
+- preserve cheek shape
+- preserve jawline
+- preserve skin texture
+- preserve hairstyle
+- preserve hair color
+- preserve gender
+- preserve age
+
+DO NOT:
+- create a different person
+- generate a random Viking
+- add a beard
+- masculinize the face
+- replace the face
+- change ethnicity
+- change facial structure
+
+Only add:
+- realistic Viking clothes
+- Nordic fur outfit
+- snowy cinematic atmosphere
+- Viking accessories
+
+The uploaded human must remain immediately recognizable.
+
+Photorealistic edit.
+Transparent PNG background.
+Do not beautify the face.
+Do not change facial proportions.
+Keep the original photo face almost unchanged.
+Only edit clothing, background and atmosphere.
+`;
+
+  }
+
+  else if (category === "animal") {
+
+    if (style === "viking") {
   prompt = `
 ${identityRules}
-Transform the uploaded subject into a powerful Viking warrior.
 
-Keep EXACTLY the same identity from the uploaded photo.
-Do not modify the face identity.
+Transform this REAL animal into a Viking inspired version.
 
-Add:
-fur armor,
-Viking axe,
-snow environment,
-warrior armor,
-Nordic atmosphere,
-cinematic cold lighting,
-epic warrior aesthetic.
+IMPORTANT ANIMAL RULES:
+- keep the REAL animal face
+- keep the REAL animal anatomy
+- keep paws as paws
+- NEVER transform paws into human hands
+- NEVER transform the animal into a human
+- keep authentic fur
+- keep authentic muzzle
+- keep authentic ears
+- keep authentic body proportions
+- the animal must stay a real animal
 
-Ultra realistic Viking portrait.
-Transparent PNG background.
-No text. No frame. No mockup.
+The animal is wearing realistic Viking inspired accessories.
+
+- fur cape
+- leather armor
+- nordic atmosphere
+
+BUT:
+- the animal remains fully animal
+- four legs visible if possible
+- real dog anatomy
+- no wolf transformation
+- no humanoid transformation
 `;
 }
 
+  }
+
+  else {
+
+    prompt = `
+${identityRules}
+
+Transform this FRENCH BULLDOG into an epic Viking French bulldog warrior.
+
+IMPORTANT:
+- keep the dog as a French bulldog
+- preserve short muzzle
+- preserve bat ears
+- preserve compact face
+- preserve fur colors and expression
+- do NOT transform into another breed
+- no human hands
+- only dog paws if visible
+
+Add:
+- Viking armor adapted to dog anatomy
+- fur cloak
+- Viking axe
+- Nordic warrior atmosphere
+- cinematic cold lighting
+- snowy Viking environment
+
+Epic Viking French bulldog portrait.
+Transparent PNG background.
+No text.
+No frame.
+No mockup.
+`;
+
+  }
+}
+
 else if (style === "biker") {
+
+  if (category === "human") {
+
+    prompt = `
+${identityRules}
+
+Transform this HUMAN into a cinematic biker portrait.
+This is an image-to-image transformation, not a new character creation.
+
+IMPORTANT:
+- keep the SAME person
+- preserve exact face identity
+- preserve hairstyle, eyes and expression
+- do NOT create an animal
+- do NOT create dog ears
+- do NOT create a french bulldog
+
+Add:
+- black leather biker jacket
+- motorcycle beside the subject
+- cinematic road lighting
+- cool rebel biker atmosphere
+- optional sunglasses if natural
+
+Premium biker movie portrait.
+Transparent PNG background.
+No text.
+No frame.
+No mockup.
+`;
+
+  }
+
+  else if (category === "animal") {
+
+    if (style === "biker") {
   prompt = `
 ${identityRules}
 
-Transform the uploaded dog into a realistic biker dog.
+Transform this REAL animal into a biker version.
+
+IMPORTANT ANIMAL RULES:
+- keep the REAL animal face
+- keep the REAL animal anatomy
+- keep paws as paws
+- NEVER transform paws into human hands
+- NEVER transform the animal into a human
+
+The animal is a biker companion.
+
+- leather jacket adapted for animal anatomy
+- motorcycle nearby
+- cinematic biker atmosphere
 
 IMPORTANT:
-Keep the ORIGINAL dog breed unchanged.
+- keep the animal on 4 legs or natural sitting position
+- no human torso
+- no humanoid posture
+`;
+}
 
-The ears must remain EXACTLY the same as in the uploaded photo.
+  }
 
-If the dog has floppy ears:
-- keep floppy ears
-- ears must hang naturally
+  else {
 
-If the dog has upright ears:
-- keep upright ears
+    prompt = `
+${identityRules}
 
-Forbidden:
-- changing ear shape
-- pointy ears on floppy-ear dogs
-- french bulldog ears
-- corgi ears
-- wolf ears
+Transform this FRENCH BULLDOG into a cinematic biker French bulldog.
+
+IMPORTANT:
+- keep the dog as a French bulldog
+- preserve short muzzle
+- preserve bat ears
+- preserve compact face
+- preserve fur colors and expression
+- do NOT transform into another breed
+- no human hands
+- only dog paws if visible
 
 Add:
 - black leather biker jacket adapted to dog anatomy
 - realistic motorcycle beside the dog
-- cool cinematic lighting
-- sunglasses if they fit naturally
-- realistic fur details
+- cinematic biker lighting
+- rebel biker atmosphere
+- optional sunglasses if natural
 
-No human body.
-No human hands.
+Premium biker French bulldog portrait.
+Transparent PNG background.
+No text.
+No frame.
+No mockup.
 `;
+
+  }
 }
 
 else if (style === "superhero") {
-  prompt = `
-${identityRules}
-Transform the uploaded subject into an epic superhero.
 
-Keep EXACTLY the same identity from the uploaded photo.
-Do not change identity.
+  if (category === "human") {
+
+    prompt = `
+${identityRules}
+
+Transform this HUMAN into an epic superhero portrait.
+This is an image-to-image transformation, not a new character creation.
+
+IMPORTANT:
+- keep the SAME person
+- preserve exact face identity
+- preserve hairstyle, eyes and expression
+- do NOT create an animal
+- do NOT create dog ears
+- do NOT create a french bulldog
 
 Add:
-superhero cape,
-hero costume,
-futuristic city,
-energy lights,
-epic superhero pose,
-cinematic action lighting,
-powerful atmosphere.
+- cinematic superhero suit
+- superhero cape
+- futuristic city atmosphere
+- energy lighting effects
+- dramatic action movie lighting
+- powerful heroic pose
 
-Ultra realistic superhero movie style.
+Epic superhero movie portrait.
 Transparent PNG background.
-No text. No frame. No mockup.
+No text.
+No frame.
+No mockup.
+`;
+
+  }
+
+  else if (category === "animal") {
+
+    if (style === "superhero") {
+  prompt = `
+${identityRules}
+
+Transform this REAL animal into a superhero version.
+
+IMPORTANT ANIMAL RULES:
+- keep the REAL animal face
+- keep the REAL animal anatomy
+- keep paws as paws
+- NEVER transform paws into human hands
+- NEVER transform the animal into a human
+
+The animal wears a superhero inspired costume adapted for animals.
+
+IMPORTANT:
+- keep real animal anatomy
+- no muscular human chest
+- no humanoid superhero body
+- animal remains realistic
+- costume fitted naturally on animal body
 `;
 }
 
+  }
+
+  else {
+
+    prompt = `
+${identityRules}
+
+Transform this FRENCH BULLDOG into an epic superhero French bulldog.
+
+IMPORTANT:
+- keep the dog as a French bulldog
+- preserve short muzzle
+- preserve bat ears
+- preserve compact face
+- preserve fur colors and expression
+- do NOT transform into another breed
+- no human hands
+- only dog paws if visible
+
+Add:
+- superhero costume adapted to dog anatomy
+- superhero cape
+- futuristic city atmosphere
+- energy lighting effects
+- dramatic cinematic action lighting
+
+Epic superhero French bulldog portrait.
+Transparent PNG background.
+No text.
+No frame.
+No mockup.
+`;
+
+  }
+}
+
+else if (style === "anime") {
+
+  if (category === "human") {
+
+    prompt = `
+${identityRules}
+
+Transform the uploaded HUMAN into a realistic Japanese anime character while preserving identity.
+
+IMPORTANT:
+- keep the SAME person
+- keep the SAME gender
+- keep the SAME hairstyle
+- keep the SAME hair color
+- keep the SAME smile/expression
+- keep the SAME face proportions
+- keep the SAME facial structure
+
+FORBIDDEN:
+- cat ears
+- animal ears
+- fox ears
+- neko girl
+- chibi style
+- fantasy creature
+- mascot style
+- overly exaggerated anime eyes
+- changing ethnicity
+- changing gender
+
+Style:
+- realistic modern Japanese anime
+- Makoto Shinkai inspired
+- cinematic anime portrait
+- soft anime shading
+- elegant detailed line art
+- realistic proportions
+- subtle anime eyes
+- natural beauty
+
+The uploaded person must remain recognizable.
+
+Transparent PNG background.
+No text.
+No frame.
+No mockup.
+`;
+
+  }
+
+  else if (category === "animal") {
+
+    prompt = `
+${identityRules}
+
+Transform this ANIMAL into a premium Japanese anime animal.
+
+IMPORTANT:
+- keep the SAME animal species
+- preserve exact breed/species
+- preserve fur colors and expression
+- do NOT transform into a french bulldog unless it already is one
+- do NOT create a human face
+
+Add:
+- expressive anime eyes
+- premium Japanese anime rendering
+- soft cinematic anime lighting
+- animated movie atmosphere
+- cute anime style
+
+Premium anime animal portrait.
+Transparent PNG background.
+No text.
+No frame.
+No mockup.
+IMPORTANT ANIMAL RULES:
+- keep the REAL animal face
+- keep the REAL animal anatomy
+- keep paws as paws
+- NEVER transform paws into human hands
+- NEVER transform the animal into a human
+- keep authentic fur
+- keep authentic muzzle
+- keep authentic ears
+- keep authentic body proportions
+- the animal must stay a real animal
+
+FORBIDDEN:
+- human face
+- human skin
+- human anatomy
+- human nose
+- human mouth
+- human hands
+- humanoid body
+`;
+
+  }
+
+  else {
+
+    prompt = `
+${identityRules}
+
+Transform this FRENCH BULLDOG into a premium Japanese anime French bulldog.
+
+IMPORTANT:
+- keep the dog as a French bulldog
+- preserve short muzzle
+- preserve bat ears
+- preserve compact face
+- preserve fur colors and expression
+- do NOT transform into another breed
+
+Add:
+- expressive anime dog eyes
+- premium Japanese anime rendering
+- soft cinematic anime lighting
+- animated movie atmosphere
+- cute anime French bulldog style
+
+Premium anime French bulldog portrait.
+Transparent PNG background.
+No text.
+No frame.
+No mockup.
+`;
+
+  }
+}
+
 else if (style === "cartoon") {
-  prompt = `
+
+if (category === "human") {
+
+prompt = `
+Transform this HUMAN portrait into a cute cartoon illustration.
+This is an image-to-image transformation, not a new character creation.
+
+IMPORTANT:
+- keep the SAME person
+- preserve face structure
+- preserve hairstyle
+- preserve eyes
+- preserve human anatomy
+- do NOT create a dog
+- do NOT create animal ears
+- do NOT create a french bulldog
+
+Cute Pixar cartoon style.
+`;
+
+}
+
+else if (category === "animal") {
+
+prompt = `
+Transform this ANIMAL into a cute cartoon version.
+
+IMPORTANT:
+- keep the SAME animal species
+- preserve the real breed/species
+- do NOT transform into a french bulldog unless it already is one
+
+Cute cartoon style.
+`;
+
+}
+
+else {
+
+prompt = `
 ${identityRules}
 
 Transform the uploaded French bulldog into a premium 3D cartoon French bulldog.
 
-Important:
-It must NOT look like a cat.
-It must keep French bulldog features:
-short muzzle, wide head, bat ears, compact face, same fur markings.
+Keep French bulldog features:
+- short muzzle
+- bat ears
+- compact head
 
-Add:
-- big expressive cartoon dog eyes
-- cute French bulldog face
-- soft premium animation rendering
-- warm animated movie lighting
+Cute animated style.
+Transparent PNG background.
+IMPORTANT ANIMAL RULES:
+- keep the REAL animal face
+- keep the REAL animal anatomy
+- keep paws as paws
+- NEVER transform paws into human hands
+- NEVER transform the animal into a human
+- keep authentic fur
+- keep authentic muzzle
+- keep authentic ears
+- keep authentic body proportions
+- the animal must stay a real animal
 
-No cat face.
-No feline features.
+FORBIDDEN:
+- human face
+- human skin
+- human anatomy
+- human nose
+- human mouth
+- human hands
+- humanoid body
 `;
+
+}
+
 }
 
 if (!prompt) {
@@ -386,26 +1288,18 @@ No text. No frame. No mockup.
 `;
 }
 
-    const output = await replicate.run("black-forest-labs/flux-kontext-pro", {
-      input: {
-  image: image,
-  prompt: prompt,
-  negative_prompt: `
-  extra ears,
-  extra objects,
-  floating objects,
-  pink artifacts,
-  background artifacts,
-  deformed accessories,
-  human hands,
-  extra limbs,
-  mutated anatomy,
-  glitches,
-  weird shapes behind head,
-  duplicate elements
-`,
-      },
-    });
+    const output = await replicate.run(
+  "black-forest-labs/flux-kontext-pro",
+  {
+    input: {
+      prompt: prompt,
+      input_image: image,
+
+      guidance_scale: 2,
+      strength: 0.10,
+    },
+  }
+);
 
     console.log("OUTPUT REPLICATE :", output);
 

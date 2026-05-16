@@ -59,7 +59,12 @@ body {
 }
 
 .uploadBox input {
-  display: none;
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
 }
 
 .uploadBox span {
@@ -872,15 +877,29 @@ input {
   text-shadow: 0 3px 8px rgba(0,0,0,0.25);
 }
 
+.categoryGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin: 16px 0 20px;
+}
 
-
-.realFileInput {
-  display: block;
-  width: 100%;
-  margin-bottom: 18px;
-  padding: 14px;
-  border-radius: 12px;
-  background: #151515;
+.category {
+  padding: 12px;
+  border-radius: 14px;
+  border: 1px solid #2f2f2f;
+  background: #111;
   color: white;
-  border: 1px solid #8f6b25;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.category:hover {
+  border-color: #ffb83d;
+}
+
+.category.active {
+  background: linear-gradient(135deg, #3a2100, #ff8a00);
+  border-color: #ffb83d;
 }

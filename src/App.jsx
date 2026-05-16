@@ -119,6 +119,7 @@ const testAI = async () => {
         body: JSON.stringify({
           image: base64Image,
           style: selectedStyle,
+          category: selectedCategory,
         }),
       });
 
@@ -159,7 +160,11 @@ const testAI = async () => {
   {categories.map((category) => (
     <button
       key={category.id}
-      className={selectedCategory === category.id ? "category active" : "category"}
+      className={
+        selectedCategory === category.id
+          ? "category active"
+          : "category"
+      }
       onClick={() => setSelectedCategory(category.id)}
     >
       {category.name}
