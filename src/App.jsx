@@ -62,11 +62,12 @@ const handleImage = async (e) => {
 
   setUploadLoading(true);
 
-  // laisse le temps au loader de s'afficher
   await new Promise((resolve) => setTimeout(resolve, 100));
 
   try {
-        setUploadLoading(false);
+    const isIPad =
+      /iPad|Macintosh/.test(navigator.userAgent) &&
+      navigator.maxTouchPoints > 1;
 
     if (isIPad) {
       const reader = new FileReader();
@@ -88,9 +89,11 @@ const handleImage = async (e) => {
     setImage(url);
     setAiImage(null);
     setGenerated(false);
+    setUploadLoading(false);
   } catch (err) {
     console.error(err);
-        setUploadLoading(false);
+    alert("Erreur upload image : " + err.message);
+    setUploadLoading(false);
   }
 };
 const resizeImage = (base64, maxSize = 900, quality = 0.8) => {
