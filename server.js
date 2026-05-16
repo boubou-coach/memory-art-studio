@@ -81,6 +81,9 @@ Transparent PNG background.
 No text.
 No frame.
 No mockup.
+This is a strict identity-preserving image edit.
+Do not redesign the face.
+Only change outfit, style and atmosphere.
 `;
   } else if (category === "animal") {
     prompt = `
@@ -155,6 +158,11 @@ Add:
 - dramatic cinematic palace lighting
 - baroque decorations
 
+Keep the exact muzzle shape.
+Keep exact fur pattern.
+Keep exact eye spacing.
+Keep exact head proportions.
+
 Ultra realistic premium royal French bulldog portrait.
 Centered upper-body composition.
 Transparent PNG background.
@@ -193,6 +201,9 @@ IMPORTANT:
 - no human hands
 - no human fingers
 - animal remains realistic
+This is a strict identity-preserving image edit.
+Do not redesign the face.
+Only change outfit, style and atmosphere.
 `;
 }
 
@@ -273,6 +284,11 @@ Add:
 - dramatic concert lighting
 - energetic rock concert atmosphere
 
+Keep the exact muzzle shape.
+Keep exact fur pattern.
+Keep exact eye spacing.
+Keep exact head proportions.
+
 Premium rockstar French bulldog portrait.
 Transparent PNG background.
 No text.
@@ -312,6 +328,9 @@ Transparent PNG background.
 No text.
 No frame.
 No mockup.
+This is a strict identity-preserving image edit.
+Do not redesign the face.
+Only change outfit, style and atmosphere.
 `;
   }
 
@@ -385,6 +404,11 @@ Add:
 - dramatic renaissance lighting
 - classical museum painting style
 
+Keep the exact muzzle shape.
+Keep exact fur pattern.
+Keep exact eye spacing.
+Keep exact head proportions.
+
 Museum-quality French bulldog artwork.
 Transparent PNG background.
 No text.
@@ -426,6 +450,9 @@ Transparent PNG background.
 No text.
 No frame.
 No mockup.
+This is a strict identity-preserving image edit.
+Do not redesign the face.
+Only change outfit, style and atmosphere.
 `;
 
   }
@@ -484,6 +511,11 @@ Add:
 - beige, black and gold tones
 - minimal luxury atmosphere
 
+Keep the exact muzzle shape.
+Keep exact fur pattern.
+Keep exact eye spacing.
+Keep exact head proportions.
+
 High-end luxury French bulldog portrait.
 Transparent PNG background.
 No text.
@@ -524,6 +556,9 @@ Transparent PNG background.
 No text.
 No frame.
 No mockup.
+This is a strict identity-preserving image edit.
+Do not redesign the face.
+Only change outfit, style and atmosphere.
 `;
 
   }
@@ -603,6 +638,11 @@ Add:
 - cinematic sci-fi lighting
 - realistic reflections on helmet glass
 
+Keep the exact muzzle shape.
+Keep exact fur pattern.
+Keep exact eye spacing.
+Keep exact head proportions.
+
 Premium astronaut French bulldog portrait.
 Transparent PNG background.
 No text.
@@ -655,6 +695,9 @@ Transparent PNG background.
 No text.
 No frame.
 No mockup.
+This is a strict identity-preserving image edit.
+Do not redesign the face.
+Only change outfit, style and atmosphere.
 `;
 
   }
@@ -734,6 +777,11 @@ Add:
 - dramatic noir lighting
 - luxury mafia movie atmosphere
 
+Keep the exact muzzle shape.
+Keep exact fur pattern.
+Keep exact eye spacing.
+Keep exact head proportions.
+
 Premium gangster French bulldog portrait.
 Transparent PNG background.
 No text.
@@ -796,6 +844,9 @@ Do not beautify the face.
 Do not change facial proportions.
 Keep the original photo face almost unchanged.
 Only edit clothing, background and atmosphere.
+This is a strict identity-preserving image edit.
+Do not redesign the face.
+Only change outfit, style and atmosphere.
 `;
 
   }
@@ -862,6 +913,11 @@ Add:
 - cinematic cold lighting
 - snowy Viking environment
 
+Keep the exact muzzle shape.
+Keep exact fur pattern.
+Keep exact eye spacing.
+Keep exact head proportions.
+
 Epic Viking French bulldog portrait.
 Transparent PNG background.
 No text.
@@ -902,6 +958,9 @@ Transparent PNG background.
 No text.
 No frame.
 No mockup.
+This is a strict identity-preserving image edit.
+Do not redesign the face.
+Only change outfit, style and atmosphere.
 `;
 
   }
@@ -960,6 +1019,11 @@ Add:
 - rebel biker atmosphere
 - optional sunglasses if natural
 
+Keep the exact muzzle shape.
+Keep exact fur pattern.
+Keep exact eye spacing.
+Keep exact head proportions.
+
 Premium biker French bulldog portrait.
 Transparent PNG background.
 No text.
@@ -1001,6 +1065,9 @@ Transparent PNG background.
 No text.
 No frame.
 No mockup.
+This is a strict identity-preserving image edit.
+Do not redesign the face.
+Only change outfit, style and atmosphere.
 `;
 
   }
@@ -1056,6 +1123,11 @@ Add:
 - futuristic city atmosphere
 - energy lighting effects
 - dramatic cinematic action lighting
+
+Keep the exact muzzle shape.
+Keep exact fur pattern.
+Keep exact eye spacing.
+Keep exact head proportions.
 
 Epic superhero French bulldog portrait.
 Transparent PNG background.
@@ -1113,6 +1185,9 @@ Transparent PNG background.
 No text.
 No frame.
 No mockup.
+This is a strict identity-preserving image edit.
+Do not redesign the face.
+Only change outfit, style and atmosphere.
 `;
 
   }
@@ -1189,6 +1264,11 @@ Add:
 - animated movie atmosphere
 - cute anime French bulldog style
 
+Keep the exact muzzle shape.
+Keep exact fur pattern.
+Keep exact eye spacing.
+Keep exact head proportions.
+
 Premium anime French bulldog portrait.
 Transparent PNG background.
 No text.
@@ -1218,6 +1298,9 @@ IMPORTANT:
 - do NOT create a french bulldog
 
 Cute Pixar cartoon style.
+This is a strict identity-preserving image edit.
+Do not redesign the face.
+Only change outfit, style and atmosphere.
 `;
 
 }
@@ -1263,6 +1346,11 @@ IMPORTANT ANIMAL RULES:
 - keep authentic body proportions
 - the animal must stay a real animal
 
+Keep the exact muzzle shape.
+Keep exact fur pattern.
+Keep exact eye spacing.
+Keep exact head proportions.
+
 FORBIDDEN:
 - human face
 - human skin
@@ -1288,15 +1376,33 @@ No text. No frame. No mockup.
 `;
 }
 
-    const output = await replicate.run(
+    let guidanceScale = 1.5;
+let strengthValue = 0.07;
+
+if (category === "frenchie") {
+  guidanceScale = 1.2;
+  strengthValue = 0.05;
+}
+
+if (category === "human") {
+  guidanceScale = 2;
+  strengthValue = 0.10;
+}
+
+if (category === "animal") {
+  guidanceScale = 1.4;
+  strengthValue = 0.06;
+}
+
+const output = await replicate.run(
   "black-forest-labs/flux-kontext-pro",
   {
     input: {
       prompt: prompt,
       input_image: image,
 
-      guidance_scale: 2,
-      strength: 0.10,
+      guidance_scale: guidanceScale,
+      strength: strengthValue,
     },
   }
 );
