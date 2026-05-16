@@ -8,7 +8,7 @@ const styles = [
   { id: "museum", name: "🖼️ Musée / Renaissance" },
   { id: "minimal", name: "✨ Minimal luxe" },
   { id: "astronaut", name: "🚀 Astronaute" },
-  { id: "gangster", name: "🕶️ angster" },
+  { id: "gangster", name: "🕶️ Gangster" },
   { id: "anime", name: "🌸 Anime japonais" },
   { id: "viking", name: "🪓 Viking" },
   { id: "biker", name: "🏍️ Biker" },
@@ -152,12 +152,6 @@ const testAI = async () => {
   <input type="file" accept="image/*" onChange={handleImage} />
 </label>
 
-<input
-  className="realFileInput"
-  type="file"
-  accept="image/*"
-  onChange={handleImage}
-/>
 
        
 
