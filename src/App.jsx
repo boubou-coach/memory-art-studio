@@ -47,21 +47,8 @@ const [circleColor, setCircleColor] = useState("#c79b2c")
 const [backgroundImage, setBackgroundImage] = useState(null);
 
 const handleImage = async (e) => {
-  const file = e.target.files[0];
-  if (!file) return;
-
-  try {
-    const blob = await removeBackground(file);
-    const url = URL.createObjectURL(blob);
-
-    setImage(url);
-    setAiImage(null);
-    setGenerated(false);
-  } catch (err) {
-    console.error(err);
-    alert("Erreur upload image");
-  }
-};
+  
+  console.log("handleImage lancé");
 
   try {
     const reader = new FileReader();
