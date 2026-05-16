@@ -40,6 +40,7 @@ const categories = [
 
 export default function App() {
   const [image, setImage] = useState(null);
+  const [loading, setLoading] = useState(false);
   const [aiImage, setAiImage] = useState(null);
   const [selectedStyle, setSelectedStyle] = useState("original");
   const [customText, setCustomText] = useState("")
@@ -119,6 +120,7 @@ const resizeImage = (base64, maxSize = 1200, quality = 0.9) => {
   });
 };
 const testAI = async () => {
+  setLoading(true);
   if (!image) {
     alert("Ajoute d'abord une photo");
     return;
@@ -170,7 +172,7 @@ const testAI = async () => {
   } catch (error) {
     console.error(error);
     alert("Erreur pendant la génération IA");
-    setAiLoading(false);
+    setLoading(false);
   }
 };
 
@@ -448,6 +450,20 @@ const testAI = async () => {
       >
         Fermer
       </button>
+    </div>
+  </div>
+)}
+
+{loading && (
+  <div className="loadingOverlay">
+    <div className="loadingBox">
+      <div className="spinner"></div>
+
+      <h2>Création de votre visuel IA...</h2>
+
+      <p>
+        Cela peut prendre quelques secondes selon le style choisi
+      </p>
     </div>
   </div>
 )}
