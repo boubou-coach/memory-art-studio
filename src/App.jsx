@@ -1,5 +1,5 @@
 import { removeBackground } from "@imgly/background-removal";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./index.css";
 const API_URL = import.meta.env.VITE_API_URL;
 const styles = [
