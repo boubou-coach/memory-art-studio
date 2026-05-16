@@ -87,7 +87,37 @@ const handleImage = async (e) => {
     alert("Erreur upload image : " + err.message);
   }
 };
+const resizeImage = (base64, maxSize = 1200, quality = 0.9) => {
+  return new Promise((resolve) => {
+    const img = new Image();
 
+    img.onload = () => {
+      let width = img.width;
+      let height = img.height;
+
+      if (width > height && width > maxSize) {
+        height = Math.round((height * maxSize) / width);
+        width = maxSize;
+      }
+
+      if (height >= width && height > maxSize) {
+        width = Math.round((width * maxSize) / height);
+        height = maxSize;
+      }
+
+      const canvas = document.createElement("canvas");
+      canvas.width = width;
+      canvas.height = height;
+
+      const ctx = canvas.getContext("2d");
+      ctx.drawImage(img, 0, 0, width, height);
+
+      resolve(canvas.toDataURL("image/jpeg", quality));
+    };
+
+    img.src = base64;
+  });
+};
 const testAI = async () => {
   if (!image) {
     alert("Ajoute d'abord une photo");
@@ -109,7 +139,7 @@ const testAI = async () => {
     const reader = new FileReader();
 
     reader.onloadend = async () => {
-      const base64Image = reader.result;
+      const base64Image = await resizeImage(reader.result);
 
       const response = await fetch(`${API_URL}/api/generate`, {
         method: "POST",
