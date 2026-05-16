@@ -29,37 +29,38 @@ app.post("/api/generate", async (req, res) => {
     let prompt = "";
 
     const identityRules = `
-CRITICAL RULES:
-The uploaded subject must remain the same subject.
+CRITICAL IDENTITY RULES:
+The uploaded subject must remain the exact same subject.
 
-If it is a dog:
-- keep it as a dog
-- keep the exact breed
-- if it is a French bulldog, it MUST remain a French bulldog
-- short muzzle
-- wide square head
-- compact body
-- bat ears
-- same fur colors and markings
-- same eye color
+Preserve:
+- same species
+- same breed if it is an animal
+- same age category if it is a person
+- same face structure
+- same eyes, nose, mouth
+- same hair or fur
+- same colors and markings
+- same body type
 - same expression as much as possible
 
-NEVER transform the dog into a cat.
-NEVER transform the dog into a human.
-NEVER add human hands.
-NEVER add human fingers.
-NEVER add human arms.
-If paws are visible, they must be dog paws only.
+If the subject is a child, keep the subject as a child.
+If the subject is an adult, keep the subject as an adult.
+If the subject is a dog, keep the exact dog breed.
+If the subject is a dachshund, keep it as a dachshund.
+If the subject is a French bulldog, keep it as a French bulldog.
+If the subject is a cat, keep it as a cat.
 
-Create a clean isolated subject.
-No rectangular background.
-No scene background.
-No white background.
-No black background.
-No frame.
-No text.
-No mockup.
+NEVER turn the subject into a French bulldog unless the uploaded subject is already a French bulldog.
+NEVER change species.
+NEVER change breed.
+NEVER change age.
+NEVER create a different subject.
+
 Transparent PNG background.
+No text.
+No frame.
+No mockup.
+Clean isolated subject.
 `;
 
 if (style === "royal") {
@@ -108,7 +109,7 @@ else if (style === "rockstar") {
   prompt = `
 ${identityRules}
 
-Transform the uploaded French bulldog into a rockstar dog.
+Transform the uploaded subject into a rockstar portrait.
 
 Add:
 - black leather jacket
@@ -228,7 +229,7 @@ else if (style === "gangster") {
   prompt = `
 ${identityRules}
 
-Transform the uploaded French bulldog into a dark cinematic mafia boss dog.
+Transform the uploaded subject into a dark cinematic mafia boss portrait.
 
 Add:
 - black gangster fedora
@@ -251,7 +252,7 @@ else if (style === "anime") {
   prompt = `
 ${identityRules}
 
-Transform the uploaded French bulldog into a premium Japanese anime French bulldog.
+Transform the uploaded subject into a premium Japanese anime portrait.
 
 Important:
 It must NOT look like a cat.
@@ -357,7 +358,7 @@ else if (style === "cartoon") {
   prompt = `
 ${identityRules}
 
-Transform the uploaded French bulldog into a premium 3D cartoon French bulldog.
+Transform the uploaded subject into a premium 3D cartoon portrait.
 
 Important:
 It must NOT look like a cat.
@@ -366,7 +367,6 @@ short muzzle, wide head, bat ears, compact face, same fur markings.
 
 Add:
 - big expressive cartoon dog eyes
-- cute French bulldog face
 - soft premium animation rendering
 - warm animated movie lighting
 
