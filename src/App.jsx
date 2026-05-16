@@ -59,12 +59,11 @@ const [loadingMessage, setLoadingMessage] = useState("Analyse de votre photo..."
 const handleImage = async (e) => {
   const file = e.target.files[0];
   if (!file) return;
+
   setUploadLoading(true);
 
-  const isIPad =
-    /iPad|Macintosh/.test(navigator.userAgent) &&
-    navigator.maxTouchPoints &&
-    navigator.maxTouchPoints > 1;
+  // laisse le temps au loader de s'afficher
+  await new Promise((resolve) => setTimeout(resolve, 100));
 
   try {
         setUploadLoading(false);
@@ -76,6 +75,7 @@ const handleImage = async (e) => {
         setImage(reader.result);
         setAiImage(null);
         setGenerated(false);
+        setUploadLoading(false);
       };
 
       reader.readAsDataURL(file);
@@ -91,8 +91,6 @@ const handleImage = async (e) => {
   } catch (err) {
     console.error(err);
         setUploadLoading(false);
-
-    alert("Erreur upload image : " + err.message);
   }
 };
 const resizeImage = (base64, maxSize = 900, quality = 0.8) => {
