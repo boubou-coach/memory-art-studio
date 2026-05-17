@@ -54,22 +54,16 @@ The result must look like a stylized version of the uploaded subject, not a diff
 `;
 
 const humanRules = `
-This is a strict image-to-image edit.
+This is a strict photo enhancement.
 
-Keep all people in the uploaded photo recognizable.
-Preserve each face, hairstyle, expression, age, gender and proportions.
+Keep all original people exactly recognizable.
+Preserve exact faces, eyes, nose, mouth, hairstyle, age, expression and skin tone.
 
-Do not remove anyone.
-Do not add new people.
-Do not merge faces.
-Do not change relationships or body positions.
+Do not change facial structure.
+Do not generate different people.
+Do not beautify or redesign faces.
 
-Only change lighting, clothing style, accessories and atmosphere.
-
-Transparent PNG background.
-No text.
-No frame.
-No mockup.
+Only improve lighting, colors, background mood and overall photo quality.
 `;
 
 const animalRules = `
@@ -124,7 +118,7 @@ if (style === "royal") {
     prompt = `
 ${humanRules}
 
-Transform into a majestic royal portrait.
+Enhance a majestic royal portrait.
 Works for solo portraits, couples, families and group photos.
 
 Add:
@@ -193,7 +187,7 @@ else if (style === "museum") {
     prompt = `
 ${humanRules}
 
-Transform into a renaissance museum portrait.
+Enhance a renaissance museum portrait.
 Works for solo portraits, couples, families and group photos.
 
 Add:
@@ -259,7 +253,7 @@ else if (style === "minimal") {
     prompt = `
 ${humanRules}
 
-Transform into a luxury minimal fashion portrait.
+Enhance a luxury minimal fashion portrait.
 Works for solo portraits, couples, families and group photos.
 
 Add:
@@ -309,7 +303,7 @@ else if (style === "astronaut") {
     prompt = `
 ${humanRules}
 
-Transform into a futuristic astronaut portrait.
+Enhance a futuristic astronaut portrait.
 Works for solo portraits, couples, families and group photos.
 
 Add:
@@ -355,7 +349,7 @@ else if (style === "gangster") {
     prompt = `
 ${humanRules}
 
-Transform into a cinematic gangster portrait.
+Enhance a cinematic gangster portrait.
 Works for solo portraits, couples, families and group photos.
 
 Add:
@@ -402,7 +396,7 @@ else if (style === "viking") {
     prompt = `
 ${humanRules}
 
-Transform into an epic Viking portrait.
+Enhance an epic Viking portrait.
 Works for solo portraits, couples, families and group photos.
 
 Add:
@@ -452,7 +446,7 @@ else if (style === "biker") {
     prompt = `
 ${humanRules}
 
-Transform into a cinematic biker portrait.
+Enhance a cinematic biker portrait.
 Works for solo portraits, couples, families and group photos.
 
 Add:
@@ -498,7 +492,7 @@ else if (style === "superhero") {
     prompt = `
 ${humanRules}
 
-Transform into an epic superhero portrait.
+Enhance an epic superhero portrait.
 Works for solo portraits, couples, families and group photos.
 
 IMPORTANT:
@@ -555,7 +549,7 @@ else if (style === "rockstar") {
     prompt = `
 ${humanRules}
 
-Transform into a cinematic rockstar portrait.
+Enhance a cinematic rockstar portrait.
 Works for solo portraits, couples, families and group photos.
 
 Add:
@@ -605,7 +599,7 @@ else if (style === "anime") {
     prompt = `
 ${humanRules}
 
-Transform into a realistic Japanese anime portrait.
+Enhance a realistic Japanese anime portrait.
 Works for solo portraits, couples, families and group photos.
 
 Style:
@@ -651,7 +645,7 @@ else if (style === "cartoon") {
     prompt = `
 ${humanRules}
 
-Transform into a cute Pixar-style cartoon portrait.
+Enhance a cute Pixar-style cartoon portrait.
 Works for solo portraits, couples, families and group photos.
 `;
 
@@ -688,7 +682,7 @@ else if (style === "studio") {
   prompt = `
 ${humanRules}
 
-Transform into a premium professional studio portrait.
+Enhance a premium professional studio portrait.
 Works for solo portraits, couples, families and group photos.
 
 Add:
@@ -703,7 +697,7 @@ else if (style === "golden") {
   prompt = `
 ${humanRules}
 
-Transform into a golden hour portrait.
+Enhance a golden hour portrait.
 Works for solo portraits, couples, families and group photos.
 
 Add:
@@ -717,7 +711,7 @@ else if (style === "cinema") {
   prompt = `
 ${humanRules}
 
-Transform into a cinematic movie portrait.
+Enhance a cinematic movie portrait.
 Works for solo portraits, couples, families and group photos.
 
 Add:
@@ -731,7 +725,7 @@ else if (style === "bw") {
   prompt = `
 ${humanRules}
 
-Transform into a luxury black and white portrait.
+Enhance a luxury black and white portrait.
 Works for solo portraits, couples, families and group photos.
 
 Add:
@@ -745,7 +739,7 @@ else if (style === "vintage") {
   prompt = `
 ${humanRules}
 
-Transform into a vintage film portrait.
+Enhance a vintage film portrait.
 Works for solo portraits, couples, families and group photos.
 
 Add:
@@ -759,7 +753,7 @@ else if (style === "linkedin") {
   prompt = `
 ${humanRules}
 
-Transform into a professional Linkedin portrait.
+Enhance a professional Linkedin portrait.
 Works for solo portraits, couples, families and group photos.
 
 Add:
@@ -773,7 +767,7 @@ else if (style === "dreamy") {
   prompt = `
 ${humanRules}
 
-Transform into a soft dreamy aesthetic portrait.
+Enhance a soft dreamy aesthetic portrait.
 Works for solo portraits, couples, families and group photos.
 
 Add:
@@ -787,7 +781,7 @@ else if (style === "cyberpunk") {
   prompt = `
 ${humanRules}
 
-Transform into a realistic cyberpunk portrait.
+Enhance a realistic cyberpunk portrait.
 Works for solo portraits, couples, families and group photos.
 
 Add:
@@ -821,6 +815,11 @@ if (category === "animal") {
 }
 
 if (category === "frenchie") {
+  guidanceScale = 0.7;
+  strengthValue = 0.02;
+}
+
+if (category === "human") {
   guidanceScale = 0.7;
   strengthValue = 0.02;
 }
