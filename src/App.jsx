@@ -14,15 +14,15 @@ const styles = [
   { id: "biker", name: "🏍️ Biker" },
   { id: "superhero", name: "⚡ Super-héros" },
   { id: "cartoon", name: "🎨 Cartoon" },
-  { id: "rockstar", name: "🎸 Rockstar" }
+  { id: "rockstar", name: "🎸 Rockstar" },
   { id: "studio", name: "📸 Studio Premium" },
-{ id: "golden", name: "🌅 Golden Hour" },
-{ id: "cinema", name: "🎬 Cinéma" },
-{ id: "bw", name: "🖤 Noir & Blanc" },
-{ id: "vintage", name: "🎞️ Vintage Film" },
-{ id: "linkedin", name: "💼 Linkedin Pro" },
-{ id: "dreamy", name: "🌸 Dreamy" },
-{ id: "cyberpunk", name: "🌆 Cyberpunk" },
+  { id: "golden", name: "🌅 Golden Hour" },
+  { id: "cinema", name: "🎬 Cinéma" },
+  { id: "bw", name: "🖤 Noir & Blanc" },
+  { id: "vintage", name: "🎞️ Vintage Film" },
+  { id: "linkedin", name: "💼 Linkedin Pro" },
+  { id: "dreamy", name: "🌸 Dreamy" },
+  { id: "cyberpunk", name: "🌆 Cyberpunk" },
 ];
 
 const products = [
@@ -311,6 +311,7 @@ setTimeout(() => {
       </button>
     ))}
 </div>
+
 {(selectedProduct === "poster" || selectedProduct === "mug") && (
   <div className="textOptions">
 
