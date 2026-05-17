@@ -189,24 +189,20 @@ ${frenchieRules}
 
 Transform this French bulldog into a dramatic renaissance oil painting.
 
-IMPORTANT:
-- preserve the exact French bulldog identity
-- preserve muzzle shape
-- preserve ears
-- preserve fur colors
-- NEVER create human hands
-- NEVER humanize the dog
+Preserve the French bulldog identity, muzzle, ears and fur colors.
+Never create human hands.
+Never humanize the dog.
 
 Add:
 - royal renaissance clothing adapted to dog anatomy
 - baroque palace atmosphere
 - dramatic renaissance shadows
-- cinematic museum lighting
+- museum lighting
 - classical oil painting texture
 - antique dark background
-- luxurious golden details
+- golden details
 
-Masterpiece renaissance dog portrait.
+Renaissance masterpiece dog portrait.
 `;
   }
 }
@@ -628,14 +624,14 @@ if (category === "animal") {
   strengthValue = 0.03;
 }
 
-if (style === "museum") {
-  guidanceScale = 1.2;
-  strengthValue = 0.12;
-}
-
 if (category === "frenchie") {
   guidanceScale = 0.7;
   strengthValue = 0.02;
+}
+
+if (style === "museum") {
+  guidanceScale = 2.5;
+  strengthValue = 0.35;
 }
 
 const output = await replicate.run(
