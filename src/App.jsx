@@ -8,13 +8,21 @@ const styles = [
   { id: "museum", name: "🖼️ Musée / Renaissance" },
   { id: "minimal", name: "✨ Minimal luxe" },
   { id: "astronaut", name: "🚀 Astronaute" },
-  { id: "gangster", name: "🕶️ Gangster" },
+  { id: "gangster", name: "🕶️ Élégant" },
   { id: "anime", name: "🌸 Anime japonais" },
   { id: "viking", name: "🪓 Viking" },
   { id: "biker", name: "🏍️ Biker" },
   { id: "superhero", name: "⚡ Super-héros" },
   { id: "cartoon", name: "🎨 Cartoon" },
   { id: "rockstar", name: "🎸 Rockstar" }
+  { id: "studio", name: "📸 Studio Premium" },
+{ id: "golden", name: "🌅 Golden Hour" },
+{ id: "cinema", name: "🎬 Cinéma" },
+{ id: "bw", name: "🖤 Noir & Blanc" },
+{ id: "vintage", name: "🎞️ Vintage Film" },
+{ id: "linkedin", name: "💼 Linkedin Pro" },
+{ id: "dreamy", name: "🌸 Dreamy" },
+{ id: "cyberpunk", name: "🌆 Cyberpunk" },
 ];
 
 const products = [
@@ -265,16 +273,44 @@ setTimeout(() => {
 </div>
 
         <div className="styleGrid">
-          {styles.map((style) => (
-            <button
-              key={style.id}
-              className={selectedStyle === style.id ? "style active" : "style"}
-              onClick={() => setSelectedStyle(style.id)}
-            >
-              {style.name}
-            </button>
-          ))}
-        </div>
+  {styles
+    .filter((style) => {
+      if (selectedCategory === "human") {
+        return [
+          "original",
+          "studio",
+          "golden",
+          "cinema",
+          "bw",
+          "vintage",
+          "linkedin",
+          "dreamy",
+          "cyberpunk",
+          "royal",
+          "minimal",
+          "anime",
+          "cartoon",
+          "astronaut",
+          "superhero",
+        ].includes(style.id);
+      }
+
+      return true;
+    })
+    .map((style) => (
+      <button
+        key={style.id}
+        className={
+          selectedStyle === style.id
+            ? "style active"
+            : "style"
+        }
+        onClick={() => setSelectedStyle(style.id)}
+      >
+        {style.name}
+      </button>
+    ))}
+</div>
 {(selectedProduct === "poster" || selectedProduct === "mug") && (
   <div className="textOptions">
 

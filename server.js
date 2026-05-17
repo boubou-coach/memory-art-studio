@@ -137,6 +137,13 @@ ${strictAnimalRules}
 
 Transform the uploaded animal into a royal portrait.
 
+IMPORTANT:
+- keep real animal anatomy
+- keep paws as paws
+- NEVER create human hands
+- NEVER create human arms
+- NEVER humanize the animals
+
 Add:
 - royal crown
 - luxury royal outfit adapted to animal anatomy
@@ -661,7 +668,110 @@ Transform into a premium 3D cartoon French bulldog.
 `;
   }
 }
+else if (style === "studio") {
+  prompt = `
+${humanRules}
 
+Transform into a premium professional studio portrait.
+
+Add:
+- cinematic studio lighting
+- elegant clean background
+- luxury photography look
+- natural skin tones
+`;
+}
+
+else if (style === "golden") {
+  prompt = `
+${humanRules}
+
+Transform into a golden hour portrait.
+
+Add:
+- warm sunset lighting
+- soft golden tones
+- dreamy outdoor atmosphere
+`;
+}
+
+else if (style === "cinema") {
+  prompt = `
+${humanRules}
+
+Transform into a cinematic movie portrait.
+
+Add:
+- dramatic movie lighting
+- cinematic color grading
+- realistic film atmosphere
+`;
+}
+
+else if (style === "bw") {
+  prompt = `
+${humanRules}
+
+Transform into a luxury black and white portrait.
+
+Add:
+- elegant monochrome look
+- strong contrast
+- magazine photography style
+`;
+}
+
+else if (style === "vintage") {
+  prompt = `
+${humanRules}
+
+Transform into a vintage film portrait.
+
+Add:
+- analog film grain
+- warm retro tones
+- Kodak-style photography
+`;
+}
+
+else if (style === "linkedin") {
+  prompt = `
+${humanRules}
+
+Transform into a professional Linkedin portrait.
+
+Add:
+- clean studio background
+- elegant business outfit
+- professional lighting
+`;
+}
+
+else if (style === "dreamy") {
+  prompt = `
+${humanRules}
+
+Transform into a soft dreamy aesthetic portrait.
+
+Add:
+- pastel lighting
+- soft focus
+- elegant Pinterest-style atmosphere
+`;
+}
+
+else if (style === "cyberpunk") {
+  prompt = `
+${humanRules}
+
+Transform into a realistic cyberpunk portrait.
+
+Add:
+- neon lighting
+- futuristic city atmosphere
+- cinematic sci-fi colors
+`;
+}
 if (!prompt) {
   prompt = `
 Transform the uploaded subject into a premium portrait.
