@@ -808,7 +808,7 @@ if (category === "human") {
   guidanceScale = 0.8;
   strengthValue = 0.03;
 }
-
+   
 if (category === "animal") {
   guidanceScale = 0.8;
   strengthValue = 0.03;
