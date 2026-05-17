@@ -688,16 +688,17 @@ Transform into a premium 3D cartoon French bulldog.
 }
 else if (style === "studio") {
   prompt = `
-${humanRules}
+Enhance this photo slightly.
 
-Enhance a premium professional studio portrait.
-Works for solo portraits, couples, families and group photos.
+Improve:
+- lighting
+- sharpness
+- colors
+- contrast
 
-Add:
-- cinematic studio lighting
-- elegant clean background
-- luxury photography look
-- natural skin tones
+Keep the exact same person.
+Do not modify the face.
+Do not change age.
 `;
 }
 
@@ -825,8 +826,8 @@ let guidanceScale = 1;
 let strengthValue = 0.04;
 
 if (category === "human") {
-  guidanceScale = 0.6;
-  strengthValue = 0.015;
+  guidanceScale = 0.3;
+  strengthValue = 0.001;
 }
    
 if (category === "animal") {
