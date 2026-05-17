@@ -101,13 +101,16 @@ No mockup.
 const strictAnimalRules = `
 IMPORTANT:
 - keep real animal anatomy
-- keep paws as paws
+- keep the animal on four legs or in a natural sitting animal pose
+- paws must stay paws
+- paws must be simple animal paws without fingers
 - NEVER create human hands
+- NEVER create human fingers
 - NEVER create human arms
+- NEVER create a humanoid body
 - NEVER humanize the animal
-- keep authentic animal proportions
-- keep authentic muzzle
-- keep authentic fur
+- keep authentic animal muzzle, ears, fur and proportions
+- avoid showing front paws if they become hands
 `;
    
 if (style === "royal") {
@@ -141,6 +144,7 @@ Add:
 - elegant dark background
 
 Photorealistic royal animal portrait.
+The animal must not hold objects.
 `;
 
   } else {
@@ -200,6 +204,7 @@ Add:
 - classical oil painting texture
 
 Luxury renaissance animal portrait.
+The animal must not hold objects.
 `;
 
 } else {
@@ -263,6 +268,7 @@ Add:
 - soft beige and black palette
 
 High-end luxury pet photography.
+The animal must not hold objects.
 `;
 
   } else {
@@ -308,6 +314,7 @@ Add:
 - astronaut suit adapted to the animal
 - transparent helmet
 - cinematic sci-fi atmosphere
+The animal must not hold objects.
 `;
 
   } else {
@@ -352,6 +359,7 @@ Add:
 - mafia outfit adapted to the animal
 - fedora hat
 - noir cinematic lighting
+The animal must not hold objects.
 `;
 
   } else {
@@ -400,6 +408,7 @@ Add:
 - snowy cinematic lighting
 
 Realistic Viking animal portrait.
+The animal must not hold objects.
 `;
 
   } else {
@@ -445,6 +454,7 @@ Add:
 - leather biker jacket
 - motorcycle nearby
 - biker atmosphere
+The animal must not hold objects.
 `;
 
   } else {
@@ -500,6 +510,7 @@ Add:
 - futuristic atmosphere
 
 Epic realistic superhero animal portrait.
+The animal must not hold objects.
 `;
 
   } else {
@@ -547,6 +558,7 @@ Add:
 - stylish accessories
 
 Realistic rockstar animal portrait.
+The animal must not hold objects.
 `;
 
   } else {
@@ -592,6 +604,7 @@ Add:
 - cinematic anime lighting
 - anime rendering
 - animated movie atmosphere
+The animal must not hold objects.
 `;
 
   } else {
@@ -636,6 +649,7 @@ Style:
 Keep the real animal recognizable.
 
 High quality animated movie character.
+The animal must not hold objects.
 `;
 
   } else {

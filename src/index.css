@@ -378,11 +378,45 @@ input {
    TEXTE AFFICHE / MUG
 ========================= */
 
-.productPreview.poster .posterText.top { margin-top: 32px; font-size: 66px; margin-left: 120px; }
-.productPreview.poster .posterText.bottom { margin-top: 320px; font-size: 42px; margin-left: 130px; }
+.productPreview.poster .posterText.top {
+  margin-top: 32px;
+  font-size: 66px;
 
-.productPreview.mug .posterText.top { margin-top: -50px; font-size: 66px; margin-left: 80px; }
-.productPreview.mug .posterText.bottom { margin-top: 320px; font-size: 46px; margin-left: 100px; }
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  width: 80%;
+}
+
+.productPreview.poster .posterText.bottom {
+  margin-top: 320px;
+  font-size: 42px;
+
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  width: 80%;
+}
+
+.productPreview.mug .posterText.top {
+  margin-top: -50px;
+  font-size: 66px;
+
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  width: 70%;
+}
+
+.productPreview.mug .posterText.bottom {
+  margin-top: 320px;
+  font-size: 46px;
+
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  width: 70%;
+}
 
 .productPreview.thomme .posterText,
 .productPreview.thommeblanc .posterText,
@@ -846,6 +880,7 @@ input {
     font-size: 30px;
     letter-spacing: 1px;
     margin-left:45px;
+    position: absolute;
   }
 
   .productPreview.poster .posterText.bottom {
@@ -853,6 +888,7 @@ input {
     font-size: 16px;
     letter-spacing: 1px;
     margin-left:40px;
+    position: absolute;
   }
 
   /* MUG */
