@@ -207,6 +207,7 @@ High-end renaissance masterpiece portrait.
 } else {
 
     prompt = `
+${frenchieRules}
 Create a dramatic renaissance oil painting portrait of the uploaded French bulldog.
 
 The final result must look like a classical museum painting, not a photo.
