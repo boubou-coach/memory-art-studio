@@ -19,7 +19,6 @@ const styles = [
   { id: "golden", name: "🌅 Golden Hour" },
   { id: "cinema", name: "🎬 Cinéma" },
   { id: "bw", name: "🖤 Noir & Blanc" },
-  { id: "vintage", name: "🎞️ Vintage Film" },
   { id: "linkedin", name: "💼 Linkedin Pro" },
   { id: "dreamy", name: "🌸 Dreamy" },
   { id: "cyberpunk", name: "🌆 Cyberpunk" },

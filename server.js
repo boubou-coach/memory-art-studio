@@ -59,9 +59,14 @@ This is a strict photo enhancement.
 Keep all original people exactly recognizable.
 Preserve exact faces, eyes, nose, mouth, hairstyle, age, expression and skin tone.
 
-Do not change facial structure.
-Do not generate different people.
-Do not beautify or redesign faces.
+IMPORTANT:
+- do not age the people
+- do not add wrinkles
+- do not make people look older
+- do not change age
+- do not change facial structure
+- do not generate different people
+- do not beautify or redesign faces
 
 Only improve lighting, colors, background mood and overall photo quality.
 `;
@@ -711,13 +716,25 @@ else if (style === "cinema") {
   prompt = `
 ${humanRules}
 
-Enhance a cinematic movie portrait.
-Works for solo portraits, couples, families and group photos.
+Enhance the uploaded photo into an ultra cinematic Hollywood movie scene.
+
+The people must remain perfectly recognizable.
 
 Add:
-- dramatic movie lighting
-- cinematic color grading
-- realistic film atmosphere
+- blockbuster movie lighting
+- dramatic cinematic atmosphere
+- realistic depth of field
+- anamorphic lens effect
+- premium Hollywood color grading
+- cinematic shadows and highlights
+- subtle atmospheric fog
+- ultra realistic movie look
+- Netflix movie aesthetic
+
+Keep the exact same people, same faces and same age.
+
+Do not redesign faces.
+Do not age people.
 `;
 }
 
@@ -817,6 +834,11 @@ if (category === "animal") {
 if (category === "frenchie") {
   guidanceScale = 0.7;
   strengthValue = 0.02;
+}
+
+if (style === "cinema") {
+  guidanceScale = 1.2;
+  strengthValue = 0.08;
 }
 
 
