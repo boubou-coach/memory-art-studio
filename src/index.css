@@ -408,7 +408,7 @@ input {
 }
 
 .productPreview.poster .posterText.bottom {
-  bottom: 80px;
+  bottom: 20px;
 
   font-size: clamp(22px, 3vw, 40px);
 }
