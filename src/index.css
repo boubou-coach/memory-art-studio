@@ -383,27 +383,28 @@ input {
   left: 50%;
   transform: translateX(-50%);
   text-align: center;
-  width: 80%;
+
+  width: 70%;
+  line-height: 1.05;
+
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 .productPreview.poster .posterText.top {
   top: 40px;
-  font-size: 66px;
+
+  font-size: clamp(28px, 4vw, 58px);
+
+  max-width: 70%;
 }
 
 .productPreview.poster .posterText.bottom {
   bottom: 40px;
-  font-size: 42px;
-}
 
-.productPreview.mug .posterText.top {
-  margin-top: -50px;
-  font-size: 66px;
+  font-size: clamp(24px, 3vw, 42px);
 
-  left: 50%;
-  transform: translateX(-50%);
-  text-align: center;
-  width: 70%;
+  max-width: 70%;
 }
 
 .productPreview.mug .posterText.bottom {
