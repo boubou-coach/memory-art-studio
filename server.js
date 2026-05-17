@@ -174,13 +174,62 @@ Add:
   } else if (category === "animal") {
 
     prompt = `
-Transform into a renaissance museum portrait.
+Transform the uploaded French bulldog into a framed renaissance portrait painting.
+
+The final image must look like:
+- an old museum portrait
+- antique renaissance artwork
+- sepia / warm vintage tones
+- dramatic baroque lighting
+- visible oil painting texture
 
 Add:
-- renaissance clothing
-- oil painting texture
-- dramatic renaissance lighting
-- museum masterpiece atmosphere
+- ornate golden renaissance frame
+- royal renaissance clothing adapted to dog anatomy
+- velvet fabrics
+- aristocratic pose
+- antique museum background
+
+Keep the uploaded French bulldog recognizable:
+- same muzzle
+- same ears
+- same fur colors
+- same expression
+
+IMPORTANT:
+- never create human hands
+- never humanize the dog
+- keep authentic dog anatomy
+
+High-end renaissance masterpiece portrait.
+`;
+
+} else {
+
+    prompt = `
+Create a dramatic renaissance oil painting portrait of the uploaded French bulldog.
+
+The final result must look like a classical museum painting, not a photo.
+
+Style must be:
+- renaissance oil painting
+- visible brush texture
+- baroque dark background
+- royal clothing adapted to dog anatomy
+- golden details
+- dramatic chiaroscuro lighting
+- antique museum atmosphere
+
+Keep the same French bulldog recognizable:
+- same muzzle
+- same ears
+- same fur colors
+- same expression
+
+Never create human hands.
+Never humanize the dog.
+
+Renaissance masterpiece French bulldog portrait.
 `;
   }
 }
