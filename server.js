@@ -54,21 +54,24 @@ The result must look like a stylized version of the uploaded subject, not a diff
 `;
 
 const humanRules = `
-This is a strict photo enhancement.
+STRICT IDENTITY PRESERVATION.
 
-Keep all original people exactly recognizable.
-Preserve exact faces, eyes, nose, mouth, hairstyle, age, expression and skin tone.
+Keep the exact same person.
+Keep the exact same age.
+Keep the exact same face.
+Keep the exact same skin texture.
+Keep the exact same wrinkles level.
+Keep the exact same hairstyle.
 
 IMPORTANT:
-- do not age the people
-- do not add wrinkles
-- do not make people look older
-- do not change age
-- do not change facial structure
-- do not generate different people
-- do not beautify or redesign faces
+- DO NOT make the person older
+- DO NOT add wrinkles
+- DO NOT add realistic aging
+- DO NOT mature the face
+- DO NOT change facial proportions
+- DO NOT generate a different person
 
-Only improve lighting, colors, background mood and overall photo quality.
+The output must look like the SAME uploaded person with improved lighting only.
 `;
 
 const animalRules = `
@@ -822,8 +825,8 @@ let guidanceScale = 1;
 let strengthValue = 0.04;
 
 if (category === "human") {
-  guidanceScale = 0.8;
-  strengthValue = 0.03;
+  guidanceScale = 0.6;
+  strengthValue = 0.015;
 }
    
 if (category === "animal") {
