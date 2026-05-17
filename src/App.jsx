@@ -1,6 +1,7 @@
 import { removeBackground } from "@imgly/background-removal";
 import React, { useState, useEffect } from "react";
 import "./index.css";
+
 const API_URL = import.meta.env.VITE_API_URL;
 const styles = [
   { id: "original", name: "📸 Portrait classique" },
@@ -444,7 +445,7 @@ setTimeout(() => {
     className="posterText top"
     style={{ color: textColor }}
   >
-    {customText}
+    {customText.replace(/ /g, "\n")}
   </div>
 )}
 
@@ -452,7 +453,7 @@ setTimeout(() => {
     className="posterText bottom"
     style={{ color: textColor }}
   >
-    {bottomText}
+    {bottomText.replace(/ /g, "\n")}
   </div>
 )}
 </div>
