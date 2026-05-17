@@ -187,22 +187,26 @@ Add:
   prompt = `
 ${frenchieRules}
 
-Transform into a renaissance French bulldog painting.
+Transform into a majestic renaissance French bulldog painting.
 
 IMPORTANT:
-- keep real dog anatomy
-- keep paws as paws
+- keep the exact same French bulldog
+- preserve muzzle shape
+- preserve bat ears
+- preserve fur colors
 - NEVER create human hands
-- NEVER create human arms
 - NEVER humanize the dog
-- preserve authentic muzzle and ears
 
 Add:
 - renaissance royal clothing adapted to dog anatomy
-- oil painting texture
-- museum atmosphere
+- elegant royal fabric
+- subtle gold accessories
+- dramatic renaissance lighting
+- classical oil painting texture
+- dark museum background
+- baroque atmosphere
 
-Classical renaissance French bulldog painting.
+Realistic renaissance oil painting of a French bulldog.
 `;
   }
 }
@@ -348,26 +352,13 @@ else if (style === "viking") {
     prompt = `
 ${humanRules}
 
-Transform into a realistic Viking portrait.
+Transform into an epic Viking portrait.
 
-IMPORTANT:
-- preserve the exact same person
-- preserve exact facial identity
-- preserve hairstyle
-- preserve gender
-- preserve age
-- preserve expression
-- do NOT create a new character
-- do NOT change facial structure
-- do NOT add a beard if the original person has none
-
-Only change:
-- Viking clothing
+Add:
+- Viking armor
 - fur cape
-- Nordic accessories
-- cinematic snowy atmosphere
-
-Photorealistic Viking movie portrait.
+- Nordic atmosphere
+- snowy cinematic lighting
 `;
 
   } else if (category === "animal") {
