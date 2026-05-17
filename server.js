@@ -136,11 +136,21 @@ ${frenchieRules}
 
 Transform into a majestic royal French bulldog portrait.
 
+IMPORTANT:
+- keep real dog anatomy
+- keep paws as paws
+- NEVER create human hands
+- NEVER create human arms
+- NEVER humanize the dog
+- keep the dog on 4 legs or natural dog posture
+
 Add:
 - royal crown
 - luxury royal cape
 - throne atmosphere
 - cinematic palace lighting
+
+Ultra realistic royal French bulldog portrait.
 `;
   }
 }
@@ -174,17 +184,25 @@ Add:
 - museum atmosphere
 `;
 
-  } else {
-
-    prompt = `
+  prompt = `
 ${frenchieRules}
 
 Transform into a renaissance French bulldog painting.
 
+IMPORTANT:
+- keep real dog anatomy
+- keep paws as paws
+- NEVER create human hands
+- NEVER create human arms
+- NEVER humanize the dog
+- preserve authentic muzzle and ears
+
 Add:
-- renaissance royal clothing
+- renaissance royal clothing adapted to dog anatomy
 - oil painting texture
 - museum atmosphere
+
+Classical renaissance French bulldog painting.
 `;
   }
 }
@@ -330,13 +348,26 @@ else if (style === "viking") {
     prompt = `
 ${humanRules}
 
-Transform into an epic Viking portrait.
+Transform into a realistic Viking portrait.
 
-Add:
-- Viking armor
+IMPORTANT:
+- preserve the exact same person
+- preserve exact facial identity
+- preserve hairstyle
+- preserve gender
+- preserve age
+- preserve expression
+- do NOT create a new character
+- do NOT change facial structure
+- do NOT add a beard if the original person has none
+
+Only change:
+- Viking clothing
 - fur cape
-- Nordic atmosphere
-- snowy cinematic lighting
+- Nordic accessories
+- cinematic snowy atmosphere
+
+Photorealistic Viking movie portrait.
 `;
 
   } else if (category === "animal") {
@@ -421,11 +452,20 @@ ${humanRules}
 
 Transform into an epic superhero portrait.
 
+IMPORTANT:
+- fully replace original clothes
+- remove original shirt completely
+- remove original outfit completely
+- generate a full superhero costume
+- preserve the exact face and identity
+
 Add:
-- superhero suit
+- cinematic superhero suit
 - cape
 - futuristic city atmosphere
-- dramatic cinematic lighting
+- dramatic action lighting
+
+Photorealistic superhero movie portrait.
 `;
 
   } else if (category === "animal") {
