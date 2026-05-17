@@ -210,7 +210,7 @@ Masterpiece renaissance dog portrait.
 `;
   }
 }
-
+ 
 else if (style === "minimal") {
 
   if (category === "human") {
@@ -629,7 +629,7 @@ if (category === "animal") {
 }
 
 if (style === "museum") {
-  guidanceScale = 1.1;
+  guidanceScale = 1.2;
   strengthValue = 0.12;
 }
 
