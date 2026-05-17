@@ -628,10 +628,6 @@ if (category === "frenchie") {
   strengthValue = 0.02;
 }
 
-if (style === "museum") {
-  guidanceScale = 5;
-}
-
 const output = await replicate.run(
   "black-forest-labs/flux-kontext-pro",
   {
