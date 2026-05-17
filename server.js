@@ -109,7 +109,7 @@ IMPORTANT:
 - keep authentic muzzle
 - keep authentic fur
 `;
-
+   
 if (style === "royal") {
 
   if (category === "human") {
