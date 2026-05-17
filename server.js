@@ -98,6 +98,18 @@ No frame.
 No mockup.
 `;
 
+const strictAnimalRules = `
+IMPORTANT:
+- keep real animal anatomy
+- keep paws as paws
+- NEVER create human hands
+- NEVER create human arms
+- NEVER humanize the animal
+- keep authentic animal proportions
+- keep authentic muzzle
+- keep authentic fur
+`;
+
 if (style === "royal") {
 
   if (category === "human") {
