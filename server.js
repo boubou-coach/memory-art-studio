@@ -118,15 +118,17 @@ Add:
   } else if (category === "animal") {
 
     prompt = `
-${animalRules}
+${strictAnimalRules}
 
-Transform into a majestic royal animal portrait.
+Transform the uploaded animal into a royal portrait.
 
 Add:
 - royal crown
-- luxury cape
-- palace lighting
-- baroque atmosphere
+- luxury royal outfit adapted to animal anatomy
+- cinematic palace lighting
+- elegant dark background
+
+Photorealistic royal animal portrait.
 `;
 
   } else {
@@ -174,34 +176,18 @@ Add:
   } else if (category === "animal") {
 
     prompt = `
-Transform the uploaded French bulldog into a framed renaissance portrait painting.
+${strictAnimalRules}
 
-The final image must look like:
-- an old museum portrait
-- antique renaissance artwork
-- sepia / warm vintage tones
-- dramatic baroque lighting
-- visible oil painting texture
+Transform the uploaded animal into a renaissance oil painting portrait.
 
 Add:
-- ornate golden renaissance frame
-- royal renaissance clothing adapted to dog anatomy
-- velvet fabrics
-- aristocratic pose
-- antique museum background
+- renaissance outfit adapted to animal anatomy
+- museum frame
+- sepia tones
+- dramatic renaissance lighting
+- classical oil painting texture
 
-Keep the uploaded French bulldog recognizable:
-- same muzzle
-- same ears
-- same fur colors
-- same expression
-
-IMPORTANT:
-- never create human hands
-- never humanize the dog
-- keep authentic dog anatomy
-
-High-end renaissance masterpiece portrait.
+Luxury renaissance animal portrait.
 `;
 
 } else {
@@ -254,14 +240,17 @@ Add:
   } else if (category === "animal") {
 
     prompt = `
-${animalRules}
+${strictAnimalRules}
 
-Transform into a luxury minimalist pet portrait.
+Create a luxury minimalist animal portrait.
 
 Add:
-- luxury lighting
-- editorial photography style
-- beige and gold atmosphere
+- luxury neutral background
+- premium editorial lighting
+- elegant luxury atmosphere
+- soft beige and black palette
+
+High-end luxury pet photography.
 `;
 
   } else {
@@ -388,14 +377,17 @@ Add:
   } else if (category === "animal") {
 
     prompt = `
-${animalRules}
+${strictAnimalRules}
 
-Transform into a Viking animal portrait.
+Transform the uploaded animal into a Viking portrait.
 
 Add:
+- Viking armor adapted to animal anatomy
 - fur cape
-- leather armor
-- Nordic atmosphere
+- nordic atmosphere
+- snowy cinematic lighting
+
+Realistic Viking animal portrait.
 `;
 
   } else {
@@ -486,14 +478,16 @@ Photorealistic superhero movie portrait.
   } else if (category === "animal") {
 
     prompt = `
-${animalRules}
+${strictAnimalRules}
 
-Transform into a superhero animal portrait.
+Transform the uploaded animal into a superhero.
 
 Add:
-- superhero costume adapted to the animal
-- heroic atmosphere
-- cinematic action lighting
+- superhero costume adapted to animal anatomy
+- cinematic superhero lighting
+- futuristic atmosphere
+
+Epic realistic superhero animal portrait.
 `;
 
   } else {
@@ -530,14 +524,17 @@ Add:
   } else if (category === "animal") {
 
     prompt = `
-${animalRules}
+${strictAnimalRules}
 
-Transform into a rockstar animal portrait.
+Transform the uploaded animal into a rockstar portrait.
 
 Add:
-- leather outfit
-- microphone
-- concert lighting
+- rockstar outfit adapted to animal anatomy
+- stage lighting
+- concert atmosphere
+- stylish accessories
+
+Realistic rockstar animal portrait.
 `;
 
   } else {
@@ -613,9 +610,20 @@ Transform into a cute Pixar-style cartoon portrait.
   } else if (category === "animal") {
 
     prompt = `
-${animalRules}
+${strictAnimalRules}
 
-Transform into a cute cartoon animal.
+Transform the uploaded animal into a premium 3D animated character.
+
+Style:
+- Pixar style
+- Disney style
+- clean 3D render
+- expressive eyes
+- soft cinematic lighting
+
+Keep the real animal recognizable.
+
+High quality animated movie character.
 `;
 
   } else {
