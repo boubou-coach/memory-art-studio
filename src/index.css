@@ -378,24 +378,22 @@ input {
    TEXTE AFFICHE / MUG
 ========================= */
 
-.productPreview.poster .posterText.top {
-  margin-top: 32px;
-  font-size: 66px;
-
+.productPreview.poster .posterText {
+  position: absolute;
   left: 50%;
   transform: translateX(-50%);
   text-align: center;
   width: 80%;
 }
 
-.productPreview.poster .posterText.bottom {
-  margin-top: 320px;
-  font-size: 42px;
+.productPreview.poster .posterText.top {
+  top: 40px;
+  font-size: 66px;
+}
 
-  left: 50%;
-  transform: translateX(-50%);
-  text-align: center;
-  width: 80%;
+.productPreview.poster .posterText.bottom {
+  bottom: 40px;
+  font-size: 42px;
 }
 
 .productPreview.mug .posterText.top {
