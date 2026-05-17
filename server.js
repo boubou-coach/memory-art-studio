@@ -56,11 +56,15 @@ The result must look like a stylized version of the uploaded subject, not a diff
 const humanRules = `
 This is a strict image-to-image edit.
 
-Keep the exact same person.
-Preserve identity, face, hairstyle, expression and proportions.
+Keep all people in the uploaded photo recognizable.
+Preserve each face, hairstyle, expression, age, gender and proportions.
 
-Do not generate a new person.
-Only change clothing, accessories, lighting and atmosphere.
+Do not remove anyone.
+Do not add new people.
+Do not merge faces.
+Do not change relationships or body positions.
+
+Only change lighting, clothing style, accessories and atmosphere.
 
 Transparent PNG background.
 No text.
@@ -121,6 +125,7 @@ if (style === "royal") {
 ${humanRules}
 
 Transform into a majestic royal portrait.
+Works for solo portraits, couples, families and group photos.
 
 Add:
 - royal crown
@@ -128,6 +133,7 @@ Add:
 - gold jewelry
 - cinematic palace lighting
 - baroque atmosphere
+
 `;
 
   } else if (category === "animal") {
@@ -188,6 +194,7 @@ else if (style === "museum") {
 ${humanRules}
 
 Transform into a renaissance museum portrait.
+Works for solo portraits, couples, families and group photos.
 
 Add:
 - renaissance clothing
@@ -253,6 +260,7 @@ else if (style === "minimal") {
 ${humanRules}
 
 Transform into a luxury minimal fashion portrait.
+Works for solo portraits, couples, families and group photos.
 
 Add:
 - luxury designer outfit
@@ -302,6 +310,7 @@ else if (style === "astronaut") {
 ${humanRules}
 
 Transform into a futuristic astronaut portrait.
+Works for solo portraits, couples, families and group photos.
 
 Add:
 - astronaut suit
@@ -347,6 +356,7 @@ else if (style === "gangster") {
 ${humanRules}
 
 Transform into a cinematic gangster portrait.
+Works for solo portraits, couples, families and group photos.
 
 Add:
 - elegant black mafia outfit
@@ -393,6 +403,7 @@ else if (style === "viking") {
 ${humanRules}
 
 Transform into an epic Viking portrait.
+Works for solo portraits, couples, families and group photos.
 
 Add:
 - Viking armor
@@ -442,6 +453,7 @@ else if (style === "biker") {
 ${humanRules}
 
 Transform into a cinematic biker portrait.
+Works for solo portraits, couples, families and group photos.
 
 Add:
 - leather biker jacket
@@ -487,6 +499,7 @@ else if (style === "superhero") {
 ${humanRules}
 
 Transform into an epic superhero portrait.
+Works for solo portraits, couples, families and group photos.
 
 IMPORTANT:
 - fully replace original clothes
@@ -543,6 +556,7 @@ else if (style === "rockstar") {
 ${humanRules}
 
 Transform into a cinematic rockstar portrait.
+Works for solo portraits, couples, families and group photos.
 
 Add:
 - leather rockstar outfit
@@ -592,6 +606,7 @@ else if (style === "anime") {
 ${humanRules}
 
 Transform into a realistic Japanese anime portrait.
+Works for solo portraits, couples, families and group photos.
 
 Style:
 - cinematic anime
@@ -637,6 +652,7 @@ else if (style === "cartoon") {
 ${humanRules}
 
 Transform into a cute Pixar-style cartoon portrait.
+Works for solo portraits, couples, families and group photos.
 `;
 
   } else if (category === "animal") {
@@ -673,6 +689,7 @@ else if (style === "studio") {
 ${humanRules}
 
 Transform into a premium professional studio portrait.
+Works for solo portraits, couples, families and group photos.
 
 Add:
 - cinematic studio lighting
@@ -687,6 +704,7 @@ else if (style === "golden") {
 ${humanRules}
 
 Transform into a golden hour portrait.
+Works for solo portraits, couples, families and group photos.
 
 Add:
 - warm sunset lighting
@@ -700,6 +718,7 @@ else if (style === "cinema") {
 ${humanRules}
 
 Transform into a cinematic movie portrait.
+Works for solo portraits, couples, families and group photos.
 
 Add:
 - dramatic movie lighting
@@ -713,6 +732,7 @@ else if (style === "bw") {
 ${humanRules}
 
 Transform into a luxury black and white portrait.
+Works for solo portraits, couples, families and group photos.
 
 Add:
 - elegant monochrome look
@@ -726,6 +746,7 @@ else if (style === "vintage") {
 ${humanRules}
 
 Transform into a vintage film portrait.
+Works for solo portraits, couples, families and group photos.
 
 Add:
 - analog film grain
@@ -739,6 +760,7 @@ else if (style === "linkedin") {
 ${humanRules}
 
 Transform into a professional Linkedin portrait.
+Works for solo portraits, couples, families and group photos.
 
 Add:
 - clean studio background
@@ -752,6 +774,7 @@ else if (style === "dreamy") {
 ${humanRules}
 
 Transform into a soft dreamy aesthetic portrait.
+Works for solo portraits, couples, families and group photos.
 
 Add:
 - pastel lighting
@@ -765,6 +788,7 @@ else if (style === "cyberpunk") {
 ${humanRules}
 
 Transform into a realistic cyberpunk portrait.
+Works for solo portraits, couples, families and group photos.
 
 Add:
 - neon lighting
