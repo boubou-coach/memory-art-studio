@@ -402,13 +402,13 @@ input {
 }
 
 .productPreview.poster .posterText.top {
-  top: 35px;
+  top: 25px;
 
   font-size: clamp(28px, 4vw, 58px);
 }
 
 .productPreview.poster .posterText.bottom {
-  bottom: 35px;
+  bottom: 60px;
 
   font-size: clamp(22px, 3vw, 40px);
 }
