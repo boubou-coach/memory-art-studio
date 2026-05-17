@@ -819,10 +819,6 @@ if (category === "frenchie") {
   strengthValue = 0.02;
 }
 
-if (category === "human") {
-  guidanceScale = 0.7;
-  strengthValue = 0.02;
-}
 
 const output = await replicate.run(
   "black-forest-labs/flux-kontext-pro",
