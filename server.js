@@ -826,6 +826,114 @@ Add:
 Do not redesign the face.
 `;
 }
+
+else if (style === "Sunset Glow") {
+  prompt = `
+Keep the original face identical.
+
+Create a beautiful sunset portrait.
+
+Add:
+- warm golden hour lighting
+- orange and pink sunset glow
+- soft cinematic atmosphere
+- natural skin tones
+- dreamy warm light
+
+Do not alter the face.
+Do not age the person.
+`;
+}
+
+else if (style === "Netflix") {
+  prompt = `
+Keep the original face EXACTLY unchanged.
+
+Create a modern Netflix series portrait.
+
+Add:
+- cinematic lighting
+- soft movie shadows
+- dramatic depth
+- premium streaming-series aesthetic
+- realistic movie color grading
+- shallow depth of field
+
+Do not redesign the face.
+Do not age the person.
+`;
+}
+
+else if (style === "Neon Mood") {
+  prompt = `
+Keep the original face unchanged.
+
+Create a neon mood portrait.
+
+Add:
+- pink and blue neon lighting
+- moody atmosphere
+- modern nightlife ambiance
+- realistic neon reflections
+- dark premium background
+
+Keep facial identity intact.
+`;
+}
+
+else if (style === "Soft Dream") {
+  prompt = `
+Keep the original face identical.
+
+Create a soft dreamy portrait.
+
+Add:
+- soft pastel lighting
+- dreamy glow
+- airy atmosphere
+- subtle light particles
+- cinematic softness
+
+Do not alter facial structure.
+Do not age the person.
+`;
+}
+
+else if (style === "Fashion Campaign") {
+  prompt = `
+Keep the original face EXACTLY unchanged.
+
+Create a high-end fashion campaign portrait.
+
+Add:
+- Vogue-style lighting
+- luxury fashion atmosphere
+- premium studio shadows
+- clean editorial background
+- professional photographer aesthetic
+
+Do not modify identity.
+Do not age the person.
+`;
+}
+
+else if (style === "Dark Luxury") {
+  prompt = `
+Keep the original face unchanged.
+
+Create a dark luxury portrait.
+
+Add:
+- black luxury background
+- moody cinematic lighting
+- gold reflections
+- elegant shadows
+- premium luxury atmosphere
+
+Do not redesign the face.
+`;
+}
+
 if (!prompt) {
   prompt = `
 Transform the uploaded subject into a premium portrait.
@@ -961,6 +1069,10 @@ app.post("/api/remove-background", async (req, res) => {
   }
 });
 
+
+
 app.listen(3001, "0.0.0.0", () => {
   console.log("API lancée sur http://localhost:3001");
 });
+
+
