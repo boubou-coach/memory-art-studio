@@ -1051,7 +1051,7 @@ input {
 }
 
 .floatingOrderBtn {
-  margin: -20px auto 10px;
+  margin: 80px auto 10px;
 
   display: block;
 
@@ -1073,7 +1073,7 @@ input {
 
   transition: 0.2s;
 
-  transform: translateX(-40px);
+  transform: translateX(-120px);
 }
 
 .floatingOrderBtn:hover {
