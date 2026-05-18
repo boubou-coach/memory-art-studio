@@ -289,6 +289,44 @@ setTimeout(() => {
         ].includes(style.id);
       }
 
+      if (selectedCategory === "animal") {
+  return [
+    "original",
+    "royal",
+    "museum",
+    "astronaut",
+    "gangster",
+    "anime",
+    "viking",
+    "biker",
+    "gangster",
+    "superheros",
+    "cartoon",
+    "pilote",
+    "millionnaire",
+    "dj",
+  ].includes(style.id);
+}
+
+if (selectedCategory === "frenchie") {
+  return [
+    "original",
+    "royal",
+    "museum",
+    "astronaut",
+    "gangster",
+    "anime",
+    "viking",
+    "biker",
+    "gangster",
+    "superheros",
+    "cartoon",
+    "pilote",
+    "millionnaire",
+    "dj",
+  ].includes(style.id);
+}
+
       return true;
     })
     .map((style) => (
