@@ -279,12 +279,12 @@ setTimeout(() => {
       if (selectedCategory === "human") {
         return [
           "original",
-          "Sunset Glow",
-          "Netflix",
-          "Neon Mood",
-          "Soft Dream",
-          "Fashion Campaign",
-          "Dark Luxury",
+          "sunset",
+          "netflix",
+          "neon",
+          "dream",
+          "fashion",
+          "dark",
           "Coastal Summer",
           "cyberpunk",
           "royal",
