@@ -124,17 +124,26 @@ if (style === "royal") {
   if (category === "human") {
 
     prompt = `
-Keep the original face completely unchanged.
+IMPORTANT:
+Keep the original uploaded face EXACTLY identical.
+
+Do not modify:
+- eyes
+- nose
+- mouth
+- smile
+- facial proportions
+- age
+- skin texture
+- hairstyle
 
 Only add:
-- elegant royal clothes
-- crown
-- luxury royal atmosphere
-- subtle royal background
+- royal crown
+- royal clothes
+- elegant royal background
 
-Do not modify the face.
-Do not change age.
-Do not redesign the person.
+The face must remain unchanged.
+Only the outfit and environment can change.
 `;
 
   } else if (category === "animal") {
@@ -816,8 +825,8 @@ let guidanceScale = 1;
 let strengthValue = 0.04;
 
 if (category === "human") {
-  guidanceScale = 0.15;
-  strengthValue = 0.005;
+  guidanceScale = 0.12;
+  strengthValue = 0.003;
 }
    
 if (category === "animal") {
