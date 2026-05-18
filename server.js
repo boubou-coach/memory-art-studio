@@ -127,13 +127,14 @@ if (style === "royal") {
 Keep the original face completely unchanged.
 
 Only add:
-- royal clothes
+- elegant royal clothes
 - crown
-- royal background
-- cinematic lighting
+- luxury royal atmosphere
+- subtle royal background
 
-Do not modify facial features.
-Do not regenerate the face.
+Do not modify the face.
+Do not change age.
+Do not redesign the person.
 `;
 
   } else if (category === "animal") {
@@ -815,8 +816,8 @@ let guidanceScale = 1;
 let strengthValue = 0.04;
 
 if (category === "human") {
-  guidanceScale = 0.25;
-strengthValue = 0.01;
+  guidanceScale = 0.15;
+  strengthValue = 0.005;
 }
    
 if (category === "animal") {
