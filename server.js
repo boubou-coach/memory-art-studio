@@ -574,7 +574,7 @@ else if (style === "rockstar") {
     prompt = `
 ${humanRules}
 
-Enhance a cinematic rockstar portrait.
+Transform this person into a rockstar person.
 Works for solo portraits, couples, families and group photos.
 
 Add:
@@ -718,11 +718,9 @@ ${frenchieRules}
 Transform into a premium 3D cartoon French bulldog.
 `;
   }
-}
 
-else if (style === "actrice") {
 
-  if (category === "human") {
+} else if (style === "secretagent") {
 
     prompt = `
 Transform this person into premium cartoon illustration style.
@@ -737,11 +735,9 @@ Keep the same hairstyle and expression recognizable.
 `;
 
 }
-}
+
 
 else if (style === "dj") {
-
-  if (category === "human") {
 
     prompt = `
 Keep the original face unchanged.
@@ -758,12 +754,10 @@ Add:
 Keep facial identity intact.
 `;
 
-}
+
 }
 
 else if (style === "pilote") {
-
-  if (category === "human") {
 
     prompt = `
 Keep the original face EXACTLY unchanged.
@@ -780,11 +774,8 @@ Do not modify the face.
 `;
 
 }
-}
 
 else if (style === "une") {
-
-  if (category === "human") {
 
     prompt = `
 Keep the original face EXACTLY unchanged.
@@ -802,11 +793,8 @@ The face must remain identical.
 `;
 
 }
-}
 
 else if (style === "millionnaire") {
-
-  if (category === "human") {
 
     prompt = `
 Keep the original face unchanged.
@@ -823,12 +811,10 @@ Add:
 Keep identity untouched.
 `;
 
-}
+
 }
 
 else if (style === "agent") {
-
-  if (category === "human") {
 
     prompt = `
 Keep the original face identical.
@@ -845,12 +831,10 @@ Add:
 Do not redesign the face.
 `;
 
-}
+
 }
 
 else if (style === "vampire") {
-
-  if (category === "human") {
 
     prompt = `
 Keep the original face unchanged.
@@ -867,7 +851,6 @@ Add:
 Keep identity untouched.
 `;
 
-}
 }
 
 let guidanceScale = 1;
