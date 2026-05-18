@@ -427,87 +427,80 @@ if (selectedCategory === "frenchie") {
           </div>
                 ) : (
                   
-          <div className="previewArea">
-  <div className={`productPreview ${selectedProduct}`}>
+          <div className={`productPreview ${selectedProduct}`}>
+  <img
+    className="mockupBase"
+    src={
+  selectedProduct === "mug"
+    ? "/mockups/mug.png"
+    : selectedProduct === "thomme"
+    ? "/mockups/thomme.png"
+    : selectedProduct === "thommeblanc"
+    ? "/mockups/thommeblanc.png"
+    : selectedProduct === "tfemme"
+    ? "/mockups/tfemme.png"
+    : selectedProduct === "tfemmeblanc"
+    ? "/mockups/tfemmeblanc.png"
+    : selectedProduct === "tfemmerose"
+    ? "/mockups/tfemmerose.png"
+    : selectedProduct === "casquette"
+    ? "/mockups/casquette.png"
+    : selectedProduct === "totebag"
+    ? "/mockups/totebag.png"
+    : "/mockups/affiche.png"
+}
+    alt=""
+  />
+
+  <div className="mockupDesign">
+    <div className={`poster ${selectedStyle}`}>
+  {aiImage ? (
     <img
-      className="mockupBase"
-      src={
-        selectedProduct === "mug"
-          ? "/mockups/mug.png"
-          : selectedProduct === "thomme"
-          ? "/mockups/thomme.png"
-          : selectedProduct === "thommeblanc"
-          ? "/mockups/thommeblanc.png"
-          : selectedProduct === "tfemme"
-          ? "/mockups/tfemme.png"
-          : selectedProduct === "tfemmeblanc"
-          ? "/mockups/tfemmeblanc.png"
-          : selectedProduct === "tfemmerose"
-          ? "/mockups/tfemmerose.png"
-          : selectedProduct === "casquette"
-          ? "/mockups/casquette.png"
-          : selectedProduct === "totebag"
-          ? "/mockups/totebag.png"
-          : "/mockups/affiche.png"
-      }
-      alt=""
-    />
+  className="finalAIImage"
+  src={aiImage}
+  alt=""
+  style={{
+    borderColor: circleColor,
+  }}
+/>
+  ) : image ? (
+    <img
+  className="dogCutout"
+  src={image}
+  alt=""
+  style={{
+    borderColor: circleColor,
+  }}
+/>
+  ) : null}
 
-    <div className="mockupDesign">
-      <div className={`poster ${selectedStyle}`}>
-        {aiImage ? (
-          <img
-            className="finalAIImage"
-            src={aiImage}
-            alt=""
-            style={{ borderColor: circleColor }}
-          />
-        ) : image ? (
-          <img
-            className="dogCutout"
-            src={image}
-            alt=""
-            style={{ borderColor: circleColor }}
-          />
-        ) : null}
-
-        {(selectedProduct === "poster" || selectedProduct === "mug") &&
-          customText && (
-            <div className="posterText top" style={{ color: textColor }}>
-              {customText.replace(/ /g, "\n")}
-            </div>
-          )}
-
-        {(selectedProduct === "poster" || selectedProduct === "mug") &&
-          bottomText && (
-            <div className="posterText bottom" style={{ color: textColor }}>
-              {bottomText.replace(/ /g, "\n")}
-            </div>
-          )}
-      </div>
-    </div>
+{(selectedProduct === "poster" || selectedProduct === "mug") && customText && (  <div
+    className="posterText top"
+    style={{ color: textColor }}
+  >
+    {customText.replace(/ /g, "\n")}
   </div>
+)}
 
-  {generated && !showOrderForm && (
-    <div className="orderBox">
-      <h3>Commander cette création</h3>
-
-      <p>
-        Produit choisi :{" "}
-        <strong>{products.find((p) => p.id === selectedProduct)?.name}</strong>
-      </p>
-
-      <p>
-        Style choisi :{" "}
-        <strong>{styles.find((s) => s.id === selectedStyle)?.name}</strong>
-      </p>
-
-      <button className="orderBtn" onClick={() => setShowOrderForm(true)}>
-        Commander ce visuel
-      </button>
-    </div>
-  )}
+{(selectedProduct === "poster" || selectedProduct === "mug") && bottomText && (  <div
+    className="posterText bottom"
+    style={{ color: textColor }}
+  >
+    {bottomText.replace(/ /g, "\n")}
+  </div>
+)}
 </div>
+  </div>
+</div>
+)}
+
+{generated && !showOrderForm && (
+  <button
+    className="floatingOrderBtn"
+    onClick={() => setShowOrderForm(true)}
+  >
+    ✨ Commander cette création
+  </button>
 )}
 {showOrderForm && (
   <div className="modalOverlay">
