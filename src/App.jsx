@@ -16,13 +16,14 @@ const styles = [
   { id: "superhero", name: "⚡ Super-héros" },
   { id: "cartoon", name: "🎨 Cartoon" },
   { id: "rockstar", name: "🎸 Rockstar" },
-  { id: "studio", name: "📸 Studio Premium" },
-  { id: "golden", name: "🌅 Golden Hour" },
+  { id: "Luxury Studio", name: "📸 Luxury Studio" },
+  { id: "netflix", name: "🌅 Netflix" },
   { id: "cinema", name: "🎬 Cinéma" },
-  { id: "bw", name: "🖤 Noir & Blanc" },
-  { id: "linkedin", name: "💼 Linkedin Pro" },
-  { id: "dreamy", name: "🌸 Dreamy" },
-  { id: "cyberpunk", name: "🌆 Cyberpunk" },
+  { id: "sunset glow", name: "Sunset Glow" },
+  { id: "neon mood", name: "Neon mood" },
+  { id: "soft dream", name: "Soft Dream" },
+  { id: "Fashion Campaign", name: "Fashion Campaign" },
+  { id: "Dark Luxury", name: "Dark Luxury" },
 ];
 
 const products = [
@@ -284,13 +285,11 @@ setTimeout(() => {
           "Soft Dream",
           "Fashion Campaign",
           "Dark Luxury",
-          "dreamy",
+          "Coastal Summer",
           "cyberpunk",
           "royal",
-          "minimal",
           "anime",
           "cartoon",
-          "astronaut",
           "superhero",
         ].includes(style.id);
       }
