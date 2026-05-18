@@ -1040,3 +1040,12 @@ input {
   font-weight: 900;
   cursor: pointer;
 }
+
+.stepTitle {
+  margin: 22px 0 10px;
+  color: #ffb83d;
+  font-size: 15px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+}

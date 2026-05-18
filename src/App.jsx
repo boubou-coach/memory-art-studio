@@ -248,13 +248,13 @@ setTimeout(() => {
 >
   📲 Installer l’application
 </button>
-
+<h3 className="stepTitle">1 — Choisis ta photo</h3>
         <label className="uploadBox">
   {image ? <img src={image} alt="upload" /> : <span>Importer une photo</span>}
   <input type="file" accept="image/*" onChange={handleImage} />
 </label>
 
-
+<h3 className="stepTitle">2 — Choisis le type de photo</h3>
        <div className="categoryGrid">
   {categories.map((category) => (
     <button
@@ -270,7 +270,7 @@ setTimeout(() => {
     </button>
   ))}
 </div>
-
+<h3 className="stepTitle">3 — Choisis ton style</h3>
         <div className="styleGrid">
   {styles
     .filter((style) => {
@@ -343,6 +343,8 @@ if (selectedCategory === "frenchie") {
       </button>
     ))}
 </div>
+
+    <h3 className="stepTitle">5 — Personnalise ton produit</h3>
 
 {(selectedProduct === "poster" || selectedProduct === "mug") && (
   <div className="textOptions">
