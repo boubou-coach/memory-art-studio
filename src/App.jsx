@@ -16,14 +16,14 @@ const styles = [
   { id: "superhero", name: "⚡ Super-héros" },
   { id: "cartoon", name: "🎨 Cartoon" },
   { id: "rockstar", name: "🎸 Rockstar" },
-  { id: "Luxury Studio", name: "📸 Luxury Studio" },
+  { id: "luxury", name: "📸 Luxury Studio" },
   { id: "netflix", name: "🌅 Netflix" },
   { id: "cinema", name: "🎬 Cinéma" },
-  { id: "sunset glow", name: "Sunset Glow" },
-  { id: "neon mood", name: "Neon mood" },
-  { id: "soft dream", name: "Soft Dream" },
-  { id: "Fashion Campaign", name: "Fashion Campaign" },
-  { id: "Dark Luxury", name: "Dark Luxury" },
+  { id: "sunset", name: "Sunset Glow" },
+  { id: "neon", name: "Neon mood" },
+  { id: "dream", name: "Soft Dream" },
+  { id: "fashion", name: "Fashion Campaign" },
+  { id: "dark", name: "Dark Luxury" },
 ];
 
 const products = [

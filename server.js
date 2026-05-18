@@ -827,7 +827,7 @@ Do not redesign the face.
 `;
 }
 
-else if (style === "Sunset Glow") {
+else if (style === "sunset") {
   prompt = `
 Keep the original face identical.
 
@@ -845,7 +845,7 @@ Do not age the person.
 `;
 }
 
-else if (style === "Netflix") {
+else if (style === "netflic") {
   prompt = `
 Keep the original face EXACTLY unchanged.
 
@@ -864,7 +864,7 @@ Do not age the person.
 `;
 }
 
-else if (style === "Neon Mood") {
+else if (style === "neon") {
   prompt = `
 Keep the original face unchanged.
 
@@ -881,7 +881,7 @@ Keep facial identity intact.
 `;
 }
 
-else if (style === "Soft Dream") {
+else if (style === "dream") {
   prompt = `
 Keep the original face identical.
 
@@ -899,7 +899,7 @@ Do not age the person.
 `;
 }
 
-else if (style === "Fashion Campaign") {
+else if (style === "fashion") {
   prompt = `
 Keep the original face EXACTLY unchanged.
 
@@ -917,7 +917,7 @@ Do not age the person.
 `;
 }
 
-else if (style === "Dark Luxury") {
+else if (style === "dark") {
   prompt = `
 Keep the original face unchanged.
 
