@@ -349,19 +349,7 @@ if (selectedCategory === "frenchie") {
 {(selectedProduct === "poster" || selectedProduct === "mug") && (
   <div className="textOptions">
 
-  
   <label className="optionLabel">
-  Sélectionnez la couleur du cercle
-</label>
-
-<input
-  className="colorPicker"
-  type="color"
-  value={circleColor}
-  onChange={(e) => setCircleColor(e.target.value)}
-/>
-
-<label className="optionLabel">
     Choisissez le texte de votre produit
   </label>
 
@@ -390,6 +378,16 @@ if (selectedCategory === "frenchie") {
       onChange={(e) => setTextColor(e.target.value)}
     />
 
+  <label className="optionLabel">
+  Sélectionnez la couleur du cercle
+</label>
+
+<input
+  className="colorPicker"
+  type="color"
+  value={circleColor}
+  onChange={(e) => setCircleColor(e.target.value)}
+/>
   </div>
 )}
         <button className="generateBtn" onClick={() => setGenerated(true)}>
