@@ -1053,11 +1053,11 @@ input {
 .floatingOrderBtn {
   position: relative;
 
-  top: -40px;
-  left: -40px;
+  top: -140px;
+  left: -120px;
 
   display: block;
-
+  
   background: linear-gradient(135deg, #ffcc70, #ff9f43);
 
   color: #111;
