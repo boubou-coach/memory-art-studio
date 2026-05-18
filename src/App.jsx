@@ -499,7 +499,7 @@ if (selectedCategory === "frenchie") {
     className="floatingOrderBtn"
     onClick={() => setShowOrderForm(true)}
   >
-    ✨ Commander !
+    ✨ Passer commande
   </button>
 )}
 {showOrderForm && (
