@@ -15,12 +15,12 @@ const styles = [
   { id: "superhero", name: "⚡ Super-héros" },
   { id: "cartoon", name: "🎨 Cartoon" },
   { id: "rockstar", name: "🎸 Rockstar" },
-    { id: "pilote", name: "🎸 Pilote" },
-        { id: "une", name: "🎸 Une" },
-        { id: "millionnaire", name: "🎸 Millionnaire" },
-        { id: "agent", name: "🎸 Agent Secret" },
-        { id: "dj", name: "🎸 DJ" },
-        { id: "vampire", name: "🎸 Vampire" },
+    { id: "pilote", name: "🌸 Pilote" },
+        { id: "une", name: "🖼️ Une" },
+        { id: "millionnaire", name: "👑 Millionnaire" },
+        { id: "agent", name: "🏍️ Agent Secret" },
+        { id: "dj", name: "🎨 DJ" },
+        { id: "vampire", name: "📸 Vampire" },
 
 ];
 
