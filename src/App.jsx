@@ -7,7 +7,6 @@ const styles = [
   { id: "original", name: "📸 Portrait classique" },
   { id: "royal", name: "👑 Royal" },
   { id: "museum", name: "🖼️ Musée / Renaissance" },
-  { id: "minimal", name: "✨ Minimal luxe" },
   { id: "astronaut", name: "🚀 Astronaute" },
   { id: "gangster", name: "🕶️ Élégant" },
   { id: "anime", name: "🌸 Anime japonais" },
@@ -16,14 +15,14 @@ const styles = [
   { id: "superhero", name: "⚡ Super-héros" },
   { id: "cartoon", name: "🎨 Cartoon" },
   { id: "rockstar", name: "🎸 Rockstar" },
-  { id: "luxury", name: "📸 Luxury Studio" },
-  { id: "netflix", name: "🌅 Netflix" },
-  { id: "cinema", name: "🎬 Cinéma" },
-  { id: "sunset", name: "Sunset Glow" },
-  { id: "neon", name: "Neon mood" },
-  { id: "dream", name: "Soft Dream" },
-  { id: "fashion", name: "Fashion Campaign" },
-  { id: "dark", name: "Dark Luxury" },
+  { id: "actrice", name: "🎸 Acteur" },
+    { id: "pilote", name: "🎸 Pilote" },
+        { id: "une", name: "🎸 Une" },
+        { id: "millionnaire", name: "🎸 Millionnaire" },
+        { id: "agent", name: "🎸 Agent Secret" },
+        { id: "dj", name: "🎸 DJ" },
+        { id: "vampire", name: "🎸 Vampire" },
+
 ];
 
 const products = [
@@ -279,18 +278,17 @@ setTimeout(() => {
       if (selectedCategory === "human") {
         return [
           "original",
-          "sunset",
-          "netflix",
-          "neon",
-          "dream",
-          "fashion",
-          "dark",
-          "Coastal Summer",
-          "cyberpunk",
-          "royal",
           "anime",
           "cartoon",
           "superhero",
+          "rockstar",
+          "actrice",
+          "pilote",
+          "une",
+          "millionnaire",
+          "agent",
+          "dj",
+          "vampire"
         ].includes(style.id);
       }
 

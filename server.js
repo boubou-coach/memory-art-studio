@@ -719,238 +719,163 @@ Transform into a premium 3D cartoon French bulldog.
 `;
   }
 }
-else if (style === "studio") {
-  prompt = `
+
+else if (style === "actrice") {
+
+  if (category === "human") {
+
+    prompt = `
+Transform this person into premium cartoon illustration style.
+
+Add:
+- clean cartoon rendering
+- soft vibrant colors
+- Pixar-inspired atmosphere
+- smooth illustration details
+
+Keep the same hairstyle and expression recognizable.
+`;
+
+}
+}
+
+else if (style === "dj") {
+
+  if (category === "human") {
+
+    prompt = `
 Keep the original face unchanged.
 
-Create a professional premium studio photoshoot.
+Create a luxury festival DJ portrait.
 
 Add:
-- dramatic softbox lighting
-- professional photography shadows
-- dark studio background
-- premium skin lighting
-- sharp professional portrait look
-
-Do not change the person identity.
-`;
-}
-
-else if (style === "golden") {
-  prompt = `
-Enhance this photo with warm golden light.
-
-Add:
-- sunset warmth
-- soft natural glow
-- cinematic warm colors
-
-Keep the exact same faces and identity.
-`;
-}
-
-else if (style === "cinema") {
-  prompt = `
-Keep the original face identical.
-
-Create cinematic movie atmosphere.
-
-Add:
-- movie lighting
-- cinematic color grading
-- shallow depth of field
-- dramatic background blur
-- hollywood movie ambiance
-
-Do not redesign the face.
-`;
-}
-
-else if (style === "bw") {
-  prompt = `
-Convert this photo into elegant black and white photography.
-
-Add:
-- luxury monochrome tones
-- soft cinematic contrast
-
-Keep the exact same people and faces.
-`;
-}
-
-else if (style === "linkedin") {
-  prompt = `
-Keep the original face unchanged.
-
-Create a premium Linkedin business portrait.
-
-Add:
-- clean corporate background
-- professional lighting
-- elegant business atmosphere
-- high-end portrait photography
-- subtle premium retouching
-
-Do not change age or identity.
-`;
-}
-
-else if (style === "dreamy") {
-  prompt = `
-Keep the original face unchanged.
-
-Create dreamy fantasy lighting.
-
-Add:
-- soft glow
-- pastel cinematic colors
-- dreamy atmosphere
-- magical soft lighting
-- aesthetic background blur
-
-Do not alter facial features.
-`;
-}
-
-else if (style === "cyberpunk") {
-  prompt = `
-Keep the original face completely unchanged.
-
-Add:
-- neon cyberpunk lighting
-- futuristic city background
-- pink and blue neon reflections
-- sci-fi atmosphere
-- holographic lighting
-
-Do not redesign the face.
-`;
-}
-
-else if (style === "sunset") {
-  prompt = `
-Keep the original face identical.
-
-Create a beautiful sunset portrait.
-
-Add:
-- warm golden hour lighting
-- orange and pink sunset glow
-- soft cinematic atmosphere
-- natural skin tones
-- dreamy warm light
-
-Do not alter the face.
-Do not age the person.
-`;
-}
-
-else if (style === "netflic") {
-  prompt = `
-Keep the original face EXACTLY unchanged.
-
-Create a modern Netflix series portrait.
-
-Add:
-- cinematic lighting
-- soft movie shadows
-- dramatic depth
-- premium streaming-series aesthetic
-- realistic movie color grading
-- shallow depth of field
-
-Do not redesign the face.
-Do not age the person.
-`;
-}
-
-else if (style === "neon") {
-  prompt = `
-Keep the original face unchanged.
-
-Create a neon mood portrait.
-
-Add:
-- pink and blue neon lighting
-- moody atmosphere
-- modern nightlife ambiance
-- realistic neon reflections
-- dark premium background
+- giant festival stage lights
+- neon atmosphere
+- headphones around neck
+- energetic music festival vibe
+- premium nightlife aesthetic
 
 Keep facial identity intact.
 `;
+
+}
 }
 
-else if (style === "dream") {
-  prompt = `
-Keep the original face identical.
+else if (style === "pilote") {
 
-Create a soft dreamy portrait.
+  if (category === "human") {
 
-Add:
-- soft pastel lighting
-- dreamy glow
-- airy atmosphere
-- subtle light particles
-- cinematic softness
-
-Do not alter facial structure.
-Do not age the person.
-`;
-}
-
-else if (style === "fashion") {
-  prompt = `
+    prompt = `
 Keep the original face EXACTLY unchanged.
 
-Create a high-end fashion campaign portrait.
+Transform the person into a Formula 1 driver portrait.
 
 Add:
-- Vogue-style lighting
-- luxury fashion atmosphere
-- premium studio shadows
-- clean editorial background
-- professional photographer aesthetic
+- racing suit
+- luxury paddock atmosphere
+- cinematic race lighting
+- realistic motorsport aesthetic
 
-Do not modify identity.
-Do not age the person.
+Do not modify the face.
 `;
+
+}
 }
 
-else if (style === "dark") {
-  prompt = `
-Keep the original face unchanged.
+else if (style === "une") {
 
-Create a dark luxury portrait.
+  if (category === "human") {
+
+    prompt = `
+Keep the original face EXACTLY unchanged.
+
+Transform the person into the cover star of a luxury magazine.
 
 Add:
-- black luxury background
-- moody cinematic lighting
-- gold reflections
-- elegant shadows
-- premium luxury atmosphere
+- fashion magazine atmosphere
+- editorial lighting
+- stylish outfit
+- luxury background
+- realistic magazine photoshoot aesthetic
+
+The face must remain identical.
+`;
+
+}
+}
+
+else if (style === "millionnaire") {
+
+  if (category === "human") {
+
+    prompt = `
+Keep the original face unchanged.
+
+Create a luxury Monaco millionaire portrait.
+
+Add:
+- yacht club atmosphere
+- elegant white outfit
+- luxury sunglasses
+- expensive lifestyle aesthetic
+- mediterranean luxury lighting
+
+Keep identity untouched.
+`;
+
+}
+}
+
+else if (style === "agent") {
+
+  if (category === "human") {
+
+    prompt = `
+Keep the original face identical.
+
+Transform the person into a stylish secret agent.
+
+Add:
+- elegant black suit
+- cinematic spy lighting
+- luxury watch
+- dark classy atmosphere
+- action movie aesthetic
 
 Do not redesign the face.
 `;
+
+}
 }
 
-if (!prompt) {
-  prompt = `
-Transform the uploaded subject into a premium portrait.
+else if (style === "vampire") {
 
-Keep EXACTLY the same identity from the uploaded photo.
+  if (category === "human") {
 
-Transparent PNG background.
-No text. No frame. No mockup.
+    prompt = `
+Keep the original face unchanged.
+
+Create an elegant gothic vampire portrait.
+
+Add:
+- luxury gothic outfit
+- dark castle atmosphere
+- dramatic candle lighting
+- classy vampire aesthetic
+- subtle gothic makeup
+
+Keep identity untouched.
 `;
+
+}
 }
 
 let guidanceScale = 1;
 let strengthValue = 0.04;
 
 if (category === "human") {
-  guidanceScale = 0.18;
-strengthValue = 0.008;
+  guidanceScale = 0.2;
+strengthValue = 0.005;
 }
    
 if (category === "animal") {
