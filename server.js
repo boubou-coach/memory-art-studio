@@ -124,17 +124,16 @@ if (style === "royal") {
   if (category === "human") {
 
     prompt = `
-Transform this person into a luxury royal portrait.
+Keep the original face completely unchanged.
 
-Add:
-- elegant royal outfit
-- cinematic royal lighting
-- luxury background
-- premium regal atmosphere
+Only add:
+- royal clothes
+- crown
+- royal background
+- cinematic lighting
 
-Keep the exact same face and identity.
-Keep the same age.
-Do not redesign the face.
+Do not modify facial features.
+Do not regenerate the face.
 `;
 
   } else if (category === "animal") {
