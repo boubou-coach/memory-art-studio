@@ -124,18 +124,17 @@ if (style === "royal") {
   if (category === "human") {
 
     prompt = `
-${humanRules}
-
-Enhance a majestic royal portrait.
-Works for solo portraits, couples, families and group photos.
+Transform this person into a luxury royal portrait.
 
 Add:
-- royal crown
-- luxury cape
-- gold jewelry
-- cinematic palace lighting
-- baroque atmosphere
+- elegant royal outfit
+- cinematic royal lighting
+- luxury background
+- premium regal atmosphere
 
+Keep the exact same face and identity.
+Keep the same age.
+Do not redesign the face.
 `;
 
   } else if (category === "animal") {
@@ -143,23 +142,25 @@ Add:
     prompt = `
 ${strictAnimalRules}
 
-Transform the uploaded animal into a royal portrait.
+Transform the uploaded animal into a luxury royal animal portrait.
 
 IMPORTANT:
 - keep real animal anatomy
-- keep paws as paws
-- NEVER create human hands
-- NEVER create human arms
-- NEVER humanize the animals
+- keep paws as real paws
+- no human hands
+- no human arms
+- no humanoid body
+- animal must stay on four legs or natural sitting pose
 
 Add:
-- royal crown
-- luxury royal outfit adapted to animal anatomy
-- cinematic palace lighting
-- elegant dark background
+- royal king outfit adapted for animal anatomy
+- luxury royal cape
+- elegant golden details
+- cinematic royal lighting
+- dark royal background
+- realistic animal portrait style
 
-Photorealistic royal animal portrait.
-The animal must not hold objects.
+The animal must remain fully animal-like.
 `;
 
   } else {
@@ -259,16 +260,16 @@ else if (style === "minimal") {
   if (category === "human") {
 
     prompt = `
-${humanRules}
-
-Enhance a luxury minimal fashion portrait.
-Works for solo portraits, couples, families and group photos.
+Enhance this photo with minimalist luxury aesthetic.
 
 Add:
-- luxury designer outfit
-- gold jewelry
-- editorial lighting
-- beige and black luxury palette
+- clean premium background
+- soft luxury lighting
+- elegant tones
+- minimalist editorial atmosphere
+
+Keep the exact same face and identity.
+Do not change age.
 `;
 
   } else if (category === "animal") {
@@ -309,16 +310,16 @@ else if (style === "astronaut") {
   if (category === "human") {
 
     prompt = `
-${humanRules}
-
-Enhance a futuristic astronaut portrait.
-Works for solo portraits, couples, families and group photos.
+Transform this person into a realistic astronaut portrait.
 
 Add:
-- astronaut suit
-- transparent helmet
-- cinematic sci-fi lighting
-- space atmosphere
+- futuristic astronaut suit
+- cinematic space lighting
+- realistic sci-fi atmosphere
+- subtle space background
+
+Keep the exact same face and identity.
+Keep the same age.
 `;
 
   } else if (category === "animal") {
@@ -605,30 +606,41 @@ else if (style === "anime") {
   if (category === "human") {
 
     prompt = `
-${humanRules}
+Transform this person into high quality Japanese anime style.
 
-Enhance a realistic Japanese anime portrait.
-Works for solo portraits, couples, families and group photos.
+Add:
+- beautiful anime illustration
+- soft anime lighting
+- detailed anime eyes
+- cinematic anime atmosphere
 
-Style:
-- cinematic anime
-- Makoto Shinkai inspired
-- elegant anime shading
-- realistic proportions
+Keep the hairstyle, expression and identity recognizable.
 `;
 
   } else if (category === "animal") {
 
     prompt = `
-${animalRules}
+${strictAnimalRules}
 
-Transform into a premium Japanese anime animal.
+Transform the uploaded animal into beautiful Japanese anime style.
+
+IMPORTANT:
+- keep real animal anatomy
+- keep paws as paws
+- no human hands
+- no human body
+- keep authentic animal proportions
 
 Add:
-- cinematic anime lighting
-- anime rendering
-- animated movie atmosphere
-The animal must not hold objects.
+- high quality anime illustration
+- Studio Ghibli inspired atmosphere
+- soft anime lighting
+- cute expressive eyes
+- vibrant anime colors
+- detailed fur
+- cinematic anime background
+
+The result must look like a real anime animal character.
 `;
 
   } else {
@@ -651,10 +663,15 @@ else if (style === "cartoon") {
   if (category === "human") {
 
     prompt = `
-${humanRules}
+Transform this person into premium cartoon illustration style.
 
-Enhance a cute Pixar-style cartoon portrait.
-Works for solo portraits, couples, families and group photos.
+Add:
+- clean cartoon rendering
+- soft vibrant colors
+- Pixar-inspired atmosphere
+- smooth illustration details
+
+Keep the same hairstyle and expression recognizable.
 `;
 
   } else if (category === "animal") {
@@ -688,127 +705,100 @@ Transform into a premium 3D cartoon French bulldog.
 }
 else if (style === "studio") {
   prompt = `
-Enhance this photo slightly.
+Enhance this photo naturally.
 
 Improve:
-- lighting
-- sharpness
-- colors
-- contrast
+- soft studio lighting
+- image sharpness
+- clean colors
+- premium photography quality
 
-Keep the exact same person.
-Do not modify the face.
-Do not change age.
+Keep the exact same people and faces.
+Do not change age or identity.
 `;
 }
 
 else if (style === "golden") {
   prompt = `
-${humanRules}
-
-Enhance a golden hour portrait.
-Works for solo portraits, couples, families and group photos.
+Enhance this photo with warm golden light.
 
 Add:
-- warm sunset lighting
-- soft golden tones
-- dreamy outdoor atmosphere
+- sunset warmth
+- soft natural glow
+- cinematic warm colors
+
+Keep the exact same faces and identity.
 `;
 }
 
 else if (style === "cinema") {
   prompt = `
-${humanRules}
-
-Enhance the uploaded photo into an ultra cinematic Hollywood movie scene.
-
-The people must remain perfectly recognizable.
+Enhance this photo with Kodak film style.
 
 Add:
-- blockbuster movie lighting
-- dramatic cinematic atmosphere
-- realistic depth of field
-- anamorphic lens effect
-- premium Hollywood color grading
-- cinematic shadows and highlights
-- subtle atmospheric fog
-- ultra realistic movie look
-- Netflix movie aesthetic
+- analog film tones
+- subtle grain
+- warm cinematic colors
 
-Keep the exact same people, same faces and same age.
-
-Do not redesign faces.
-Do not age people.
+Keep the same people unchanged.
 `;
 }
 
 else if (style === "bw") {
   prompt = `
-${humanRules}
-
-Enhance a luxury black and white portrait.
-Works for solo portraits, couples, families and group photos.
+Convert this photo into elegant black and white photography.
 
 Add:
-- elegant monochrome look
-- strong contrast
-- magazine photography style
-`;
-}
+- luxury monochrome tones
+- soft cinematic contrast
 
-else if (style === "vintage") {
-  prompt = `
-${humanRules}
-
-Enhance a vintage film portrait.
-Works for solo portraits, couples, families and group photos.
-
-Add:
-- analog film grain
-- warm retro tones
-- Kodak-style photography
+Keep the exact same people and faces.
 `;
 }
 
 else if (style === "linkedin") {
   prompt = `
-${humanRules}
+Enhance this photo naturally for a premium Linkedin profile.
 
-Enhance a professional Linkedin portrait.
-Works for solo portraits, couples, families and group photos.
-
-Add:
-- clean studio background
-- elegant business outfit
+Improve:
 - professional lighting
+- clean elegant background
+- natural skin tones
+- sharpness and clarity
+
+Keep the exact same face, age and identity.
+Do not redesign the person.
 `;
 }
 
 else if (style === "dreamy") {
   prompt = `
-${humanRules}
-
-Enhance a soft dreamy aesthetic portrait.
-Works for solo portraits, couples, families and group photos.
+Enhance this photo with a soft dreamy aesthetic.
 
 Add:
-- pastel lighting
-- soft focus
-- elegant Pinterest-style atmosphere
+- soft pastel lighting
+- subtle glow
+- elegant dreamy atmosphere
+- soft cinematic colors
+
+Keep the exact same people and faces.
+Do not change age or identity.
 `;
 }
 
 else if (style === "cyberpunk") {
   prompt = `
-${humanRules}
-
-Enhance a realistic cyberpunk portrait.
-Works for solo portraits, couples, families and group photos.
+Enhance this photo with subtle cyberpunk atmosphere.
 
 Add:
-- neon lighting
-- futuristic city atmosphere
-- cinematic sci-fi colors
+- soft neon lighting
+- futuristic color accents
+- cinematic cyberpunk mood
+- subtle sci-fi ambiance
+
+Keep the exact same people and faces.
+Do not redesign the face.
+Do not change age.
 `;
 }
 if (!prompt) {
@@ -826,8 +816,8 @@ let guidanceScale = 1;
 let strengthValue = 0.04;
 
 if (category === "human") {
-  guidanceScale = 0.3;
-  strengthValue = 0.001;
+  guidanceScale = 0.25;
+strengthValue = 0.01;
 }
    
 if (category === "animal") {
@@ -838,11 +828,6 @@ if (category === "animal") {
 if (category === "frenchie") {
   guidanceScale = 0.7;
   strengthValue = 0.02;
-}
-
-if (style === "cinema") {
-  guidanceScale = 1.2;
-  strengthValue = 0.08;
 }
 
 
