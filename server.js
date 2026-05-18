@@ -720,18 +720,21 @@ Transform into a premium 3D cartoon French bulldog.
   }
 
 
-} else if (style === "secretagent") {
+} else if (style === "acteur") {
 
     prompt = `
-Transform this person into premium cartoon illustration style.
+Keep the original face identical.
+
+Transform the person into a stylish secret agent.
 
 Add:
-- clean cartoon rendering
-- soft vibrant colors
-- Pixar-inspired atmosphere
-- smooth illustration details
+- elegant black suit
+- cinematic spy lighting
+- luxury watch
+- dark classy atmosphere
+- action movie aesthetic
 
-Keep the same hairstyle and expression recognizable.
+Do not redesign the face.
 `;
 
 }
