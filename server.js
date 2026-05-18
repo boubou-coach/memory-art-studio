@@ -269,16 +269,18 @@ else if (style === "minimal") {
   if (category === "human") {
 
     prompt = `
-Enhance this photo with minimalist luxury aesthetic.
+Keep the original face unchanged.
+
+Create a luxury minimalist editorial portrait.
 
 Add:
-- clean premium background
-- soft luxury lighting
-- elegant tones
-- minimalist editorial atmosphere
+- beige luxury background
+- soft premium studio lighting
+- elegant shadows
+- luxury magazine atmosphere
+- clean aesthetic
 
-Keep the exact same face and identity.
-Do not change age.
+Do not alter the face or age.
 `;
 
   } else if (category === "animal") {
@@ -319,16 +321,21 @@ else if (style === "astronaut") {
   if (category === "human") {
 
     prompt = `
-Transform this person into a realistic astronaut portrait.
+Keep the original face EXACTLY unchanged.
 
-Add:
-- futuristic astronaut suit
-- cinematic space lighting
-- realistic sci-fi atmosphere
-- subtle space background
+Only add:
+- realistic astronaut helmet
+- futuristic space suit
+- subtle sci-fi lighting
+- space background
 
-Keep the exact same face and identity.
-Keep the same age.
+Do not modify:
+- age
+- skin
+- facial proportions
+- expression
+
+The face must remain identical to the uploaded photo.
 `;
 
   } else if (category === "animal") {
@@ -714,16 +721,18 @@ Transform into a premium 3D cartoon French bulldog.
 }
 else if (style === "studio") {
   prompt = `
-Enhance this photo naturally.
+Keep the original face unchanged.
 
-Improve:
-- soft studio lighting
-- image sharpness
-- clean colors
-- premium photography quality
+Create a professional premium studio photoshoot.
 
-Keep the exact same people and faces.
-Do not change age or identity.
+Add:
+- dramatic softbox lighting
+- professional photography shadows
+- dark studio background
+- premium skin lighting
+- sharp professional portrait look
+
+Do not change the person identity.
 `;
 }
 
@@ -742,14 +751,18 @@ Keep the exact same faces and identity.
 
 else if (style === "cinema") {
   prompt = `
-Enhance this photo with Kodak film style.
+Keep the original face identical.
+
+Create cinematic movie atmosphere.
 
 Add:
-- analog film tones
-- subtle grain
-- warm cinematic colors
+- movie lighting
+- cinematic color grading
+- shallow depth of field
+- dramatic background blur
+- hollywood movie ambiance
 
-Keep the same people unchanged.
+Do not redesign the face.
 `;
 }
 
@@ -767,47 +780,50 @@ Keep the exact same people and faces.
 
 else if (style === "linkedin") {
   prompt = `
-Enhance this photo naturally for a premium Linkedin profile.
+Keep the original face unchanged.
 
-Improve:
+Create a premium Linkedin business portrait.
+
+Add:
+- clean corporate background
 - professional lighting
-- clean elegant background
-- natural skin tones
-- sharpness and clarity
+- elegant business atmosphere
+- high-end portrait photography
+- subtle premium retouching
 
-Keep the exact same face, age and identity.
-Do not redesign the person.
+Do not change age or identity.
 `;
 }
 
 else if (style === "dreamy") {
   prompt = `
-Enhance this photo with a soft dreamy aesthetic.
+Keep the original face unchanged.
+
+Create dreamy fantasy lighting.
 
 Add:
-- soft pastel lighting
-- subtle glow
-- elegant dreamy atmosphere
-- soft cinematic colors
+- soft glow
+- pastel cinematic colors
+- dreamy atmosphere
+- magical soft lighting
+- aesthetic background blur
 
-Keep the exact same people and faces.
-Do not change age or identity.
+Do not alter facial features.
 `;
 }
 
 else if (style === "cyberpunk") {
   prompt = `
-Enhance this photo with subtle cyberpunk atmosphere.
+Keep the original face completely unchanged.
 
 Add:
-- soft neon lighting
-- futuristic color accents
-- cinematic cyberpunk mood
-- subtle sci-fi ambiance
+- neon cyberpunk lighting
+- futuristic city background
+- pink and blue neon reflections
+- sci-fi atmosphere
+- holographic lighting
 
-Keep the exact same people and faces.
 Do not redesign the face.
-Do not change age.
 `;
 }
 if (!prompt) {
@@ -825,8 +841,8 @@ let guidanceScale = 1;
 let strengthValue = 0.04;
 
 if (category === "human") {
-  guidanceScale = 0.12;
-  strengthValue = 0.003;
+  guidanceScale = 0.18;
+strengthValue = 0.008;
 }
    
 if (category === "animal") {
