@@ -344,13 +344,21 @@ if (selectedCategory === "frenchie") {
     ))}
 </div>
 
+<button
+  className="aiBtn"
+  onClick={testAI}
+  disabled={aiLoading}
+>
+  {aiLoading ? "Génération IA..." : "Générer mon visuel IA"}
+</button>
+
     <h3 className="stepTitle">5 — Personnalise ton produit</h3>
 
 {(selectedProduct === "poster" || selectedProduct === "mug") && (
   <div className="textOptions">
 
   <label className="optionLabel">
-    Choisissez le texte de votre produit
+    Choisissez le texte de votre produit pour affiche ou mug
   </label>
 
     <input
@@ -392,14 +400,6 @@ if (selectedCategory === "frenchie") {
 )}
         <button className="generateBtn" onClick={() => setGenerated(true)}>
   Voir l’aperçu sur produit
-</button>
-
-<button
-  className="aiBtn"
-  onClick={testAI}
-  disabled={aiLoading}
->
-  {aiLoading ? "Génération IA..." : "Générer mon visuel IA"}
 </button>
 
         <div className="productGrid">
