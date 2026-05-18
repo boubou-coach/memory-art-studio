@@ -722,25 +722,7 @@ Transform into a premium 3D cartoon French bulldog.
 
 } else if (style === "actor") {
 
-  prompt = `
-Keep the original face EXACTLY unchanged.
-
-Transform the person into a famous movie actor portrait.
-
-Add:
-- luxury cinematic outfit
-- hollywood actor atmosphere
-- elegant sunglasses
-- premium movie lighting
-- red carpet aesthetic
-- blockbuster movie ambiance
-- subtle dramatic shadows
-
-The original face must remain identical.
-Do not age the person.
-Do not modify facial structure.
-Keep identity untouched.
-`;
+ 
 
 }
 
