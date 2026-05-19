@@ -528,7 +528,11 @@ if (selectedCategory === "frenchie") {
         </p>
       </div>
 
-{selectedProduct.includes("t") && (
+{selectedProduct === "thomme" ||
+selectedProduct === "thommeblanc" ||
+selectedProduct === "tfemme" ||
+selectedProduct === "tfemmeblanc" ||
+selectedProduct === "tfemmerose" && (
   <select
     className="sizeSelect"
     value={selectedSize}
