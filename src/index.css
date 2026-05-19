@@ -1085,7 +1085,7 @@ input {
 
   .floatingOrderBtn {
     position: relative;
-    top: 20px;
+    top: -50px;
   }
-
+  
 }
