@@ -1084,10 +1084,10 @@ input {
   .floatingOrderBtn {
     position: relative !important;
     top: -80px !important;
-    left: 0 !important;
+    left: -150px !important;
     margin: 0 auto 20px !important;
     z-index: 50;
   }
 
-  
+    
 }
