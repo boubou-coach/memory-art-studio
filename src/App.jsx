@@ -62,6 +62,7 @@ export default function App() {
   const [selectedCategory, setSelectedCategory] = useState("frenchie");
   const [uploadLoading, setUploadLoading] = useState(false);
   const [deferredPrompt, setDeferredPrompt] = useState(null);
+  const [selectedSize, setSelectedSize] = useState("");
 const [loadingMessage, setLoadingMessage] = useState("Analyse de votre photo...");
 
 useEffect(() => {
@@ -527,6 +528,21 @@ if (selectedCategory === "frenchie") {
         </p>
       </div>
 
+{selectedProduct.includes("t") && (
+  <select
+    className="sizeSelect"
+    value={selectedSize}
+    onChange={(e) => setSelectedSize(e.target.value)}
+  >
+    <option value="">Choisir une taille</option>
+    <option value="S">S</option>
+    <option value="M">M</option>
+    <option value="L">L</option>
+    <option value="XL">XL</option>
+    <option value="XXL">XXL</option>
+  </select>
+)}
+
       <button
   className="payBtn"
   onClick={async () => {
@@ -541,6 +557,7 @@ if (selectedCategory === "frenchie") {
   image: base64Image,
   style: selectedStyle,
   category: selectedCategory,
+  size: selectedSize,
 }),
     });
 
