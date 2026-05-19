@@ -1083,8 +1083,8 @@ input {
 @media (min-width: 768px) and (max-width: 1180px) and (orientation: landscape) {
   .floatingOrderBtn {
     position: relative !important;
-    top: -280px !important;
-    left: -450px !important;
+    top: -300px !important;
+    left: -420px !important;
     margin: 0 auto 20px !important;
     z-index: 50;
   }
