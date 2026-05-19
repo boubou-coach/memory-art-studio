@@ -499,8 +499,7 @@ if (selectedCategory === "frenchie") {
     className="floatingOrderBtn"
     onClick={() => setShowOrderForm(true)}
   >
-    ✨ Passer <br></br>
-    commande
+    ✨ Passer commande  
   </button>
 )}
 {showOrderForm && (
@@ -508,7 +507,7 @@ if (selectedCategory === "frenchie") {
     <div className="orderModal">
       <h2>Finaliser la commande</h2>
   
-     
+       
 
       <div className="summary">
         <p>
