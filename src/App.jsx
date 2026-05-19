@@ -528,11 +528,13 @@ if (selectedCategory === "frenchie") {
         </p>
       </div>
 
-{selectedProduct === "thomme" ||
-selectedProduct === "thommeblanc" ||
-selectedProduct === "tfemme" ||
-selectedProduct === "tfemmeblanc" ||
-selectedProduct === "tfemmerose" && (
+{(
+  selectedProduct === "thomme" ||
+  selectedProduct === "thommeblanc" ||
+  selectedProduct === "tfemme" ||
+  selectedProduct === "tfemmeblanc" ||
+  selectedProduct === "tfemmerose"
+) && (
   <select
     className="sizeSelect"
     value={selectedSize}
