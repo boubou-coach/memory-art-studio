@@ -184,7 +184,10 @@ if (
   (checkData.credits || 0) <= 0 &&
   (checkData.free_generations || 0) <= 0
 ) {
-  alert("Vous n'avez plus de crédits disponibles");
+  alert(
+    "Vous n'avez plus de crédits disponibles.\n\nRechargez votre compte :\n\n5 crédits = 2,99€\n15 crédits = 5,99€\n50 crédits = 14,99€"
+  );
+
   return;
 }
 
