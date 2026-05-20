@@ -166,7 +166,7 @@ const checkResponse = await fetch(`${API_URL}/api/check-credits`, {
     "Content-Type": "application/json",
   },
   body: JSON.stringify({
-    email: userEmail, 
+    email: userEmail,
   }),
 });
   
