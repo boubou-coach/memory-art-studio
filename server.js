@@ -1005,4 +1005,74 @@ app.listen(3001, "0.0.0.0", () => {
   console.log("API lancée sur http://localhost:3001");
 });
 
+import { createClient } from "@supabase/supabase-js";
 
+const supabase = createClient(
+  process.env.SUPABASE_URL,
+  process.env.SUPABASE_KEY
+);
+
+app.post("/api/check-credits", async (req, res) => {
+  const { email } = req.body;
+
+  const { data, error } = await supabase
+    .from("users_credits")
+    .select("*")
+    .eq("email", email)
+    .single();
+
+  if (error || !data) {
+    return res.json({
+      credits: 0,
+      free_generations: 3,
+    });
+  }
+
+  res.json(data);
+});
+
+app.post("/api/use-credit", async (req, res) => {
+  const { email } = req.body;
+
+  const { data } = await supabase
+    .from("users_credits")
+    .select("*")
+    .eq("email", email)
+    .single();
+
+  if (!data) {
+    return res.status(400).json({
+      error: "Utilisateur introuvable",
+    });
+  }
+
+  if (data.credits > 0) {
+    await supabase
+      .from("users_credits")
+      .update({
+        credits: data.credits - 1,
+      })
+      .eq("email", email);
+
+    return res.json({
+      success: true,
+    });
+  }
+
+  if (data.free_generations > 0) {
+    await supabase
+      .from("users_credits")
+      .update({
+        free_generations: data.free_generations - 1,
+      })
+      .eq("email", email);
+
+    return res.json({
+      success: true,
+    });
+  }
+
+  return res.status(400).json({
+    error: "Plus de crédits",
+  });
+});
