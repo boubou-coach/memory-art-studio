@@ -152,6 +152,7 @@ const resizeImage = (base64, maxSize = 900, quality = 0.8) => {
 };
 const testAI = async () => {
   setLoadingMessage("Analyse de votre photo...");
+  console.log("BOUTON GENERER CLIQUÉ");
 
   if (!userEmail) {
   alert("Veuillez entrer votre email");
