@@ -552,7 +552,6 @@ if (selectedCategory === "frenchie") {
       <button
   className="payBtn"
   onClick={async () => {
-  alert("Clic paiement OK");
 
   try {
     const response = await fetch(`${API_URL}/api/create-checkout-session`, {
@@ -568,11 +567,8 @@ if (selectedCategory === "frenchie") {
       }),
     });
 
-    alert("Réponse API reçue");
 
     const data = await response.json();
-
-    alert(JSON.stringify(data));
 
     if (data.url) {
       window.location.href = data.url;
