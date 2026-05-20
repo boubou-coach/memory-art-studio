@@ -571,8 +571,8 @@ if (selectedCategory === "frenchie") {
       if (data.url) {
         window.location.href = data.url;
       } else {
-        alert("Erreur : aucune URL Stripe reçue");
-      }
+alert(JSON.stringify(data));
+}
     } catch (error) {
       alert("Erreur Stripe : " + error.message);
     }

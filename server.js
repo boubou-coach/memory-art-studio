@@ -915,7 +915,6 @@ app.post("/api/create-checkout-session", async (req, res) => {
 
 if (product === "poster" || product === "affiche") {
   priceId = "price_1TYw1GP4HAanNIKrxtPh6irM";
-}
     } else if (product === "mug") {
       priceId = "price_1TYw3XP4HAanNIKr85xfYdJz";
     } else if (product === "thomme") {
