@@ -552,33 +552,38 @@ if (selectedCategory === "frenchie") {
       <button
   className="payBtn"
   onClick={async () => {
-    console.log("Bouton paiement cliqué");
-    alert("Clic paiement OK");
+  alert("Clic paiement OK");
 
+  try {
     const response = await fetch(`${API_URL}/api/create-checkout-session`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-  image: base64Image,
-  style: selectedStyle,
-  category: selectedCategory,
-  product: selectedProduct,
-  size: selectedSize,
-}),
+        product: selectedProduct,
+        style: selectedStyle,
+        category: selectedCategory,
+        size: selectedSize,
+      }),
     });
 
+    alert("Réponse API reçue");
+
     const data = await response.json();
-alert(JSON.stringify(data));
-    console.log("Réponse Stripe :", data);
+
+    alert(JSON.stringify(data));
 
     if (data.url) {
       window.location.href = data.url;
     } else {
       alert("Erreur : aucune URL Stripe reçue");
     }
-  }}
+  } catch (error) {
+    alert("Erreur fetch : " + error.message);
+    console.error(error);
+  }
+}}
 >
   Continuer vers le paiement
 </button>
