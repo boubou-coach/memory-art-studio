@@ -64,6 +64,7 @@ export default function App() {
   const [deferredPrompt, setDeferredPrompt] = useState(null);
   const [selectedSize, setSelectedSize] = useState("");
 const [loadingMessage, setLoadingMessage] = useState("Analyse de votre photo...");
+const [userEmail, setUserEmail] = useState("");
 
 useEffect(() => {
   const handler = (e) => {
@@ -153,6 +154,34 @@ const testAI = async () => {
   setLoading(true);
   setLoadingMessage("Analyse de votre photo...");
 
+  if (!userEmail) {
+  alert("Veuillez entrer votre email");
+  return;
+}
+
+const checkResponse = await fetch(
+  `${API_URL}/api/check-credits`,
+  {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      email: userEmail,
+    }),
+  }
+);
+
+const checkData = await checkResponse.json();
+
+if (
+  checkData.credits <= 0 &&
+  checkData.free_generations <= 0
+) {
+  alert("Vous n'avez plus de crédits");
+  return;
+}
+
 setTimeout(() => {
   setLoadingMessage("Création du style IA...");
 }, 3000);
@@ -206,6 +235,16 @@ setTimeout(() => {
   setLoading(false);
   return;
 }
+
+await fetch(`${API_URL}/api/use-credit`, {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json",
+  },
+  body: JSON.stringify({
+    email: userEmail,
+  }),
+});
 
       setAiImage(data.output);
       setGenerated(false);
@@ -345,6 +384,13 @@ if (selectedCategory === "frenchie") {
     ))}
 </div>
 
+<input
+  type="email"
+  placeholder="Votre email"
+  value={userEmail}
+  onChange={(e) => setUserEmail(e.target.value)}
+  className="emailInput"
+/>
 <button
   className="aiBtn"
   onClick={testAI}
