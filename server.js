@@ -909,22 +909,54 @@ app.post("/api/create-checkout-session", async (req, res) => {
   try {
     console.log("Stripe route appelée :", req.body);
 
+    const { product, style, size } = req.body;
+
+    let priceId = "";
+
+    if (product === "poster") {
+      priceId = "price_1TYw1GP4HAanNIKrxtPh6irM";
+    } else if (product === "mug") {
+      priceId = "price_1TYw3XP4HAanNIKr85xfYdJz";
+    } else if (product === "thomme") {
+  priceId = "price_1TYw7EP4HAanNIKrfJdWzuOb";
+
+} else if (product === "thommeblanc") {
+  priceId = "price_1TYw6fP4HAanNIKrmepTTtxw";
+
+} else if (product === "tfemme") {
+  priceId = "price_1TYw9kP4HAanNIKrsrXN5xDo";
+
+} else if (product === "tfemmeblanc") {
+  priceId = "price_1TYw8hP4HAanNIKrEGyKsSJS";
+
+} else if (product === "tfemmerose") {
+  priceId = "price_1TYw85P4HAanNIKr882BAvZ9";
+} else if (product === "casquette") {
+      priceId = "price_1TYwBmP4HAanNIKrsyYJapqq";
+    } else if (product === "totebag") {
+      priceId = "price_1TYwDGP4HAanNIKrVQ6bkUAu";
+    }
+
+    if (!priceId) {
+      return res.status(400).json({ error: "Produit inconnu" });
+    }
+
     const session = await stripe.checkout.sessions.create({
       mode: "payment",
       payment_method_types: ["card"],
 
       line_items: [
         {
-          price_data: {
-            currency: "eur",
-            product_data: {
-              name: `${req.body.product} - ${req.body.style}`,
-            },
-            unit_amount: 2990,
-          },
+          price: priceId,
           quantity: 1,
         },
       ],
+
+      metadata: {
+        product,
+        style,
+        size: size || "",
+      },
 
       success_url: `${process.env.FRONTEND_URL}?success=true`,
       cancel_url: `${process.env.FRONTEND_URL}?canceled=true`,

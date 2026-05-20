@@ -563,6 +563,7 @@ if (selectedCategory === "frenchie") {
   image: base64Image,
   style: selectedStyle,
   category: selectedCategory,
+  product: selectedProduct,
   size: selectedSize,
 }),
     });
