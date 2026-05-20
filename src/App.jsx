@@ -169,28 +169,13 @@ const checkResponse = await fetch(`${API_URL}/api/check-credits`, {
     email: userEmail,
   }),
 });
-  
+
 const checkData = await checkResponse.json();
 
 if (checkData.credits <= 0 && checkData.free_generations <= 0) {
   alert("Vous n'avez plus de crédits disponibles");
   return;
 }
-
-const checkResponse = await fetch(
-  `${API_URL}/api/check-credits`,
-  {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      email: userEmail,
-    }),
-  }
-);
-
-const checkData = await checkResponse.json();
 
 if (
   checkData.credits <= 0 &&
