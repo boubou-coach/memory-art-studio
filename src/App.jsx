@@ -578,8 +578,8 @@ if (selectedCategory === "frenchie") {
     }
   }}
 >
-  Continuer vers le paiement
-</button>
+  Continuer vers le paiement   
+</button>  
 
       <button
         className="closeBtn"
