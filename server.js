@@ -1015,17 +1015,26 @@ const supabase = createClient(
 app.post("/api/check-credits", async (req, res) => {
   const { email } = req.body;
 
-  const { data, error } = await supabase
+  let { data } = await supabase
     .from("users_credits")
     .select("*")
     .eq("email", email)
     .single();
 
-  if (error || !data) {
-    return res.json({
-      credits: 0,
-      free_generations: 3,
-    });
+  if (!data) {
+    const { data: newUser } = await supabase
+      .from("users_credits")
+      .insert([
+        {
+          email,
+          credits: 0,
+          free_generations: 3,
+        },
+      ])
+      .select()
+      .single();
+
+    data = newUser;
   }
 
   res.json(data);
