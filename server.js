@@ -1015,18 +1015,26 @@ app.post("/api/check-credits", async (req, res) => {
 
   const { email } = req.body;
 
-  let { data, error } = await supabase
+  // récupère l'IP du visiteur
+  const ip =
+    req.headers["x-forwarded-for"]?.split(",")[0] ||
+    req.socket.remoteAddress;
+
+  // cherche un utilisateur avec email OU IP
+  let { data } = await supabase
     .from("users_credits")
     .select("*")
-    .eq("email", email)
+    .or(`email.eq.${email},ip.eq.${ip}`)
     .single();
 
+  // si aucun utilisateur trouvé
   if (!data) {
-    const { data: newUser, error: insertError } = await supabase
+    const { data: newUser } = await supabase
       .from("users_credits")
       .insert([
         {
           email,
+          ip,
           credits: 0,
           free_generations: 3,
         },
@@ -1034,18 +1042,24 @@ app.post("/api/check-credits", async (req, res) => {
       .select()
       .single();
 
-    if (insertError) {
-      console.log("ERREUR INSERT SUPABASE :", insertError);
-      return res.status(500).json({ error: insertError.message });
-    }
-
     data = newUser;
   }
 
-  if (!data) {
-    return res.status(500).json({
-      error: "Impossible de créer ou récupérer les crédits",
-    });
+  // plus de crédits
+  if (data.credits <= 0 && data.free_generations <= 0) {
+    return res.json(data);
+  }
+
+  // retire 1 génération gratuite
+  if (data.free_generations > 0) {
+    await supabase
+      .from("users_credits")
+      .update({
+        free_generations: data.free_generations - 1,
+      })
+      .eq("id", data.id);
+
+    data.free_generations -= 1;
   }
 
   return res.json(data);
@@ -1055,6 +1069,10 @@ app.post("/api/use-credit", async (req, res) => {
   console.log("USE CREDIT APPELÉ");
 
   const { email } = req.body;
+
+  const ip =
+  req.headers["x-forwarded-for"]?.split(",")[0] ||
+  req.socket.remoteAddress;
 
   const { data } = await supabase
     .from("users_credits")
