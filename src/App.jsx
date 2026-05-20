@@ -553,6 +553,7 @@ if (selectedCategory === "frenchie") {
   className="payBtn"
   onClick={async () => {
     console.log("Bouton paiement cliqué");
+    alert("Clic paiement OK");
 
     const response = await fetch(`${API_URL}/api/create-checkout-session`, {
       method: "POST",
