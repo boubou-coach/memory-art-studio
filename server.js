@@ -1009,7 +1009,10 @@ const supabase = createClient(
   process.env.SUPABASE_KEY
 );
 
+
 app.post("/api/check-credits", async (req, res) => {
+    console.log("CHECK CREDITS APPELÉ");
+
   const { email } = req.body;
 
   let { data } = await supabase
@@ -1038,6 +1041,8 @@ app.post("/api/check-credits", async (req, res) => {
 });
 
 app.post("/api/use-credit", async (req, res) => {
+  console.log("USE CREDIT APPELÉ");
+
   const { email } = req.body;
 
   const { data } = await supabase
