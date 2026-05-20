@@ -570,7 +570,7 @@ if (selectedCategory === "frenchie") {
     });
 
     const data = await response.json();
-
+alert(JSON.stringify(data));
     console.log("Réponse Stripe :", data);
 
     if (data.url) {
