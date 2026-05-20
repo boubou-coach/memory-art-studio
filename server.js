@@ -1011,18 +1011,18 @@ const supabase = createClient(
 
 
 app.post("/api/check-credits", async (req, res) => {
-    console.log("CHECK CREDITS APPELÉ");
+  console.log("CHECK CREDITS APPELÉ");
 
   const { email } = req.body;
 
-  let { data } = await supabase
+  let { data, error } = await supabase
     .from("users_credits")
     .select("*")
     .eq("email", email)
     .single();
 
   if (!data) {
-    const { data: newUser } = await supabase
+    const { data: newUser, error: insertError } = await supabase
       .from("users_credits")
       .insert([
         {
@@ -1034,14 +1034,22 @@ app.post("/api/check-credits", async (req, res) => {
       .select()
       .single();
 
+    if (insertError) {
+      console.log("ERREUR INSERT SUPABASE :", insertError);
+      return res.status(500).json({ error: insertError.message });
+    }
+
     data = newUser;
   }
 
-if (!data) {
-  return res.status(500).json({
-    error: "Impossible de créer ou récupérer les crédits",
-  });
-}});
+  if (!data) {
+    return res.status(500).json({
+      error: "Impossible de créer ou récupérer les crédits",
+    });
+  }
+
+  return res.json(data);
+});
 
 app.post("/api/use-credit", async (req, res) => {
   console.log("USE CREDIT APPELÉ");
