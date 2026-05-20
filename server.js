@@ -910,11 +910,12 @@ app.post("/api/create-checkout-session", async (req, res) => {
     console.log("Stripe route appelée :", req.body);
 
     const { product, style, size } = req.body;
-console.log("Produit reçu :", product);
+    console.log("Produit reçu :", product);
     let priceId = "";
 
 if (product === "poster" || product === "affiche") {
-      priceId = "price_1TYw1GP4HAanNIKrxtPh6irM";
+  priceId = "price_1TYw1GP4HAanNIKrxtPh6irM";
+}
     } else if (product === "mug") {
       priceId = "price_1TYw3XP4HAanNIKr85xfYdJz";
     } else if (product === "thomme") {
