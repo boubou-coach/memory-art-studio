@@ -151,15 +151,16 @@ const resizeImage = (base64, maxSize = 900, quality = 0.8) => {
   });
 };
 const testAI = async () => {
-  setLoading(true);
   setLoadingMessage("Analyse de votre photo...");
 
   if (!userEmail) {
   alert("Veuillez entrer votre email");
   return;
+
+    setAiLoading(true);
+
 }
 
-  setAiLoading(true);
 
 const checkResponse = await fetch(
   `${API_URL}/api/check-credits`,
