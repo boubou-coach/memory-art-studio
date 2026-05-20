@@ -910,7 +910,7 @@ app.post("/api/create-checkout-session", async (req, res) => {
     console.log("Stripe route appelée :", req.body);
 
     const { product, style, size } = req.body;
-
+console.log("Produit reçu :", product);
     let priceId = "";
 
 if (product === "poster" || product === "affiche") {
