@@ -173,16 +173,18 @@ const checkResponse = await fetch(`${API_URL}/api/check-credits`, {
 
 const checkData = await checkResponse.json();
 
-if (checkData.credits <= 0 && checkData.free_generations <= 0) {
-  alert("Vous n'avez plus de crédits disponibles");
+console.log("checkData :", checkData);
+
+if (!checkData) {
+  alert("Erreur crédits : aucune donnée reçue");
   return;
 }
 
 if (
-  checkData.credits <= 0 &&
-  checkData.free_generations <= 0
+  (checkData.credits || 0) <= 0 &&
+  (checkData.free_generations || 0) <= 0
 ) {
-  alert("Vous n'avez plus de crédits");
+  alert("Vous n'avez plus de crédits disponibles");
   return;
 }
 

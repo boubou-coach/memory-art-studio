@@ -1037,8 +1037,11 @@ app.post("/api/check-credits", async (req, res) => {
     data = newUser;
   }
 
-  res.json(data);
-});
+if (!data) {
+  return res.status(500).json({
+    error: "Impossible de créer ou récupérer les crédits",
+  });
+}});
 
 app.post("/api/use-credit", async (req, res) => {
   console.log("USE CREDIT APPELÉ");
