@@ -1001,9 +1001,6 @@ app.post("/api/remove-background", async (req, res) => {
 
 
 
-app.listen(3001, "0.0.0.0", () => {
-  console.log("API lancée sur http://localhost:3001");
-});
 
 import { createClient } from "@supabase/supabase-js";
 
@@ -1084,4 +1081,8 @@ app.post("/api/use-credit", async (req, res) => {
   return res.status(400).json({
     error: "Plus de crédits",
   });
+});
+
+app.listen(3001, "0.0.0.0", () => {
+  console.log("API lancée sur http://localhost:3001");
 });
