@@ -1190,7 +1190,7 @@ app.post("/api/create-credit-checkout-session", async (req, res) => {
       credits = 5;
 
     } else if (pack === "premium") {
-      priceId = "price_1TZV0wP4HAanNIKrZqN7pGkU";
+      priceId = "price_1TZX5fP4HAanNIKr7NRkfHHv";
       credits = 15;
 
     } else if (pack === "creator") {
