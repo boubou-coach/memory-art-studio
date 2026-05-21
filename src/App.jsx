@@ -354,37 +354,7 @@ setGenerated(false);
 setLoading(false);
 setAiLoading(false);
 
-await fetch(`${API_URL}/api/use-credit`, {
-  method: "POST",
-  headers: {
-    "Content-Type": "application/json",
-  },
-  body: JSON.stringify({
-    email: userEmail,
-  }),
-});
 
-
-
-      setAiImage(data.output);
-
-const useCreditResponse = await fetch(`${API_URL}/api/use-credit`, {
-  method: "POST",
-  headers: {
-    "Content-Type": "application/json",
-  },
-  body: JSON.stringify({
-    email: userEmail,
-  }),
-});
-
-const useCreditData = await useCreditResponse.json();
-
-console.log("USE CREDIT :", useCreditData);
-
-setGenerated(false);
-      setLoading(false);
-      setAiLoading(false);
     };
  
     reader.readAsDataURL(blob);
