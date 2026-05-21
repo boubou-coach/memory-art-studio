@@ -1000,6 +1000,7 @@ if (product === "poster" || product === "affiche") {
     const session = await stripe.checkout.sessions.create({
       mode: "payment",
       payment_method_types: ["card"],
+      
 
       line_items: [
         {
@@ -1013,6 +1014,11 @@ if (product === "poster" || product === "affiche") {
         style,
         size: size || "",
       },
+
+      metadata: {
+  email,
+  pack,
+},
 
       success_url: `${process.env.FRONTEND_URL}?success=true`,
       cancel_url: `${process.env.FRONTEND_URL}?canceled=true`,
@@ -1235,6 +1241,61 @@ app.post("/api/create-credit-checkout-session", async (req, res) => {
     });
   }
 });
+
+app.post(
+  "/api/stripe-webhook",
+  express.raw({ type: "application/json" }),
+  async (req, res) => {
+    const sig = req.headers["stripe-signature"];
+
+    let event;
+
+    try {
+      event = stripe.webhooks.constructEvent(
+        req.body,
+        sig,
+        process.env.STRIPE_WEBHOOK_SECRET
+      );
+    } catch (err) {
+      console.log("Erreur webhook :", err.message);
+      return res.status(400).send(`Webhook Error: ${err.message}`);
+    }
+
+    if (event.type === "checkout.session.completed") {
+      const session = event.data.object;
+
+      const email = session.metadata.email;
+      const pack = session.metadata.pack;
+
+      console.log("PAIEMENT VALIDÉ :", email, pack);
+
+      let creditsToAdd = 0;
+
+      if (pack === "5") creditsToAdd = 5;
+      if (pack === "15") creditsToAdd = 15;
+      if (pack === "50") creditsToAdd = 50;
+
+      const { data: user } = await supabase
+        .from("users_credits")
+        .select("*")
+        .eq("email", email)
+        .single();
+
+      if (user) {
+        await supabase
+          .from("users_credits")
+          .update({
+            credits: (user.credits || 0) + creditsToAdd,
+          })
+          .eq("email", email);
+
+        console.log("CRÉDITS AJOUTÉS");
+      }
+    }
+
+    res.json({ received: true });
+  }
+);
 
 app.listen(3001, "0.0.0.0", () => {
   console.log("API lancée sur http://localhost:3001");
