@@ -69,6 +69,37 @@ const [showRecharge, setShowRecharge] = useState(false);
 const [creditsLeft, setCreditsLeft] = useState(null);
 
 useEffect(() => {
+  if (!userEmail) return;
+
+  const loadCredits = async () => {
+    try {
+      const response = await fetch(
+        `${API_URL}/api/check-credits`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            email: userEmail,
+          }),
+        }
+      );
+
+      const data = await response.json();
+
+      setCreditsLeft(
+        (data.credits || 0) + (data.free_generations || 0)
+      );
+    } catch (error) {
+      console.error("Erreur chargement crédits", error);
+    }
+  };
+
+  loadCredits();
+}, [userEmail]);
+
+useEffect(() => {
   const handler = (e) => {
     e.preventDefault();
     setDeferredPrompt(e);
