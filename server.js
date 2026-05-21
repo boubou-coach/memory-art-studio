@@ -11,6 +11,62 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
 const app = express();
 app.use(cors());
+app.post(
+  "/api/stripe-webhook",
+  express.raw({ type: "application/json" }),
+  async (req, res) => {
+    const sig = req.headers["stripe-signature"];
+
+    let event;
+
+    try {
+      event = stripe.webhooks.constructEvent(
+        req.body,
+        sig,
+        process.env.STRIPE_WEBHOOK_SECRET
+      );
+    } catch (err) {
+      console.log("Erreur webhook Stripe :", err.message);
+      return res.status(400).send(`Webhook Error: ${err.message}`);
+    }
+
+    if (event.type === "checkout.session.completed") {
+      const session = event.data.object;
+
+      if (session.metadata?.type === "credits") {
+        const email = session.metadata.email;
+        const creditsToAdd = Number(session.metadata.credits);
+
+        const { data } = await supabase
+          .from("users_credits")
+          .select("*")
+          .eq("email", email)
+          .single();
+
+        if (data) {
+          await supabase
+            .from("users_credits")
+            .update({
+              credits: data.credits + creditsToAdd,
+            })
+            .eq("id", data.id);
+        } else {
+          await supabase.from("users_credits").insert([
+            {
+              email,
+              credits: creditsToAdd,
+              free_generations: 0,
+            },
+          ]);
+        }
+
+        console.log(`Crédits ajoutés : ${creditsToAdd} pour ${email}`);
+      }
+    }
+
+    res.json({ received: true });
+  }
+);
 app.use(express.json({ limit: "25mb" }));
 
 const replicate = new Replicate({
