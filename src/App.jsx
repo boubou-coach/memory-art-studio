@@ -718,11 +718,12 @@ if (selectedCategory === "frenchie") {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          product: selectedProduct,
-          style: selectedStyle,
-          category: selectedCategory,
-          size: selectedSize,
-        }),
+  product: selectedProduct,
+  style: selectedStyle,
+  category: selectedCategory,
+  size: selectedSize,
+  email: userEmail,
+}),
       });
 
       const data = await response.json();
