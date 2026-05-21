@@ -206,6 +206,16 @@ setTimeout(() => {
   }
 
   if (selectedStyle === "original") {
+  await fetch(`${API_URL}/api/use-credit`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      email: userEmail,
+    }),
+  });
+
   setAiImage(image);
   setGenerated(false);
   setLoading(false);
