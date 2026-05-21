@@ -271,11 +271,7 @@ await fetch(`${API_URL}/api/use-credit`, {
   }),
 });
 
-{creditsLeft !== null && (
-  <p className="creditsBadge">
-    ⚡ Crédits restants : {creditsLeft}
-  </p>
-)}
+
 
       setAiImage(data.output);
 
@@ -438,6 +434,11 @@ if (selectedCategory === "frenchie") {
   onChange={(e) => setUserEmail(e.target.value)}
   className="emailInput"
 />
+{creditsLeft !== null && (
+  <p className="creditsBadge">
+    ⚡ Crédits restants : {creditsLeft}
+  </p>
+)}
 <button
   className="aiBtn"
   onClick={testAI}
