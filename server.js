@@ -1060,51 +1060,46 @@ app.post("/api/use-credit", async (req, res) => {
 
   const { email } = req.body;
 
-  const ip =
-  req.headers["x-forwarded-for"]?.split(",")[0] ||
-  req.socket.remoteAddress;
-
-  const { data } = await supabase
+  let { data, error } = await supabase
     .from("users_credits")
     .select("*")
     .eq("email", email)
     .single();
 
-  if (!data) {
-    return res.status(400).json({
-      error: "Utilisateur introuvable",
-    });
+  if (error || !data) {
+    console.log("Utilisateur introuvable :", error);
+    return res.status(404).json({ error: "Utilisateur introuvable" });
   }
 
   if (data.credits > 0) {
-    await supabase
+    const { error: updateError } = await supabase
       .from("users_credits")
-      .update({
-        credits: data.credits - 1,
-      })
-      .eq("email", email);
+      .update({ credits: data.credits - 1 })
+      .eq("id", data.id);
 
-    return res.json({
-      success: true,
-    });
+    if (updateError) {
+      console.log("Erreur update credits :", updateError);
+      return res.status(500).json({ error: updateError.message });
+    }
+
+    return res.json({ success: true, type: "paid" });
   }
 
   if (data.free_generations > 0) {
-    await supabase
+    const { error: updateError } = await supabase
       .from("users_credits")
-      .update({
-        free_generations: data.free_generations - 1,
-      })
-      .eq("email", email);
+      .update({ free_generations: data.free_generations - 1 })
+      .eq("id", data.id);
 
-    return res.json({
-      success: true,
-    });
+    if (updateError) {
+      console.log("Erreur update free_generations :", updateError);
+      return res.status(500).json({ error: updateError.message });
+    }
+
+    return res.json({ success: true, type: "free" });
   }
 
-  return res.status(400).json({
-    error: "Plus de crédits",
-  });
+  return res.status(400).json({ error: "Plus de crédits" });
 });
 
 app.post("/api/create-credit-checkout-session", async (req, res) => {
