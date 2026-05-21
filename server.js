@@ -1263,15 +1263,9 @@ app.post(
       const session = event.data.object;
 
       const email = session.metadata.email;
-      const pack = session.metadata.pack;
+const creditsToAdd = Number(session.metadata.credits);
 
-      console.log("PAIEMENT VALIDÉ :", email, pack);
-
-      let creditsToAdd = 0;
-
-      if (pack === "5") creditsToAdd = 5;
-      if (pack === "15") creditsToAdd = 15;
-      if (pack === "50") creditsToAdd = 50;
+console.log("PAIEMENT VALIDÉ :", email, creditsToAdd);
 
       const { data: user } = await supabase
         .from("users_credits")
