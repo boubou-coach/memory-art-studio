@@ -1050,17 +1050,7 @@ app.post("/api/check-credits", async (req, res) => {
     return res.json(data);
   }
 
-  // retire 1 génération gratuite
-  if (data.free_generations > 0) {
-    await supabase
-      .from("users_credits")
-      .update({
-        free_generations: data.free_generations - 1,
-      })
-      .eq("id", data.id);
 
-    data.free_generations -= 1;
-  }
 
   return res.json(data);
 });
