@@ -257,6 +257,15 @@ await fetch(`${API_URL}/api/use-credit`, {
 });
 
       setAiImage(data.output);
+      await fetch(`${API_URL}/api/use-credit`, {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json",
+  },
+  body: JSON.stringify({
+    email: userEmail,
+  }),
+});
       setGenerated(false);
       setLoading(false);
       setAiLoading(false);
