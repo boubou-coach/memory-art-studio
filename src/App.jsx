@@ -240,6 +240,8 @@ setTimeout(() => {
     alert("Ajoute d'abord une photo");
     return;
   }
+setAiLoading(true);
+setLoading(true);
 
   if (selectedStyle === "original") {
   const useCreditResponse = await fetch(
