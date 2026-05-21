@@ -1057,6 +1057,7 @@ app.post("/api/check-credits", async (req, res) => {
 
 app.post("/api/use-credit", async (req, res) => {
   console.log("USE CREDIT APPELÉ");
+console.log(req.body);
 
   const { email } = req.body;
 

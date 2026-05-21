@@ -257,7 +257,8 @@ await fetch(`${API_URL}/api/use-credit`, {
 });
 
       setAiImage(data.output);
-      await fetch(`${API_URL}/api/use-credit`, {
+
+const useCreditResponse = await fetch(`${API_URL}/api/use-credit`, {
   method: "POST",
   headers: {
     "Content-Type": "application/json",
@@ -266,7 +267,12 @@ await fetch(`${API_URL}/api/use-credit`, {
     email: userEmail,
   }),
 });
-      setGenerated(false);
+
+const useCreditData = await useCreditResponse.json();
+
+console.log("USE CREDIT :", useCreditData);
+
+setGenerated(false);
       setLoading(false);
       setAiLoading(false);
     };
