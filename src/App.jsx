@@ -207,10 +207,12 @@ setTimeout(() => {
   }
 
   if (selectedStyle === "original") {
-    setAiImage(image);
-    setGenerated(false);
-    return;
-  }
+  setAiImage(image);
+  setGenerated(false);
+  setLoading(false);
+  setAiLoading(false);
+  return;
+}
 
 
   try {
