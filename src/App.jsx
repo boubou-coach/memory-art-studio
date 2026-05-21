@@ -651,7 +651,11 @@ if (selectedCategory === "frenchie") {
       const data = await response.json();
 
       if (data.url) {
-        window.location.href = data.url;
+        if (data.url) {
+  window.location.href = data.url;
+} else {
+  alert(JSON.stringify(data));
+}
       } else {
 alert(JSON.stringify(data));
 }
