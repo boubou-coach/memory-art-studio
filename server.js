@@ -1050,9 +1050,22 @@ app.post("/api/check-credits", async (req, res) => {
     return res.json(data);
   }
 
+const today = new Date().toISOString().split("T")[0];
 
+if (data.last_reset !== today) {
+  await supabase
+    .from("users_credits")
+    .update({
+      free_generations: 3,
+      last_reset: today,
+    })
+    .eq("id", data.id);
 
-  return res.json(data);
+  data.free_generations = 3;
+  data.last_reset = today;
+}
+
+return res.json(data);
 });
 
 app.post("/api/use-credit", async (req, res) => {
