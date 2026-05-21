@@ -1117,6 +1117,70 @@ app.post("/api/use-credit", async (req, res) => {
   });
 });
 
+app.post("/api/create-credit-checkout-session", async (req, res) => {
+  try {
+    const { pack, email } = req.body;
+
+    let priceId = "";
+    let credits = 0;
+
+    if (pack === "starter") {
+      priceId = "price_1TZV0hP4HAanNIKr3U6FsLvM";
+      credits = 5;
+
+    } else if (pack === "premium") {
+      priceId = "price_1TZV0wP4HAanNIKrZqN7pGkU";
+      credits = 15;
+
+    } else if (pack === "creator") {
+      priceId = "price_1TZV1DP4HAanNIKrTvUJ4CwS";
+      credits = 50;
+    }
+
+    if (!priceId) {
+      return res.status(400).json({
+        error: "Pack inconnu",
+      });
+    }
+
+    const session = await stripe.checkout.sessions.create({
+      mode: "payment",
+
+      payment_method_types: ["card"],
+
+      customer_email: email,
+
+      line_items: [
+        {
+          price: priceId,
+          quantity: 1,
+        },
+      ],
+
+      metadata: {
+        type: "credits",
+        email,
+        credits,
+      },
+
+      success_url: `${process.env.FRONTEND_URL}?credits=success`,
+
+      cancel_url: `${process.env.FRONTEND_URL}?credits=canceled`,
+    });
+
+    res.json({
+      url: session.url,
+    });
+
+  } catch (error) {
+    console.error("Erreur Stripe crédits :", error);
+
+    res.status(500).json({
+      error: error.message,
+    });
+  }
+});
+
 app.listen(3001, "0.0.0.0", () => {
   console.log("API lancée sur http://localhost:3001");
 });
