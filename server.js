@@ -1018,11 +1018,6 @@ if (product === "poster" || product === "affiche") {
   type: "product",
 },
 
-      metadata: {
-  email,
-  pack,
-},
-
       success_url: `${process.env.FRONTEND_URL}?success=true`,
       cancel_url: `${process.env.FRONTEND_URL}?canceled=true`,
     });
