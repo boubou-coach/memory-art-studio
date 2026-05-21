@@ -242,7 +242,9 @@ setTimeout(() => {
   }
 
   if (selectedStyle === "original") {
-  await fetch(`${API_URL}/api/use-credit`, {
+  const useCreditResponse = await fetch(
+  `${API_URL}/api/use-credit`,
+  {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -250,7 +252,32 @@ setTimeout(() => {
     body: JSON.stringify({
       email: userEmail,
     }),
-  });
+  }
+);
+
+const useCreditData = await useCreditResponse.json();
+
+console.log("USE CREDIT :", useCreditData);
+
+const updatedResponse = await fetch(
+  `${API_URL}/api/check-credits`,
+  {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      email: userEmail,
+    }),
+  }
+);
+
+const updatedData = await updatedResponse.json();
+
+setCreditsLeft(
+  (updatedData.credits || 0) +
+  (updatedData.free_generations || 0)
+);
 
   setAiImage(image);
   setGenerated(false);
