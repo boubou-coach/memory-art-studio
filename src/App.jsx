@@ -261,10 +261,11 @@ await fetch(`${API_URL}/api/use-credit`, {
  
     reader.readAsDataURL(blob);
   } catch (error) {
-    console.error(error);
-    alert("Erreur pendant la génération IA");
-    setLoading(false);
-  }
+  console.error(error);
+  alert("Erreur pendant la génération IA : " + error.message);
+  setLoading(false);
+  setAiLoading(false);
+}
 };
 
   return (
