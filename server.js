@@ -965,7 +965,7 @@ app.post("/api/create-checkout-session", async (req, res) => {
   try {
     console.log("Stripe route appelée :", req.body);
 
-    const { product, style, size } = req.body;
+    const { product, style, category, size, email } = req.body;
     console.log("Produit reçu :", product);
     let priceId = "";
 
