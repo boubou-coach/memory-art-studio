@@ -158,10 +158,10 @@ const testAI = async () => {
   if (!userEmail) {
   alert("Veuillez entrer votre email");
   return;
-
-    setAiLoading(true);
-
 }
+
+setAiLoading(true);
+setLoading(true);
 const checkResponse = await fetch(`${API_URL}/api/check-credits`, {
   method: "POST",
   headers: {
@@ -373,102 +373,7 @@ if (selectedCategory === "frenchie") {
     "dj",
   ].includes(style.id);
 }
-{showRecharge && (
-  <div className="modalOverlay">
-    <div className="orderModal">
 
-      <h2>⚡ Rechargez vos crédits</h2>
-
-      <p>Choisissez votre pack :</p>
-
-      <button
-        className="payBtn"
-        onClick={async () => {
-
-          const response = await fetch(
-            `${API_URL}/api/create-credit-checkout-session`,
-            {
-              method: "POST",
-              headers: {
-                "Content-Type": "application/json",
-              },
-              body: JSON.stringify({
-                pack: "starter",
-                email: userEmail,
-              }),
-            }
-          );
-
-          const data = await response.json();
-
-          window.location.href = data.url;
-        }}
-      >
-        5 crédits — 2,99€
-      </button>
-
-      <button
-        className="payBtn"
-        onClick={async () => {
-
-          const response = await fetch(
-            `${API_URL}/api/create-credit-checkout-session`,
-            {
-              method: "POST",
-              headers: {
-                "Content-Type": "application/json",
-              },
-              body: JSON.stringify({
-                pack: "premium",
-                email: userEmail,
-              }),
-            }
-          );
-
-          const data = await response.json();
-
-          window.location.href = data.url;
-        }}
-      >
-        15 crédits — 5,99€
-      </button>
-
-      <button
-        className="payBtn"
-        onClick={async () => {
-
-          const response = await fetch(
-            `${API_URL}/api/create-credit-checkout-session`,
-            {
-              method: "POST",
-              headers: {
-                "Content-Type": "application/json",
-              },
-              body: JSON.stringify({
-                pack: "creator",
-                email: userEmail,
-              }),
-            }
-          );
-
-          const data = await response.json();
-
-          window.location.href = data.url;
-        }}
-      >
-        50 crédits — 14,99€
-      </button>
-
-      <button
-        className="closeBtn"
-        onClick={() => setShowRecharge(false)}
-      >
-        Fermer
-      </button>
-
-    </div>
-  </div>
-)}
       return true;
     })
     .map((style) => (
@@ -735,6 +640,103 @@ alert(JSON.stringify(data));
       >
         Fermer
       </button>
+    </div>
+  </div>
+)}
+
+{showRecharge && (
+  <div className="modalOverlay">
+    <div className="orderModal">
+
+      <h2>⚡ Rechargez vos crédits</h2>
+
+      <p>Choisissez votre pack :</p>
+
+      <button
+        className="payBtn"
+        onClick={async () => {
+
+          const response = await fetch(
+            `${API_URL}/api/create-credit-checkout-session`,
+            {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({
+                pack: "starter",
+                email: userEmail,
+              }),
+            }
+          );
+
+          const data = await response.json();
+
+          window.location.href = data.url;
+        }}
+      >
+        5 crédits — 2,99€
+      </button>
+
+      <button
+        className="payBtn"
+        onClick={async () => {
+
+          const response = await fetch(
+            `${API_URL}/api/create-credit-checkout-session`,
+            {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({
+                pack: "premium",
+                email: userEmail,
+              }),
+            }
+          );
+
+          const data = await response.json();
+
+          window.location.href = data.url;
+        }}
+      >
+        15 crédits — 5,99€
+      </button>
+
+      <button
+        className="payBtn"
+        onClick={async () => {
+
+          const response = await fetch(
+            `${API_URL}/api/create-credit-checkout-session`,
+            {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({
+                pack: "creator",
+                email: userEmail,
+              }),
+            }
+          );
+
+          const data = await response.json();
+
+          window.location.href = data.url;
+        }}
+      >
+        50 crédits — 14,99€
+      </button>
+
+      <button
+        className="closeBtn"
+        onClick={() => setShowRecharge(false)}
+      >
+        Fermer
+      </button>
+
     </div>
   </div>
 )}
