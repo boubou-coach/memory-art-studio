@@ -160,8 +160,7 @@ const testAI = async () => {
   return;
 }
 
-setAiLoading(true);
-setLoading(true);
+
 const checkResponse = await fetch(`${API_URL}/api/check-credits`, {
   method: "POST",
   headers: {
@@ -214,6 +213,8 @@ setTimeout(() => {
   return;
 }
 
+setAiLoading(true);
+setLoading(true);
 
   try {
     const res = await fetch(image);
