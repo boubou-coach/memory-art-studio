@@ -1126,3 +1126,10 @@ input {
 
   font-size: 16px;
 }
+
+.creditsBadge {
+  margin: 10px 0 18px;
+  color: #ffcc70;
+  font-weight: 700;
+  text-align: center;
+}

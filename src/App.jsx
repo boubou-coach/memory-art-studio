@@ -66,6 +66,7 @@ export default function App() {
 const [loadingMessage, setLoadingMessage] = useState("Analyse de votre photo...");
 const [userEmail, setUserEmail] = useState("");
 const [showRecharge, setShowRecharge] = useState(false);
+const [creditsLeft, setCreditsLeft] = useState(null);
 
 useEffect(() => {
   const handler = (e) => {
@@ -180,6 +181,10 @@ if (!checkData) {
   return;
 }
 
+setCreditsLeft(
+  (checkData.credits || 0) + (checkData.free_generations || 0)
+);
+
 if (
   (checkData.credits || 0) <= 0 &&
   (checkData.free_generations || 0) <= 0
@@ -265,6 +270,12 @@ await fetch(`${API_URL}/api/use-credit`, {
     email: userEmail,
   }),
 });
+
+{creditsLeft !== null && (
+  <p className="creditsBadge">
+    ⚡ Crédits restants : {creditsLeft}
+  </p>
+)}
 
       setAiImage(data.output);
 
