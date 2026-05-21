@@ -1010,10 +1010,13 @@ if (product === "poster" || product === "affiche") {
       ],
 
       metadata: {
-        product,
-        style,
-        size: size || "",
-      },
+  email,
+  product,
+  style,
+  category,
+  size: size || "",
+  type: "product",
+},
 
       metadata: {
   email,
