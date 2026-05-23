@@ -192,6 +192,13 @@ const testAI = async () => {
   return;
 }
 
+const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+if (!emailRegex.test(userEmail)) {
+  alert("Veuillez entrer une adresse email valide");
+  return;
+}
+
 
 const checkResponse = await fetch(`${API_URL}/api/check-credits`, {
   method: "POST",
@@ -306,12 +313,13 @@ setLoading(true);
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          image: base64Image,
-          style: selectedStyle,
-          category: selectedCategory,
-        }),
+  email: userEmail,
+  image: base64Image,
+  style: selectedStyle,
+  category: selectedCategory,
+}),
       });
-
+// deploy refresh
       const data = await response.json();
 
       if (!data.output) {

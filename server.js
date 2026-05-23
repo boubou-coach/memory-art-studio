@@ -1,5 +1,5 @@
-import express from "express";
-import cors from "cors";
+// TEST GIT 123
+import express from "express";import cors from "cors";
 import dotenv from "dotenv";
 import Replicate from "replicate";
 import Stripe from "stripe";
@@ -74,8 +74,29 @@ const replicate = new Replicate({
 });
 
 app.post("/api/generate", async (req, res) => {
+
+  const { email, image, style, category } = req.body;
+  // vérifie email
+ 
+
+const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+if (!email || !emailRegex.test(email)) {
+  console.log("EMAIL TEST");
+  return res.status(400).json({
+    error: "Adresse email invalide",
+  });
+}
+  console.log("EMAIL INVALIDE BLOQUÉ");
+  // vérifie image
+  if (!image) {
+    return res.status(400).json({
+      error: "Image manquante",
+    });
+  }
+
   try {
-    const { image, style, category } = req.body;
+
     console.log("CATEGORY REÇUE :", category);
 
     if (!image) {
@@ -1074,6 +1095,14 @@ app.post("/api/check-credits", async (req, res) => {
   console.log("CHECK CREDITS APPELÉ");
 
   const { email } = req.body;
+
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  if (!email || !emailRegex.test(email)) {
+    return res.status(400).json({
+      error: "Adresse email invalide",
+    });
+  }
 
   // récupère l'IP du visiteur
   const ip =
